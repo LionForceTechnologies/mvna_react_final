@@ -5,7 +5,7 @@ import {
   INIT_URL,
   SIGNOUT_USER_SUCCESS,
   USER_DATA,
-  USER_TOKEN_SET
+  USER_TOKEN_SET 
 } from "../../constants/ActionTypes";
 import axios from 'util/Api'
 
