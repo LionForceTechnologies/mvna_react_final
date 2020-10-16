@@ -14,7 +14,7 @@ export const setInitUrl = (url) => {
     type: INIT_URL,
     payload: url
   };
-};
+}; 
 
 export const userSignUp = ({ email, password, name }) => {
   console.log(email, password);
