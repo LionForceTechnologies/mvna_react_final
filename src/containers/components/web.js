@@ -39,13 +39,13 @@ function Web() {
     })
     useEffect(() => {
         let locations = window.location.pathname;
-        if ((locations.indexOf('web') != -1) && (window.screen.width < 601) || (locations.indexOf('web') != -1) && (window.screen.width < 992) ) {
+        if (((locations == '/user') || (locations == '/user/')) && (window.screen.width < 601) || ((locations == '/user') || (locations == '/user/')) && (window.screen.width < 992) ) {
             if(document.getElementsByClassName('demo').length > 0){
                 document.getElementsByClassName('demo')[0].style.overflow = 'auto'
             }
 
         }
-        if ((locations.indexOf('web') != -1) && (window.screen.width > 992)) {
+        if (((locations == '/user') || (locations == '/user/')) && (window.screen.width > 992)) {
             let nav_h = document.getElementsByClassName('navbar')[0].offsetHeight;
             let total_h = document.getElementsByClassName('blogpage')[0].offsetHeight - nav_h + 15;
             // let height_calc = total_h - nav_h - 22;
@@ -55,7 +55,7 @@ function Web() {
 
         }
         else {
-            if ((locations.indexOf('web') != -1) && (window.screen.width > 992)) {
+            if (((locations == '/user') || (locations == '/user/')) && (window.screen.width > 992)) {
             document.getElementsByClassName('show_output')[0].style.flex = 'auto';
             }else{
                 // document.getElementsByClassName('show_output')[0].style.flex = 'auto';

@@ -1107,3 +1107,145 @@ export const getmemberwebcountry = (data) => {
     });
   }
 };
+// *******file upload***************
+export const putfile = (data) => {
+  let formData = new FormData();  
+  
+    formData.append('icon', data.icon)
+    formData.append('name', data.name)
+    // formData.append('link', data.link)
+
+  return (dispatch) => {
+    axios.post('http://astirs.com/admin/fileupload', 
+    formData
+    
+    ).then((res) => {
+      axios.get('http://astirs.com/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+        dispatch({
+          type: 'getfiles',
+          payload: res.data.data
+        })
+      }).catch(function (error) {
+
+      });
+    }).catch(function (error) {
+
+    });
+
+  }
+};
+export const getfile = (data) => {
+  return (dispatch) => {
+    axios.get('http://astirs.com/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      dispatch({
+        type: 'getfiles',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+  }
+};
+export const getfileweb = (data) => {
+  return (dispatch) => {
+    axios.get('http://astirs.com/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      dispatch({
+        type: 'getfilesweb',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+  }
+};
+export const updatefile = (data) => {
+  let formData = new FormData();  
+  
+  formData.append('icon', data.icon)
+  formData.append('name', data.name)
+  // formData.append('link', data.link)
+  formData.append('id', data.id)
+  return (dispatch) => {
+    axios.post('http://astirs.com/admin/fileupload', 
+    // {
+    //   name: data.name,
+    //   link: data.link,
+    //   'id': data.id
+    // }
+    formData
+    ).then((res) => {
+      axios.get('http://astirs.com/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+        dispatch({
+          type: 'getfiles',
+          payload: res.data.data
+        })
+      }).catch(function (error) {
+
+      });
+    }).catch(function (error) {
+
+    });
+
+  }
+};
+export const editfile = (data) => {
+  return (dispatch) => {
+    axios.get(`http://astirs.com/admin/fileupload/${data}/edit`).then((res) => {
+      dispatch({
+        type: 'editfiles',
+        payload: res.data
+      })
+    }).catch(function (error) {
+
+    });
+
+  }
+};
+export const cleareditfile = (data) => {
+  return (dispatch) => {
+    
+      dispatch({
+        type: 'editfiles',
+        payload: ''
+      })
+    
+
+  }
+};
+
+export const deletefile = (data) => {
+  return (dispatch) => {
+    axios.get(`http://astirs.com/admin/fileupload/${data.id}/${data.status}`).then((res) => {
+      dispatch({
+        type: 'deletedfile',
+        payload: 'success'
+      })
+      axios.get('http://astirs.com/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+        dispatch({
+          type: 'getfiles',
+          payload: res.data.data
+        })
+      }).catch(function (error) {
+
+      });
+
+
+    }).catch(function (error) {
+
+    });
+
+  }
+};
+export const cleardeletefile = (data) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'deletedfile',
+      payload: ''
+    })
+
+  }
+};
+
+
+
+// *******quicklinks***************

@@ -35,7 +35,11 @@ deletedlink : '',
 getmember_web : [],
 getfooterwebdata : '',
 getlinksweb : [],
-getcountrys : []
+getcountrys : [],
+getfiles : [],
+getfilesweb : [],
+editfiles : '',
+deletedfile : '',
 };
 
 export default (state = INIT_STATE, action) => {
@@ -262,7 +266,30 @@ export default (state = INIT_STATE, action) => {
           getcountrys : action.payload
         }
       }
-
+      case 'getfiles' : {
+        return {
+          ...state,
+          getfiles : action.payload
+        }
+      }
+      case 'getfilesweb' : {
+        return {
+          ...state,
+          getfilesweb : action.payload
+        }
+      }
+      case 'editfiles' : {
+        return {
+          ...state,
+          editfiles : action.payload
+        }
+      }
+      case 'deletedfile' : {
+        return {
+          ...state,
+          deletedfile : action.payload
+        }
+      }
       default:
         return state;
     }

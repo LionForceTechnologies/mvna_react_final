@@ -386,7 +386,7 @@ function SubApp(match) {
     let beautify = {
       height: '100%', position: 'relative', overflow: 'auto', overflowX: 'hidden'
     }
-    if ((locations.indexOf('web') !== -1) && (window.screen.width > 992)) {
+    if (((locations == '/user') || (locations == '/user/')) && (window.screen.width > 992)) {
       beautify = {
         height: '100%', position: 'relative', overflowX: 'hidden',overflow:'hidden'
       }
