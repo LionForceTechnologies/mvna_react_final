@@ -1,0 +1,54 @@
+.navbar.mynavbar{
+    color: black;
+  }
+  .mynavcontainer.navbar-container{
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+  .navbar-brand{
+      margin-right: 15px;
+  }
+  .carouselblock{
+      width: 80% !important;
+  }
+  .carouselblock  .gjs-lory-slide[data-gjs-type="lory-slide"]{
+      width: 100%;
+      height: 100% !important;
+  }
+  .carouselblock  .gjs-lory-slides   .gjs-lory-slide[data-gjs-type="lory-slide"]{
+    width: 100% !important;
+    height: 100% !important;
+}
+.carouselblock .gjs-lory-slides{
+    width: 100% !important;
+    height: 100% !important;
+}
+.carouselblock [data-gjs-type="lory-frame"]{
+    width: 100% !important;
+    height: 100% !important;
+}
+.carouselblock [data-gjs-type="lory-slider"]{
+    width: 100% !important;
+    /* margin-top: 10px !important ; */
+    margin-bottom: 10px !important;
+    height: 100% !important;
+}
+.carouselblock .gjs-lory-slide img{
+    width: 100% !important;
+    height: 100% !important;
+}
+.carouselblock .gjs-lory-prev{
+    left: unset !important;
+    right: 0 !important;
+    top: calc(50% - 50px) !important;
+    bottom: calc(50% + 25px) !important;
+}
+.carouselblock .gjs-lory-next{
+    /* bottom: 50%  !important; */
+}
+.gjs-cell.news_title{
+    height : 10px;
+}
+.gjs-cell.news_icon_image{
+    height : 10px;
+}

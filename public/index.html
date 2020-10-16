@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no, maximum-scale=1">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="stylesheet" href="/loader.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/logo192.png">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/draft-js/0.7.0/Draft.min.css">
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+  <!-- <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet"> -->
+  <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+  <script src="https://www.amcharts.com/lib/3/xy.js"></script>
+  <script src="https://www.amcharts.com/lib/3/pie.js"></script>
+  <script src="https://www.amcharts.com/lib/3/funnel.js"></script>
+  <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+  <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/usaLow.js"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/continentsLow.js"></script>
+  <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
+  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+  <script>
+    if (window.self !== window.top) {
+      parent.location = 'http://wieldy.g-axon.work/';
+    }
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,geometry,drawing&key=AIzaSyA72EHVeUE3qZ4eG6BnHgxgfIWH48dTEDA"></script>
+
+  <!-- <title>Wieldy- Admin Dashboard</title> -->
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root">
+    <div class="loader loading">
+      <!-- <img src="/loader.svg" alt="loader"> -->
+    </div>
+  </div>
+  <script>
+
+    function lorySlide() {
+
+      var items = document.querySelectorAll('#izg8r27');
+      if (items !== 'undefined') {
+        console.log('checking')
+        console.log(items)
+        for (var i = 0, len = items.length; i < len; i++) {
+          (function () {
+            var e = this,
+              t = "https://cdnjs.cloudflare.com/ajax/libs/lory.js/2.3.4/lory.min.js",
+              l = ["0", "false"],
+              s = "";
+            s = "true" == s ? 1 : parseInt(s, 10);
+
+            var a = {
+              slidesToScroll: parseInt("1", 10),
+              enableMouseEvents: l.indexOf("") >= 0 ? 0 : 1,
+              infinite: !isNaN(s) && s,
+              rewind: !(l.indexOf("") >= 0),
+              slideSpeed: parseInt("300", 10),
+              rewindSpeed: parseInt("600", 10),
+              snapBackSpeed: parseInt("200", 10),
+              ease: "ease",
+              classNameFrame: "gjs-lory-frame",
+              classNameSlideContainer: "gjs-lory-slides",
+              classNamePrevCtrl: "gjs-lory-prev",
+              classNameNextCtrl: "gjs-lory-next"
+            },
+              r = function () {
+                window.sliderLory = lory(e, a);
+              };
+
+            if ("undefined" == typeof lory) {
+
+              var n = document.createElement("script");
+              n.src = t, n.onload = r, document.head.appendChild(n);
+            } else r();
+          }.bind(items[i]))();
+        }
+        var items = document.querySelectorAll('#izg8r27');
+        for (var i = 0, len = items.length; i < len; i++) {
+          (function () {
+            var e = this,
+              t = "https://cdnjs.cloudflare.com/ajax/libs/lory.js/2.3.4/lory.min.js",
+              l = ["0", "false"],
+              s = "";
+            s = "true" == s ? 1 : parseInt(s, 10);
+
+            var a = {
+              slidesToScroll: parseInt("1", 10),
+              enableMouseEvents: l.indexOf("") >= 0 ? 0 : 1,
+              infinite: !isNaN(s) && s,
+              rewind: !(l.indexOf("") >= 0),
+              slideSpeed: parseInt("300", 10),
+              rewindSpeed: parseInt("600", 10),
+              snapBackSpeed: parseInt("200", 10),
+              ease: "ease",
+              classNameFrame: "gjs-lory-frame",
+              classNameSlideContainer: "gjs-lory-slides",
+              classNamePrevCtrl: "gjs-lory-prev",
+              classNameNextCtrl: "gjs-lory-next"
+            },
+              r = function () {
+                window.sliderLory = lory(e, a);
+              };
+
+            if ("undefined" == typeof lory) {
+              var n = document.createElement("script");
+              n.src = t, n.onload = r, document.head.appendChild(n);
+            } else r();
+          }.bind(items[i]))();
+        }
+      }
+
+
+
+
+
+    }
+
+
+    window.onload = function () {      
+      
+      if (document.getElementById('example-editor')) {
+        document.getElementById('example-editor').style.height = '100%';
+      }
+      let resizeObserver = new ResizeObserver(() => {
+        if (document.getElementById('example-editor')) {
+          document.getElementById('example-editor').style.height = '100%';
+        }
+
+      });
+      if (document.getElementById('example-editor')) {
+        resizeObserver.observe(document.getElementById('example-editor'));
+      }
+      if (document.getElementsByClassName('blogpage').length > 0) {
+        let x = document.getElementsByClassName('blogpage')[0].offsetHeight - 40 - document.getElementsByClassName('navbar-light')[0].offsetHeight
+        document.getElementsByClassName('home_page_row')[0].style.height = `${x}px`;
+      }
+      let y = document.getElementsByClassName('gjs-lory-slide');
+      if (y.length > 0) {
+        let x = document.getElementsByClassName('blogpage')[0].offsetHeight - 40 - document.getElementsByClassName('navbar-light')[0].offsetHeight
+        for (let j = 0; j < y.length; j++) {
+          if (y[j].children.length) {
+            y[j].children[0].style.height = `${x}px`;
+          }
+
+        }
+      }
+
+    }
+    window.onresize = function () {
+      if (document.getElementById('example-editor')) {
+        document.getElementById('example-editor').style.height = '100%';
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>
