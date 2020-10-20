@@ -57,7 +57,7 @@ const Fileupload = (props) => {
         })
         setlink(roleid.data[0].link)
         setmenu(roleid.data[0].name)
-        setimage(roleid.data[0].icon)
+        setimage(roleid.data[0].docs)
         // setimageUrl(`${hostname}/${roleid.data[0].icon}`)
         setedit(0)
       }

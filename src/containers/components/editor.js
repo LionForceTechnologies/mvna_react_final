@@ -128,6 +128,9 @@ function Editor() {
       }
     });
   });
+  useEffect(()=> {
+    document.getElementById('example-editor').style.height = '100%'
+  })
   return (
     <>
     {spinner == 'start' ? (<Spin className={`geditor`}><div id="example-editor" ></div></Spin>) :(<div id="example-editor" ></div>)}

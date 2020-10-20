@@ -126,7 +126,7 @@ setend(1)
         console.log('Failed:', errorInfo);
     };
     const onFinish = values => {
-        alert(15)
+
         if (rolepermissionid != '') {
             if (permissionsmapped.length == 0) {
                 setswarning(true)
@@ -184,7 +184,7 @@ setend(1)
                     key: item.id
                 }
             });
-        } else {
+        } else {            
             data = pagepermissions.map((item, i) => {
                 return {
                     page: item.menu,

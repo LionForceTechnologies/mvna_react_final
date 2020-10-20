@@ -83,6 +83,11 @@ const SidebarContent = () => {
               <Link to="/quicklinks"><i className="icon icon-widgets"/>
                 <span>Quick Links</span>
               </Link>              
+            </Menu.Item>
+            <Menu.Item key="fileupload">
+              <Link to="/fileupload"><i className="icon icon-widgets"/>
+                <span>File Upload</span>
+              </Link>              
             </Menu.Item>            
           </Menu>
           

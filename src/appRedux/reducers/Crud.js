@@ -6,13 +6,13 @@ submenu_id : '',
 menudeleteMessage : '',
 submenudeleteMessage : '',
 checksubmenu : '',
-seteditor : '',
+
 getpage : '',
 getrole : '',
 role_id : '',
 deleted : '',
 spinner : 'end',
-webmenu : [],
+
 member : [],
 memberid : '',
 deletedmember : '',
@@ -23,23 +23,21 @@ pagepermission : [],
 rolepermissionid : '',
 rolepermission : [] ,
 deletepermissionid : '',
-get_webpage : '',
+
 h_credentials : '',
-startlogin : 'end',
-logsuccess : '',
 getfooterdata : '',
 update : 0,
 getlinks : [],
 editqlink : '',
 deletedlink : '',
 getmember_web : [],
-getfooterwebdata : '',
-getlinksweb : [],
+
 getcountrys : [],
 getfiles : [],
 getfilesweb : [],
 editfiles : '',
 deletedfile : '',
+
 };
 
 export default (state = INIT_STATE, action) => {
@@ -86,12 +84,7 @@ export default (state = INIT_STATE, action) => {
           checksubmenu : action.payload
         }
       }
-      case 'seteditor' : {
-        return {
-          ...state,
-          seteditor : action.payload
-        }
-      }
+
       case 'getpage' : {
         return {
           ...state,
@@ -122,12 +115,7 @@ export default (state = INIT_STATE, action) => {
           spinner : action.payload
         }
       }
-      case 'webmenu' : {
-        return {
-          ...state,
-          webmenu : action.payload
-        }
-      }
+
       case 'getmember' : {
         return {
           ...state,
@@ -188,30 +176,14 @@ export default (state = INIT_STATE, action) => {
           deletepermissionid : action.payload
         }
       }
-      case 'get_webpage' : {
-        return {
-          ...state,
-          get_webpage : action.payload
-        }
-      }
+
       case 'hcredentials' : {
         return {
           ...state,
           h_credentials : action.payload
         }
       }
-      case 'startlogin' : {
-        return {
-          ...state,
-          startlogin : action.payload
-        }
-      }
-      case 'logsuccess' : {
-        return {
-          ...state,
-          logsuccess : action.payload
-        }
-      }
+
       case 'getfooter' : {
         return {
           ...state,
@@ -246,12 +218,6 @@ export default (state = INIT_STATE, action) => {
         return {
           ...state,
           getmember_web : action.payload
-        }
-      }
-      case 'getfooterweb' : {
-        return {
-          ...state,
-          getfooterwebdata : action.payload
         }
       }
       case 'getlinkweb' : {

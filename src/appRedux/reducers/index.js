@@ -3,6 +3,7 @@ import Settings from "./Settings";
 import Auth from "./Auth";
 import Common from "./Common";
 import Crud from "./Crud";
+import Webauth from "./Webauth";
 import {connectRouter} from 'connected-react-router'
 
 export default (history) => combineReducers({
@@ -10,5 +11,6 @@ export default (history) => combineReducers({
   settings: Settings,
   auth: Auth,
   common: Common,
-  crud: Crud
+  crud: Crud,
+  webauth: Webauth
 });

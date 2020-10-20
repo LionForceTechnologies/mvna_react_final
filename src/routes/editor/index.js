@@ -60,6 +60,10 @@ function Editor() {
       setstart(1)
     } 
   })
+  // useEffect(()=> {
+    
+  // })
+
   useEffect(() => {
     if(geta_page.length > 0){
       localStorage.setItem('gjs-assets',geta_page[0].mvna_assets)
@@ -128,9 +132,12 @@ function Editor() {
       }
     });
   });
+  useEffect(()=> {
+    document.getElementById('example-editor').style.height = '100%'
+  })
   return (
     <>
-    {spinner == 'start' ? (<Spin className={`geditor`}><div id="example-editor" ></div></Spin>) :(<div id="example-editor" ></div>)}
+    {spinner == 'start' ? (<Spin ><div id="example-editor" ></div></Spin>) :(<div id="example-editor" ></div>)}
     
 
     </>

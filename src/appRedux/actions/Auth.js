@@ -5,9 +5,8 @@ import {
   INIT_URL,
   SIGNOUT_USER_SUCCESS,
   USER_DATA,
-  USER_TOKEN_SET      
+  USER_TOKEN_SET
 } from "../../constants/ActionTypes";
-
 import axios from 'util/Api'
 
 export const setInitUrl = (url) => {
@@ -15,7 +14,7 @@ export const setInitUrl = (url) => {
     type: INIT_URL,
     payload: url
   };
-}; 
+};
 
 export const userSignUp = ({ email, password, name }) => {
   console.log(email, password);
@@ -59,13 +58,13 @@ export const userSignIn = ({ email, password }) => {
     }
     ).then((data) => {
       // console.log("userSignIn: ",data.data.Token); 
-      localStorage.setItem("token", JSON.stringify('123'));
-      axios.defaults.headers.common['Authorization'] = '123';
-      let hcredentials = {
-        role_id: data.data.userdetail.role_id,
-        userlog_id: data.data.userdetail.userlog_id
-      }
-      localStorage.setItem('hcredentials', JSON.stringify(hcredentials))
+      console.log('success agirchi')
+      console.log(data)
+      localStorage.setItem("token", JSON.stringify(data.data.Token));
+      axios.defaults.headers.common['Authorization'] = data.data.Token;
+      localStorage.setItem('roleId',JSON.stringify(data.data.userdetail.roleId))
+      localStorage.setItem('userlogid',JSON.stringify(data.data.userdetail.userlogid))
+      localStorage.setItem('id',JSON.stringify(data.data.userdetail.id))
       dispatch({
         type: 'logsuccess',
         payload: 'success'
@@ -77,6 +76,7 @@ export const userSignIn = ({ email, password }) => {
         payload: 'end'
       });
     }).catch(function (error) {
+
       dispatch({ type: FETCH_ERROR, payload: error.message });
       console.log("Error****:", error.message);
       dispatch({
@@ -126,6 +126,25 @@ export const userSignOut = () => {
     localStorage.removeItem("token");
     dispatch({ type: FETCH_SUCCESS });
     dispatch({ type: SIGNOUT_USER_SUCCESS });
+    // axios.post('auth/logout').then(({data}) => {
+    //   console.log("log out",data)
+    //   if (data.result) {
+    //     localStorage.removeItem("token");
+    //     dispatch({type: FETCH_SUCCESS});
+    //     dispatch({type: SIGNOUT_USER_SUCCESS});
+    //   } else {
+    //     dispatch({type: FETCH_ERROR, payload: data.error});
+    //   }
+    // }).catch(function (error) {
+    //   dispatch({type: FETCH_ERROR, payload: error.message});
+    //   console.log("Error****:", error.message);
+    // });
+  }
+};
+export const clearsignout = () => {
+
+  return (dispatch) => {
+    dispatch({ type: 'clearsignout' });
     // axios.post('auth/logout').then(({data}) => {
     //   console.log("log out",data)
     //   if (data.result) {

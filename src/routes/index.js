@@ -8,7 +8,7 @@ function App ({match}){
   let comp = '';
   let name = "gx-main-content-wrapper";
   if(locations.indexOf('user/admin') !== -1){
-  name = ""
+  name = "editors"
   }
   return (
  <div className={name}>

@@ -212,9 +212,9 @@ import Members from "./members"
 import Editor from "./editor";
 import InnerEditor from './innereditor';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getwebmenu,getlinkweb,getfooterweb } from "../../appRedux/actions/Crud";
+import { getwebmenu,getlinkweb,getfooterweb } from "../../appRedux/actions/Webauth";
 import { Modal, Form, Input, Spin } from 'antd';
-import { userSignIn, clearlogsuccess } from "../../appRedux/actions/Auth";
+import { webSignIn, clearlogsuccess } from "../../appRedux/actions/Webauth";
 import SweetAlert from "react-bootstrap-sweetalert";
 // import "./ui_style.css";
 // import {
@@ -223,7 +223,7 @@ import SweetAlert from "react-bootstrap-sweetalert";
 //     Route,
 //     Link
 // } from "react-router-dom";
-function SubApp(match) {
+function SubApp(props) {
   const [f_img_height, setf_img_height] = useState(100)
   const [footer_div, setfooter_div] = useState('45px')
   const [footer_content, setfooter_content] = useState(25)
@@ -235,14 +235,15 @@ function SubApp(match) {
   const [warning, setwarning] = useState(false)
   const [success, setsuccess] = useState(false)
   const [loader, setloader] = useState(0)
-  const webmenu = useSelector(({ crud }) => crud.webmenu);
-  const logsuccess = useSelector(({ crud }) => crud.logsuccess);
-  const startlogin = useSelector(({ crud }) => crud.startlogin);
-  const forlink = useSelector(({ crud }) => crud. getlinksweb);
-  const forfootercontent = useSelector(({ crud }) => crud.getfooterwebdata);
+  const webmenu = useSelector(({ webauth }) => webauth.webmenu);
+  const logsuccess = useSelector(({ webauth }) => webauth.logsuccess);
+  const startlogin = useSelector(({ webauth }) => webauth.startlogin);
+  const forlink = useSelector(({ webauth }) => webauth. getlinksweb);
+  const forfootercontent = useSelector(({ webauth }) => webauth.getfooterwebdata);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
   const Search = Input.Search;
+  const token = useSelector(({auth}) => auth.token);
   let locations = window.location.pathname;
   let locations_host = window.location.hostname;
   let locations_port = window.location.port;
@@ -285,6 +286,9 @@ function SubApp(match) {
   function confirmsuccess() {
     setsuccess(false)
   }
+  function permenu(e) {
+localStorage.setItem('url',e.target.getAttribute('data-name'))
+  }
   // **************loader functions****************
   useEffect(() => {
     if (stop == 0) {
@@ -300,7 +304,7 @@ function SubApp(match) {
 
   const onFinish = values => {
     console.log("finish", values)
-    dispatch(userSignIn(values));
+    dispatch(webSignIn(values));
     document.getElementById('basic_password').value = null;
     document.getElementById('basic_email').value = null;
 
@@ -327,17 +331,17 @@ function SubApp(match) {
         let submenus = [];
         for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
           if (webmenu[i].sub_menus[j].menu.toUpperCase() == 'MEMBERS') {
-            submenus.push(<NavDropdown.Item href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
+            submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
           }
           else {
-            submenus.push(<NavDropdown.Item href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
+            submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
           }
         }
         menus.push(<NavDropdown title={`${webmenu[i].menu}`} id="basic-nav-dropdown">
           {submenus}
         </NavDropdown>)
       } else {
-        menus.push(<Nav.Link href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
+        menus.push(<Nav.Link onClick={permenu} data-name={webmenu[i].menu} href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
       }
     }
   }
@@ -574,7 +578,6 @@ function SubApp(match) {
     )
 
   }
-
   return (
     <Router>
       {/* <div id="example-editor"/>        */}

@@ -13,7 +13,7 @@ import SignUp from "../SignUp";
 // import SubApp from "../components/App"
 import UserDashboard from "../UserDashboard";
 import Sample from "../components/sample";
-import {setInitUrl} from "appRedux/actions/Auth";
+import {setInitUrl,clearsignout} from "appRedux/actions/Auth";
 import {onLayoutTypeChange, onNavStyleChange, setThemeType} from "appRedux/actions/Setting";
 
 import {
@@ -39,12 +39,7 @@ const RestrictedRoute = ({component: Component, location, token, ...rest}) =>
     render={props =>
       token
         ? <Component {...props} />
-        : <Redirect
-          to={{
-            pathname: '/user',
-            state: {from: location}
-          }}
-        />}
+        : ''}
   />;
 
 
@@ -52,7 +47,7 @@ const App = () => {
 
   const dispatch = useDispatch();
   const {locale, navStyle, layoutType} = useSelector(({settings}) => settings);
-  const {token, initURL} = useSelector(({auth}) => auth);
+  const {token, initURL,signout} = useSelector(({auth}) => auth);
 
   const location = useLocation();
   const history = useHistory();
@@ -118,18 +113,33 @@ const App = () => {
   };
 
   useEffect(() => {
+    if(signout == 'success'){
+      history.push('/signin');
+      dispatch(clearsignout())
+    }
     if (location.pathname === '/') {
       if (token === null) {
         history.push('/user');
+        
       } else if (initURL === '' || initURL === '/' || initURL === '/signin') {
         history.push('/sample');
       } else {
         history.push(initURL);
       }
     }
+    // else if (location.pathname === '/signin') {
+    //   if (token === null) {
+    //     history.push('/signin');
+    //   } else if (initURL === '' || initURL === '/' || initURL === '/signin') {
+    //     history.push('/sample');
+    //   } else {
+    //     history.push(initURL);
+    //   }
+    // }
   }, [token, initURL, location, history]);
 
   const currentAppLocale = AppLocale[locale.locale];
+
 
   return (
     <ConfigProvider locale={currentAppLocale.antd}>
@@ -138,7 +148,7 @@ const App = () => {
         messages={currentAppLocale.messages}>
 
         <Switch>
-        <Route exact path='/user' component={SubApp}/>
+        {(location.pathname.indexOf('/user') != -1) && (location.pathname.indexOf('/user/amin') < 0) ? <Route exact path={location.pathname} component={SubApp}/> : <Route exact path={`/user`} component={SubApp}/>} 
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/signup' component={SignUp}/>
           {/* <RestrictedRoute  path={`${match.url}`} component={UserDashboard}/>  */}

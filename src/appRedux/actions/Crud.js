@@ -9,9 +9,13 @@ import {
   USER_TOKEN_SET
 } from "../../constants/ActionTypes";
 // axios.defaults.headers.common['Authorization'] = 11
+axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+axios.defaults.headers.common['roleId'] = localStorage.getItem('roleId')
+axios.defaults.headers.common['userlogid'] = localStorage.getItem('userlogid')
+axios.defaults.headers.common['id']   = localStorage.getItem('id')         
 // axios.defaults.headers.common['Authorization'] =  localStorage.getItem('token');
 // axios.interceptors.response.eject(interceptor);
-
+// delete axios.defaults.headers.common["If-None-Match"];
 export const menuadd = (drag) => {
 
   return (dispatch) => {
@@ -438,23 +442,7 @@ export const deleted = (data) => {
 
   }
 };
-export const getwebmenu = (data) => {
-  return (dispatch) => {
-    axios.get('http://astirs.com/web_menu',{
-      headers : {
-        webloginroleid : 1
-      }
-    }).then((res) => {
-      dispatch({
-        type: 'webmenu',
-        payload: res.data.data
-      })
-    }).catch(function (error) {
 
-    });
-
-  }
-};
 // ********member creation**********
 export const putmember = (data) => {  
   let formData = new FormData();  
@@ -833,44 +821,7 @@ export const cleardeleterolepermission = (data) => {
 // ********role permission**********
 
 // ********getwebpage***************
-export const getwebpage = (data) => {
-  
-  let header = {
-    headers: {
-      "Access-Control-Allow-Origin": "*",        
-    }
-  }
 
-  return (dispatch) => {
-    let api = `http://astirs.com/admin/final_content/${data}/edit`
-    if(data == null){
-api = "http://astirs.com/"
-    }
-    axios.get(`${api}`, JSON.parse(localStorage.getItem('hcredentials')) != null ?{
-      headers: {
-        "Access-Control-Allow-Origin": "*",        
-        role_id : JSON.parse(localStorage.getItem('hcredentials')).role_id,
-        userlog_id : JSON.parse(localStorage.getItem('hcredentials')).role_id
-      }
-    } : {
-      headers: {
-        "Access-Control-Allow-Origin": "*",        
-      }
-    } ).then((res) => {
-      // alert();
-      // console.log(JSON.parse(res));
-      if (res.data.length == 0) {
-        dispatch({ type: 'seteditor', payload: '0' })
-      }
-      else {
-        dispatch({ type: 'seteditor', payload: res.data[0].id })
-        dispatch({ type: 'get_webpage', payload: res.data })
-      }
-    }).catch((error) => {
-
-    })
-  }
-};
 
 // ********getwebpage***************
 // ********getfooter****************
@@ -887,19 +838,7 @@ export const getfooter = (data) => {
 
   }
 };
-export const getfooterweb = (data) => {
-  return (dispatch) => {
-    axios.get('http://astirs.com/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
-    dispatch({
-        type: 'getfooterweb',
-        payload: res.data
-      })
-    }).catch(function (error) {
 
-    });
-
-  }
-};
 export const putfooter = (data) => {
   return (dispatch) => {
     axios.post('http://astirs.com/admin/footer',{
@@ -1111,7 +1050,7 @@ export const getmemberwebcountry = (data) => {
 export const putfile = (data) => {
   let formData = new FormData();  
   
-    formData.append('icon', data.icon)
+    formData.append('docs', data.icon)
     formData.append('name', data.name)
     // formData.append('link', data.link)
 
@@ -1161,7 +1100,7 @@ export const getfileweb = (data) => {
 export const updatefile = (data) => {
   let formData = new FormData();  
   
-  formData.append('icon', data.icon)
+  formData.append('docs', data.icon)
   formData.append('name', data.name)
   // formData.append('link', data.link)
   formData.append('id', data.id)
@@ -1249,3 +1188,6 @@ export const cleardeletefile = (data) => {
 
 
 // *******quicklinks***************
+// ********twitter*****************
+
+// ********twitter*****************

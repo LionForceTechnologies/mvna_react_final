@@ -1,9 +1,11 @@
 import {INIT_URL, SIGNOUT_USER_SUCCESS, USER_DATA, USER_TOKEN_SET} from "../../constants/ActionTypes";
-
+import React, {memo, useEffect} from "react";
+import {Redirect, Route, Switch, useHistory, useLocation, useRouteMatch} from "react-router-dom";
 const INIT_STATE = {
-  token: JSON.parse(localStorage.getItem('token')),
+  token: localStorage.getItem('token'),
   initURL: '',
-  authUser: JSON.parse(localStorage.getItem('user')),
+  authUser: localStorage.getItem('user'),
+  signout : ''
 };
  
 export default (state = INIT_STATE, action) => {
@@ -15,11 +17,22 @@ export default (state = INIT_STATE, action) => {
     }
 
     case SIGNOUT_USER_SUCCESS: {
+      // let a = <Redirect to="/signin" />
       return {
         ...state,
         token: null,
         authUser: null,
-        initURL: ''
+        initURL: '',
+        signout: 'success'
+        // (<Redirect to="/signin" /> )
+      }
+    }
+    case 'clearsignout': {
+      // let a = <Redirect to="/signin" />
+      return {
+        ...state,
+        signout: ''
+        // (<Redirect to="/signin" /> )
       }
     }
 
