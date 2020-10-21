@@ -319,32 +319,57 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
   }
   let menus = [];
   let nbrand = 0;
-  let ref;
-  for (let i = 0; i < webmenu.length; i++) {
-    if (webmenu[i].menu.toUpperCase() == 'HOME') {
-      nbrand = 1
-      ref = '/user'
+  let ref;  
+  let footer_address = [];
+  if(forfootercontent.data){
+    if(forfootercontent.data.length > 0){
+      footer_address.push(<p>{forfootercontent.data[0].addressline1}</p>)
+      footer_address.push(<p>{forfootercontent.data[0].addressline2}</p>)
+      footer_address.push(<p>{forfootercontent.data[0].mobile}</p>)    
     }
-    if (webmenu[i].menu.toUpperCase() != 'HOME') {
-      // alert(webmenu[i].menu == 'Home')
-      if (webmenu[i].sub_menus.length > 0) {
-        let submenus = [];
-        for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
-          if (webmenu[i].sub_menus[j].menu.toUpperCase() == 'MEMBERS') {
-            submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
-          }
-          else {
-            submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
-          }
-        }
-        menus.push(<NavDropdown title={`${webmenu[i].menu}`} id="basic-nav-dropdown">
-          {submenus}
-        </NavDropdown>)
-      } else {
-        menus.push(<Nav.Link onClick={permenu} data-name={webmenu[i].menu} href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
-      }
+    else{
+      footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
+      footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
+      footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
     }
   }
+else{
+  footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
+  footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
+  footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
+}
+
+
+  if(webmenu){
+    for (let i = 0; i < webmenu.length; i++) {
+      if (webmenu[i].menu.toUpperCase() == 'HOME') {
+        nbrand = 1
+        ref = '/user'
+      }
+      if (webmenu[i].menu.toUpperCase() != 'HOME') {
+        // alert(webmenu[i].menu == 'Home')
+        if (webmenu[i].sub_menus.length > 0) {
+          let submenus = [];
+          for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
+            if (webmenu[i].sub_menus[j].menu.toUpperCase() == 'MEMBERS') {
+              submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
+            }
+            else {
+              submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
+            }
+          }
+          menus.push(<NavDropdown title={`${webmenu[i].menu}`} id="basic-nav-dropdown">
+            {submenus}
+          </NavDropdown>)
+        } else {
+          menus.push(<Nav.Link onClick={permenu} data-name={webmenu[i].menu} href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
+        }
+      }
+    }
+
+
+  }
+
   function handleClick(e) {
 
     if (footer_content === 25) {
@@ -400,9 +425,11 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
       <div className={`footer_content_inner_content`}>
         <div className="footer_content_sub footer_content_sub-1">
           <img className="footer_title_image" src="/images/MVNA_Logo_White.png" alt="footer_image"></img>
-         {forfootercontent != '' ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
-     {forfootercontent != '' ? (<><p>{forfootercontent.data[0].addressline2}</p><br></br></>) : (<><p>Cedex. FRANCE,</p><br></br></>)}
-     {forfootercontent != '' ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)}
+         {/* { forfootercontent.data != undefined ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
+     {forfootercontent.data != undefined ? (<><p>{forfootercontent.data[0].addressline2}</p><br></br></>) : (<><p>Cedex. FRANCE,</p><br></br></>)}
+     {forfootercontent.data != undefined ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)}
+      */}
+      {footer_address}
         </div>
         <div className="footer_content_sub footer_content_sub-2">
           <div className="Quick_links">
@@ -507,9 +534,10 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
               <div className={`footer_content_inner_content`} style={footer_content_inner_content}  >
                 <div className="footer_content_sub footer_content_sub-1">
                   <img className="footer_title_image" src="/images/MVNA_Logo_White.png" alt="footer_image"></img>
-                  {forfootercontent != '' ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
+                  {/* {forfootercontent != '' ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
      {forfootercontent != '' ? (<><p>{forfootercontent.data[0].addressline2}</p><br></br></>) : (<><p>Cedex. FRANCE,</p><br></br></>)}
-     {forfootercontent != '' ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)}
+     {forfootercontent != '' ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)} */}
+     {footer_address}
                 </div>
                 <div className="footer_content_sub footer_content_sub-2">
                   <div className="Quick_links">

@@ -8,15 +8,20 @@ import {
     USER_TOKEN_SET
   } from "../../constants/ActionTypes";
   import axios from 'util/Api'  
-  delete axios.defaults.headers.common['Authorization']
+  // delete axios.defaults.headers.common['Authorization']
+  // webloginroleid: 2,
+  //   webloginid: 1,
+    // url : `/${localStorage.getItem('url')}` 
+    localStorage.setItem('webloginroleid',2)
   export const webSignIn = ({ email, password }) => {
     return (dispatch) => {
       dispatch({ type: FETCH_START });
       dispatch({
         type: 'startlogin',
         payload: 'start'
-      });
-      axios.post('http://13.126.66.92:3002/api/auth/web_login', {
+      });      
+      
+      axios.post('http://13.232.56.107:3002/api/auth/web_login', {
         email: email,
         password: password,
       }
@@ -26,6 +31,8 @@ import {
           role_id: data.data.userdetail.role_id,
           userlog_id: data.data.userdetail.userlog_id
         }
+        axios.defaults.headers.common['webloginid'] = data.data.userdetail.webloginid 
+        localStorage.setItem('webloginroleid',data.data.userdetail.webloginroleid)
         localStorage.setItem('hcredentials', JSON.stringify(hcredentials))
         dispatch({
           type: 'logsuccess',
@@ -60,12 +67,15 @@ import {
     }
   };
   export const getwebmenu = (data) => {
+    let url = `/${localStorage.getItem('url')}`;
+    if(localStorage.getItem('url') == null){
+      url = `/`
+    }
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/web_menu',{
+      axios.get('http://13.232.56.107:3002/api/web_menu',{
         headers : {
-          webloginroleid: 1,
-        //   webloginid: 1,
-          url : `/${localStorage.getItem('url')}` 
+          webloginroleid: localStorage.getItem('webloginroleid'),          
+          url : url 
         }
       }).then((res) => {
         dispatch({
@@ -80,7 +90,7 @@ import {
   };
   export const getlinkweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.232.56.107:3002/api/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getlinkweb',
           payload: res.data.data
@@ -92,7 +102,7 @@ import {
   };
   export const getfooterweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
+      axios.get('http://13.232.56.107:3002/api/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
       dispatch({
           type: 'getfooterweb',
           payload: res.data
@@ -110,20 +120,22 @@ import {
         "Access-Control-Allow-Origin": "*",        
       }
     }
-  
+    let url = `/${localStorage.getItem('url')}`;
+    if(localStorage.getItem('url') == null){
+      url = `/`
+    }
     return (dispatch) => {
-      let api = `http://13.126.66.92:3002/api/get_page/${data}`
+      let api = `http://13.232.56.107:3002/api/get_page/${data}`
       if(data == null){
-  api = "http://13.126.66.92:3002/api/"
+  api = "http://13.232.56.107:3002/api/"
       }
       axios.get(`${api}`,  {
         headers: {
           "Access-Control-Allow-Origin": "*",        
-          roleId : 1
+          webloginroleid: localStorage.getItem('webloginroleid'),
+          url : url
         }
       } ).then((res) => {
-        // alert();
-        // console.log(JSON.parse(res));
         if (res.data.length == 0) {
           dispatch({ type: 'seteditor', payload: '0' })
         }
@@ -138,7 +150,7 @@ import {
   };
   export const gettwitter = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/twitter?items_per_page=10&current_page_no=').then((res) => {
+      axios.get('http://13.232.56.107:3002/api/twitter?items_per_page=10&current_page_no=').then((res) => {
         dispatch({
           type: 'gettwitters',
           payload: res.data.data
@@ -150,7 +162,7 @@ import {
   };
   export const getmemberweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.232.56.107:3002/api/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getmember_web',
           payload: res.data.data
@@ -162,7 +174,7 @@ import {
   };
   export const getmemberwebcountry = (data) => {
     return (dispatch) => {
-      axios.get(`http://13.126.66.92:3002/api/member?country=${data}`).then((res) => {
+      axios.get(`http://13.232.56.107:3002/api/member?country=${data}`).then((res) => {
         dispatch({
           type: 'getmember_web',
           payload: res.data.data
@@ -174,7 +186,7 @@ import {
   };
   export const getcountry = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/country').then((res) => {
+      axios.get('http://13.232.56.107:3002/api/country').then((res) => {
         dispatch({
           type: 'getcountry',
           payload: res.data.data

@@ -8,9 +8,9 @@ import {
   USER_TOKEN_SET
 } from "../../constants/ActionTypes";
 import axios from 'util/Api'
-// http://13.126.66.92:3002/
-// http://13.126.66.92:3002/
-// http://13.126.66.92:3002/
+// http://13.232.56.107:3002/
+// http://13.232.56.107:3002/
+// http://13.232.56.107:3002/
 export const setInitUrl = (url) => {
   return {
     type: INIT_URL,
@@ -54,7 +54,7 @@ export const userSignIn = ({ email, password }) => {
       type: 'startlogin',
       payload: 'start'
     });
-    axios.post('http://13.126.66.92:3002/auth/login', {
+    axios.post('http://13.232.56.107:3002/auth/login', {
       email: email,
       password: password,
     }
