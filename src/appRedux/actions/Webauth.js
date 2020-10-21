@@ -16,7 +16,7 @@ import {
         type: 'startlogin',
         payload: 'start'
       });
-      axios.post('http://13.126.66.92:3002/api/auth/web_login', {
+      axios.post('http://localhost:3002/api/auth/web_login', {
         email: email,
         password: password,
       }
@@ -61,7 +61,7 @@ import {
   };
   export const getwebmenu = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/web_menu',{
+      axios.get('http://localhost:3002/api/web_menu',{
         headers : {
           webloginroleid: 1,
         //   webloginid: 1,
@@ -80,7 +80,7 @@ import {
   };
   export const getlinkweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://localhost:3002/api/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getlinkweb',
           payload: res.data.data
@@ -92,7 +92,7 @@ import {
   };
   export const getfooterweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
+      axios.get('http://localhost:3002/api/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
       dispatch({
           type: 'getfooterweb',
           payload: res.data
@@ -112,9 +112,9 @@ import {
     }
   
     return (dispatch) => {
-      let api = `http://13.126.66.92:3002/api/get_page/${data}`
+      let api = `http://localhost:3002/api/get_page/${data}`
       if(data == null){
-  api = "http://13.126.66.92:3002/api/"
+  api = "http://localhost:3002/api/"
       }
       axios.get(`${api}`,  {
         headers: {
@@ -138,7 +138,7 @@ import {
   };
   export const gettwitter = (data) => {
     return (dispatch) => {
-      axios.get('http://13.126.66.92:3002/api/twitter?items_per_page=10&current_page_no=').then((res) => {
+      axios.get('http://localhost:3002/api/twitter?items_per_page=10&current_page_no=').then((res) => {
         dispatch({
           type: 'gettwitters',
           payload: res.data.data
