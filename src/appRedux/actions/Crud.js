@@ -19,7 +19,7 @@ axios.defaults.headers.common['id']   = localStorage.getItem('id')
 export const menuadd = (drag) => {
 
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/menu', {
+    axios.post('http://13.126.66.92:3002/admin/menu', {
       menu: drag.menu,
       place: drag.place,
       url: drag.url,
@@ -27,7 +27,7 @@ export const menuadd = (drag) => {
       icon: drag.icon,
       parent_id: drag.parent_id
     }).then(({ res }) => {
-      axios.get('http://13.126.66.92:3002/api/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({ type: 'menuadd', payload: res.data.data });
       })
     }).catch(function (error) {
@@ -40,7 +40,7 @@ export const menuadd = (drag) => {
 };
 export const menuedit = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/menu/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/menu/${data}/edit`).then((res) => {
       console.log(res.data)
       dispatch({ type: 'menuedit', payload: res.data.data });
     }).catch(function (error) {
@@ -55,7 +55,7 @@ export const checksubmenu = (data) => {
     }
     else {
 
-      axios.get(`http://13.126.66.92:3002/api/admin/checkmenu?id=${data}`).then((res) => {
+      axios.get(`http://13.126.66.92:3002/admin/checkmenu?id=${data}`).then((res) => {
         if (res.data.total_count === 0) {
           dispatch({ type: 'checksubmenu', payload: 'false' });
         }
@@ -73,8 +73,8 @@ export const checksubmenu = (data) => {
 };
 export const menudelete = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/menu/${data.id}/${data.status}`).then(({ res }) => {
-      axios.get('http://13.126.66.92:3002/api/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/menu/${data.id}/${data.status}`).then(({ res }) => {
+      axios.get('http://13.126.66.92:3002/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({ type: 'menuadd', payload: res.data.data });
         dispatch({ type: 'menudeleteMessage', payload: 'success' });
       })
@@ -86,7 +86,7 @@ export const menudelete = (data) => {
 };
 export const menuupdate = (drag) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/menu', {
+    axios.post('http://13.126.66.92:3002/admin/menu', {
       menu: drag.menu,
       place: drag.place,
       url: drag.url,
@@ -95,7 +95,7 @@ export const menuupdate = (drag) => {
       parent_id: `${drag.parent_id}`,
       id: drag.id
     }).then(({ res }) => {
-      axios.get('http://13.126.66.92:3002/api/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({ type: 'menuadd', payload: res.data.data });
         dispatch({ type: 'menuedit', payload: '' });
       })
@@ -108,7 +108,7 @@ export const menuupdate = (drag) => {
 export const getdata = () => {
 
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/menu?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({ type: 'menuadd', payload: res.data.data });
     }).catch(function (error) {
       if (error.response) {
@@ -124,7 +124,7 @@ export const getdata = () => {
 };
 export const submenuadd = (drag) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/menu', {
+    axios.post('http://13.126.66.92:3002/admin/menu', {
       menu: drag.menu,
       place: drag.place,
       url: drag.url,
@@ -132,7 +132,7 @@ export const submenuadd = (drag) => {
       icon: drag.icon,
       parent_id: `${drag.parent_id}`
     }).then(({ res }) => {
-      axios.get('http://13.126.66.92:3002/api/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
         dispatch({ type: 'submenuadd', payload: res.data.data });
       })
     }).catch(function (error) {
@@ -143,7 +143,7 @@ export const submenuadd = (drag) => {
 };
 export const submenupdate = (drag) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/menu', {
+    axios.post('http://13.126.66.92:3002/admin/menu', {
       menu: drag.menu,
       place: drag.place,
       url: drag.url,
@@ -152,7 +152,7 @@ export const submenupdate = (drag) => {
       parent_id: `${drag.parent_id}`,
       id: drag.id
     }).then(({ res }) => {
-      axios.get('http://13.126.66.92:3002/api/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
         dispatch({ type: 'submenuadd', payload: res.data.data });
       })
     }).catch(function (error) {
@@ -164,14 +164,14 @@ export const submenupdate = (drag) => {
 
 export const getsubmenu = () => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
       dispatch({ type: 'submenuadd', payload: res.data.data });
     })
   }
 };
 export const submenuedit = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/menu/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/menu/${data}/edit`).then((res) => {
       // console.log(res.data)
       dispatch({ type: 'submenuedit', payload: res.data.data });
     }).catch(function (error) {
@@ -180,8 +180,8 @@ export const submenuedit = (data) => {
 };
 export const submenudelete = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/menu/${data.id}/${data.status}`).then(({ res }) => {
-      axios.get('http://13.126.66.92:3002/api/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/menu/${data.id}/${data.status}`).then(({ res }) => {
+      axios.get('http://13.126.66.92:3002/admin/submenu?items_per_page=&current_page_no=&search=').then((res) => {
         dispatch({ type: 'submenuadd', payload: res.data.data });
       })
       dispatch({ type: 'submenudeleteMessage', payload: 'success' })
@@ -221,7 +221,7 @@ export const seteditor = (drag) => {
 export const putpage = (data) => {
   return (dispatch) => {
     dispatch({ type: 'setspinner', payload: 'start' })
-    axios.post('http://13.126.66.92:3002/api/admin/final_content', data.havedata == 0 ? {
+    axios.post('http://13.126.66.92:3002/admin/final_content', data.havedata == 0 ? {
       "menu_id": data.id,
       "web_html": data.webHTML,
       "web_css": data.webCss,
@@ -249,7 +249,7 @@ export const putpage = (data) => {
         "Access-Control-Allow-Origin": "*"
       }
     }).then((res) => {
-      axios.get(`http://13.126.66.92:3002/api/admin/final_content/${data.id}/edit`).then((res) => {
+      axios.get(`http://13.126.66.92:3002/admin/final_content/${data.id}/edit`).then((res) => {
         dispatch({ type: 'getpage', payload: res.data })
         dispatch({ type: 'setspinner', payload: 'end' })
       })
@@ -260,7 +260,7 @@ export const putpage = (data) => {
 };
 // export const putpage = (data) => {
 //   return (dispatch) => {
-//     axios.post('http://13.126.66.92:3002/api/admin/custom_create',
+//     axios.post('http://13.126.66.92:3002/admin/custom_create',
 //       data.havedata == 0 ? {
 //         "menu_id": data.id,
 //         "web_html": data.webHTML,
@@ -275,7 +275,7 @@ export const putpage = (data) => {
 //           'id': data.havedata
 //         }).then((res) => {
 //           dispatch({ type: 'seteditor', payload: res.data.id })
-//           axios.post('http://13.126.66.92:3002/api/admin/custom_create',
+//           axios.post('http://13.126.66.92:3002/admin/custom_create',
 //             {
 //               'id': res.data.id,
 //               "menu_id": res.data.menu_id,
@@ -287,7 +287,7 @@ export const putpage = (data) => {
 //               // "mvna_assets": data.gjs_assets,
 //             }).then((res) => {
 
-//               axios.post('http://13.126.66.92:3002/api/admin/custom_create',
+//               axios.post('http://13.126.66.92:3002/admin/custom_create',
 //                 {
 //                   'id': res.data.id,
 //                   "menu_id": res.data.menu_id,
@@ -295,7 +295,7 @@ export const putpage = (data) => {
 //                   "mvna_components": data.gjs_components,
 //                   // "mvna_assets": data.gjs_assets,
 //                 }).then((res) => {
-//                   axios.post('http://13.126.66.92:3002/api/admin/custom_create',
+//                   axios.post('http://13.126.66.92:3002/admin/custom_create',
 //                     {
 //                       'id': res.data.id,
 //                       "menu_id": res.data.menu_id,
@@ -303,7 +303,7 @@ export const putpage = (data) => {
 //                       // "mvna_components": data.gjs_components,
 //                       "mvna_assets": data.gjs_assets,
 //                     }).then((res) => {
-//                       axios.get(`http://13.126.66.92:3002/api/admin/final_content/${data.id}/edit`).then((res) => {
+//                       axios.get(`http://13.126.66.92:3002/admin/final_content/${data.id}/edit`).then((res) => {
 //                         dispatch({ type: 'getpage', payload: res.data })
 //                       })
 
@@ -316,11 +316,11 @@ export const putpage = (data) => {
 //         });
 //   }
 // };
-// http://13.126.66.92:3002/api/admin/final_content/91/edit
-// http://13.126.66.92:3002/api/admin/final_content/${data}/edit
+// http://13.126.66.92:3002/admin/final_content/91/edit
+// http://13.126.66.92:3002/admin/final_content/${data}/edit
 export const getpage = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/final_content/${data}/edit`, {
+    axios.get(`http://13.126.66.92:3002/admin/final_content/${data}/edit`, {
       headers: {
         "Access-Control-Allow-Origin": "*"
       }
@@ -342,12 +342,12 @@ export const getpage = (data) => {
 
 export const putrole = (data) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/role',
+    axios.post('http://13.126.66.92:3002/admin/role',
       {
         "role": data.role,
       }
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getrole',
           payload: res.data.data
@@ -362,13 +362,13 @@ export const putrole = (data) => {
 };
 export const updaterole = (data) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/role',
+    axios.post('http://13.126.66.92:3002/admin/role',
       {
         "role": data.role,
         'id': data.id
       }
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getrole',
           payload: res.data.data
@@ -389,7 +389,7 @@ export const clearrole = (drag) => {
 };
 export const getrole = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getrole',
         payload: res.data.data
@@ -401,7 +401,7 @@ export const getrole = (data) => {
 };
 export const roleedit = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/role/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/role/${data}/edit`).then((res) => {
       dispatch({
         type: 'roledit',
         payload: res.data
@@ -415,12 +415,12 @@ export const roledelete = (data) => {
   console.log('sgsdfgfgdfg');
   console.log(data)
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/role/${data.id}/${data.status}`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/role/${data.id}/${data.status}`).then((res) => {
       dispatch({
         type: 'deleted',
         payload: 'success'
       })
-      axios.get('http://13.126.66.92:3002/api/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/role?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getrole',
           payload: res.data.data
@@ -461,10 +461,10 @@ export const putmember = (data) => {
     // console.log(data.icon.name, "--data--");
 
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/member', 
+    axios.post('http://13.126.66.92:3002/admin/member', 
       formData      
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getmember',
           payload: res.data.data
@@ -480,7 +480,7 @@ export const putmember = (data) => {
 };
 export const getmember = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getmember',
         payload: res.data.data
@@ -490,18 +490,7 @@ export const getmember = (data) => {
     });
   }
 };
-export const getmemberweb = (data) => {
-  return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
-      dispatch({
-        type: 'getmember_web',
-        payload: res.data.data
-      })
-    }).catch(function (error) {
 
-    });
-  }
-};
 
 export const updatemember = (data) => {
   let formData = new FormData();  
@@ -514,10 +503,10 @@ export const updatemember = (data) => {
    formData.append('country', data.country)
    formData.append('id', data.id)
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/member', 
+    axios.post('http://13.126.66.92:3002/admin/member', 
     formData
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getmember',
           payload: res.data.data
@@ -533,7 +522,7 @@ export const updatemember = (data) => {
 };
 export const editmember = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/member/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/member/${data}/edit`).then((res) => {
       dispatch({
         type: 'editmember',
         payload: res.data
@@ -546,12 +535,12 @@ export const editmember = (data) => {
 };
 export const deletemember = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/member/${data.id}/${data.status}`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/member/${data.id}/${data.status}`).then((res) => {
       dispatch({
         type: 'deletedmember',
         payload: 'success'
       })
-      axios.get('http://13.126.66.92:3002/api/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getmember',
           payload: res.data.data
@@ -585,14 +574,14 @@ export const cleardeletemember = (data) => {
 export const putucreation = (data) => {
   return (dispatch) => {
     alert(data.name, data.email, data.contact, data.pass, data.role)
-    axios.post('http://13.126.66.92:3002/api/auth/register', {
+    axios.post('http://13.126.66.92:3002/auth/register', {
       name: data.name,
       email: data.email,
       mobile_number: data.mobile_number,
       password: data.password,
       role_id: data.role_id,
     }).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getucreation',
           payload: res.data.data
@@ -608,7 +597,7 @@ export const putucreation = (data) => {
 };
 export const getucreation = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getucreation',
         payload: res.data.data
@@ -620,7 +609,7 @@ export const getucreation = (data) => {
 };
 export const updateucreation = (data) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/auth/register', {
+    axios.post('http://13.126.66.92:3002/auth/register', {
       name: data.name,
       email: data.email,
       mobile_number: data.mobile_number,
@@ -628,7 +617,7 @@ export const updateucreation = (data) => {
       role_id: data.role_id,
       'id': data.id
     }).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getucreation',
           payload: res.data.data
@@ -644,7 +633,7 @@ export const updateucreation = (data) => {
 };
 export const editucreation = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/user/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/user/${data}/edit`).then((res) => {
       dispatch({
         type: 'editucreation',
         payload: res.data
@@ -657,12 +646,12 @@ export const editucreation = (data) => {
 };
 export const deleteucreation = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/user/${data.id}/${data.status}`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/user/${data.id}/${data.status}`).then((res) => {
       dispatch({
         type: 'deleteducreation',
         payload: 'success'
       })
-      axios.get('http://13.126.66.92:3002/api/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/user?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getucreation',
           payload: res.data.data
@@ -693,7 +682,7 @@ export const cleardeleteucreation = (data) => {
 
 export const getpagepermission = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/final_content/custom`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/final_content/custom`).then((res) => {
       dispatch({
         type: 'pagepermission',
         payload: res.data.total_count
@@ -706,7 +695,7 @@ export const getpagepermission = (data) => {
 };
 export const getrolepermission = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/rolepermission?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/rolepermission?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getrolepermission',
         payload: res.data.data
@@ -719,7 +708,7 @@ export const getrolepermission = (data) => {
 };
 export const putpagepermission = (data) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/rolepermission', {
+    axios.post('http://13.126.66.92:3002/admin/rolepermission', {
       role_id: data.role_id,
       role_permission: data.role_permission
 
@@ -735,7 +724,7 @@ export const putpagepermission = (data) => {
 };
 export const editrolepermission = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/rolepermission/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/rolepermission/${data}/edit`).then((res) => {
 
       console.log('jkjfkgjkljkj874545456454564')
       if (res.data.data.length == 0) {
@@ -761,13 +750,13 @@ export const editrolepermission = (data) => {
 };
 export const updatepagepermission = (data) => {
   return (dispatch) => {
-    axios.post(`http://13.126.66.92:3002/api/admin/rolepermission`, {
+    axios.post(`http://13.126.66.92:3002/admin/rolepermission`, {
       role_id: data.role_id,
       role_permission: data.role_permission,
       id: data.id
     }).then((res) => {
 
-      axios.get('http://13.126.66.92:3002/api/admin/rolepermission?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/rolepermission?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getrolepermission',
           payload: res.data.data
@@ -786,9 +775,9 @@ export const updatepagepermission = (data) => {
 };
 export const deletepermission = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/rolepermission/${data.id}/${data.status}`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/rolepermission/${data.id}/${data.status}`).then((res) => {
 
-      axios.get('http://13.126.66.92:3002/api/admin/rolepermission/?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/rolepermission/?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getrolepermission',
           payload: res.data.data
@@ -827,7 +816,7 @@ export const cleardeleterolepermission = (data) => {
 // ********getfooter****************
 export const getfooter = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
     dispatch({
         type: 'getfooter',
         payload: res.data
@@ -841,13 +830,13 @@ export const getfooter = (data) => {
 
 export const putfooter = (data) => {
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/footer',{
+    axios.post('http://13.126.66.92:3002/admin/footer',{
       addressline1 : data.addressline1,
       addressline2 : data.addressline2,
       mobile : data.mobile,
       id : 1
     }).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/footer?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/footer?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getfooter',
           payload: res.data
@@ -885,7 +874,7 @@ export const putlink = (data) => {
     formData.append('link', data.link)
 
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/quicklink', 
+    axios.post('http://13.126.66.92:3002/admin/quicklink', 
     // {
     //   name: data.name,
     //   link: data.link,
@@ -893,7 +882,7 @@ export const putlink = (data) => {
     formData
     
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getlink',
           payload: res.data.data
@@ -909,7 +898,7 @@ export const putlink = (data) => {
 };
 export const getlink = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getlink',
         payload: res.data.data
@@ -921,7 +910,7 @@ export const getlink = (data) => {
 };
 export const getlinkweb = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getlinkweb',
         payload: res.data.data
@@ -939,7 +928,7 @@ export const updatelink = (data) => {
   formData.append('link', data.link)
   formData.append('id', data.id)
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/quicklink', 
+    axios.post('http://13.126.66.92:3002/admin/quicklink', 
     // {
     //   name: data.name,
     //   link: data.link,
@@ -947,7 +936,7 @@ export const updatelink = (data) => {
     // }
     formData
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getlink',
           payload: res.data.data
@@ -963,7 +952,7 @@ export const updatelink = (data) => {
 };
 export const editlink = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/quicklink/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/quicklink/${data}/edit`).then((res) => {
       dispatch({
         type: 'editqlink',
         payload: res.data
@@ -988,12 +977,12 @@ export const cleareditlink = (data) => {
 
 export const deletelink = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/quicklink/${data.id}/${data.status}`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/quicklink/${data.id}/${data.status}`).then((res) => {
       dispatch({
         type: 'deletedlink',
         payload: 'success'
       })
-      axios.get('http://13.126.66.92:3002/api/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getlink',
           payload: res.data.data
@@ -1022,30 +1011,7 @@ export const cleardeletelink = (data) => {
 
 
 // *******quicklinks***************
-export const getcountry = (data) => {
-  return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/country').then((res) => {
-      dispatch({
-        type: 'getcountry',
-        payload: res.data.data
-      })
-    }).catch(function (error) {
 
-    });
-  }
-};
-export const getmemberwebcountry = (data) => {
-  return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/member?country=${data}`).then((res) => {
-      dispatch({
-        type: 'getmember_web',
-        payload: res.data.data
-      })
-    }).catch(function (error) {
-
-    });
-  }
-};
 // *******file upload***************
 export const putfile = (data) => {
   let formData = new FormData();  
@@ -1055,11 +1021,11 @@ export const putfile = (data) => {
     // formData.append('link', data.link)
 
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/fileupload', 
+    axios.post('http://13.126.66.92:3002/admin/fileupload', 
     formData
     
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getfiles',
           payload: res.data.data
@@ -1075,7 +1041,7 @@ export const putfile = (data) => {
 };
 export const getfile = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getfiles',
         payload: res.data.data
@@ -1087,7 +1053,7 @@ export const getfile = (data) => {
 };
 export const getfileweb = (data) => {
   return (dispatch) => {
-    axios.get('http://13.126.66.92:3002/api/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+    axios.get('http://13.126.66.92:3002/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
       dispatch({
         type: 'getfilesweb',
         payload: res.data.data
@@ -1105,7 +1071,7 @@ export const updatefile = (data) => {
   // formData.append('link', data.link)
   formData.append('id', data.id)
   return (dispatch) => {
-    axios.post('http://13.126.66.92:3002/api/admin/fileupload', 
+    axios.post('http://13.126.66.92:3002/admin/fileupload', 
     // {
     //   name: data.name,
     //   link: data.link,
@@ -1113,7 +1079,7 @@ export const updatefile = (data) => {
     // }
     formData
     ).then((res) => {
-      axios.get('http://13.126.66.92:3002/api/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getfiles',
           payload: res.data.data
@@ -1129,7 +1095,7 @@ export const updatefile = (data) => {
 };
 export const editfile = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/fileupload/${data}/edit`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/fileupload/${data}/edit`).then((res) => {
       dispatch({
         type: 'editfiles',
         payload: res.data
@@ -1154,12 +1120,12 @@ export const cleareditfile = (data) => {
 
 export const deletefile = (data) => {
   return (dispatch) => {
-    axios.get(`http://13.126.66.92:3002/api/admin/fileupload/${data.id}/${data.status}`).then((res) => {
+    axios.get(`http://13.126.66.92:3002/admin/fileupload/${data.id}/${data.status}`).then((res) => {
       dispatch({
         type: 'deletedfile',
         payload: 'success'
       })
-      axios.get('http://13.126.66.92:3002/api/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('http://13.126.66.92:3002/admin/fileupload?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getfiles',
           payload: res.data.data

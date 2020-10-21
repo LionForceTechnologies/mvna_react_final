@@ -148,3 +148,40 @@ import {
       });
     }
   };
+  export const getmemberweb = (data) => {
+    return (dispatch) => {
+      axios.get('http://13.126.66.92:3002/api/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+        dispatch({
+          type: 'getmember_web',
+          payload: res.data.data
+        })
+      }).catch(function (error) {
+  
+      });
+    }
+  };
+  export const getmemberwebcountry = (data) => {
+    return (dispatch) => {
+      axios.get(`http://13.126.66.92:3002/api/member?country=${data}`).then((res) => {
+        dispatch({
+          type: 'getmember_web',
+          payload: res.data.data
+        })
+      }).catch(function (error) {
+  
+      });
+    }
+  };
+  export const getcountry = (data) => {
+    return (dispatch) => {
+      axios.get('http://13.126.66.92:3002/api/country').then((res) => {
+        dispatch({
+          type: 'getcountry',
+          payload: res.data.data
+        })
+      }).catch(function (error) {
+  
+      });
+    }
+  };
+  
