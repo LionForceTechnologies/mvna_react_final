@@ -54,7 +54,7 @@ export const userSignIn = ({ email, password }) => {
       type: 'startlogin',
       payload: 'start'
     });
-    axios.post('https://dktiyxy955yvi.cloudfront.net/auth/login', {
+    axios.post('https://dktiyxy955yvi.cloudfront.net/auth/login', { 
       email: email,
       password: password,
     }
