@@ -62,11 +62,11 @@ export const userSignIn = ({ email, password }) => {
       // console.log("userSignIn: ",data.data.Token); 
       console.log('success agirchi')
       console.log(data)
-      localStorage.setItem("token", JSON.stringify(data.data.Token));
-      axios.defaults.headers.common['Authorization'] = data.data.Token;
-      localStorage.setItem('roleId',JSON.stringify(data.data.userdetail.roleId))
-      localStorage.setItem('userlogid',JSON.stringify(data.data.userdetail.userlogid))
-      localStorage.setItem('id',JSON.stringify(data.data.userdetail.id))
+      // localStorage.setItem("token", JSON.stringify(data.data.Token));
+      // axios.defaults.headers.common['Authorization'] = data.data.Token;
+      // localStorage.setItem('roleId',JSON.stringify(data.data.userdetail.roleId))
+      // localStorage.setItem('userlogid',JSON.stringify(data.data.userdetail.userlogid))
+      // localStorage.setItem('id',JSON.stringify(data.data.userdetail.id))
       dispatch({
         type: 'logsuccess',
         payload: 'success'
