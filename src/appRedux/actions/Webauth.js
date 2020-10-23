@@ -21,7 +21,7 @@ import {
         payload: 'start'
       });      
       
-      axios.post('http://13.232.56.107:3002/api/auth/web_login', {
+      axios.post('https://dktiyxy955yvi.cloudfront.net/api/auth/web_login', {
         email: email,
         password: password,
       }
@@ -72,7 +72,7 @@ import {
       url = `/`
     }
     return (dispatch) => {
-      axios.get('http://13.232.56.107:3002/api/web_menu',{
+      axios.get('https://dktiyxy955yvi.cloudfront.net/api/web_menu',{
         headers : {
           webloginroleid: localStorage.getItem('webloginroleid'),          
           url : url 
@@ -90,7 +90,7 @@ import {
   };
   export const getlinkweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.232.56.107:3002/api/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('https://dktiyxy955yvi.cloudfront.net/api/quicklink?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getlinkweb',
           payload: res.data.data
@@ -102,7 +102,7 @@ import {
   };
   export const getfooterweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.232.56.107:3002/api/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
+      axios.get('https://dktiyxy955yvi.cloudfront.net/api/footer?items_per_page=10&current_page_no=1&search=&status_connection=1').then((res) => {
       dispatch({
           type: 'getfooterweb',
           payload: res.data
@@ -125,9 +125,9 @@ import {
       url = `/`
     }
     return (dispatch) => {
-      let api = `http://13.232.56.107:3002/api/get_page/${data}`
+      let api = `https://dktiyxy955yvi.cloudfront.net/api/get_page/${data}`
       if(data == null){
-  api = "http://13.232.56.107:3002/api/"
+  api = "https://dktiyxy955yvi.cloudfront.net/api/"
       }
       axios.get(`${api}`,  {
         headers: {
@@ -150,7 +150,7 @@ import {
   };
   export const gettwitter = (data) => {
     return (dispatch) => {
-      axios.get('http://13.232.56.107:3002/api/twitter?items_per_page=10&current_page_no=').then((res) => {
+      axios.get('https://dktiyxy955yvi.cloudfront.net/api/twitter?items_per_page=10&current_page_no=').then((res) => {
         dispatch({
           type: 'gettwitters',
           payload: res.data.data
@@ -162,7 +162,7 @@ import {
   };
   export const getmemberweb = (data) => {
     return (dispatch) => {
-      axios.get('http://13.232.56.107:3002/api/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+      axios.get('https://dktiyxy955yvi.cloudfront.net/api/member?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
         dispatch({
           type: 'getmember_web',
           payload: res.data.data
@@ -174,7 +174,7 @@ import {
   };
   export const getmemberwebcountry = (data) => {
     return (dispatch) => {
-      axios.get(`http://13.232.56.107:3002/api/member?country=${data}`).then((res) => {
+      axios.get(`https://dktiyxy955yvi.cloudfront.net/api/member?country=${data}`).then((res) => {
         dispatch({
           type: 'getmember_web',
           payload: res.data.data
@@ -186,7 +186,7 @@ import {
   };
   export const getcountry = (data) => {
     return (dispatch) => {
-      axios.get('http://13.232.56.107:3002/api/country').then((res) => {
+      axios.get('https://dktiyxy955yvi.cloudfront.net/api/country').then((res) => {
         dispatch({
           type: 'getcountry',
           payload: res.data.data
