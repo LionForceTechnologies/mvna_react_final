@@ -8,9 +8,9 @@ import {
   USER_TOKEN_SET
 } from "../../constants/ActionTypes";
 import axios from 'util/Api'
-// http://localhost:3002/
-// http://localhost:3002/
-// http://localhost:3002/
+// https://dktiyxy955yvi.cloudfront.net/
+// https://dktiyxy955yvi.cloudfront.net/
+// https://dktiyxy955yvi.cloudfront.net/
 export const setInitUrl = (url) => {
   return {
     type: INIT_URL,
@@ -54,7 +54,7 @@ export const userSignIn = ({ email, password }) => {
       type: 'startlogin',
       payload: 'start'
     });
-    axios.post('http://localhost:3002/auth/login', {
+    axios.post('https://dktiyxy955yvi.cloudfront.net/auth/login', {
       email: email,
       password: password,
     }
