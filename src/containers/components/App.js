@@ -361,7 +361,7 @@ else{
           menus.push(<NavDropdown title={`${webmenu[i].menu}`} id="basic-nav-dropdown">
             {submenus}
           </NavDropdown>)
-        } else {
+        } else { 
           menus.push(<Nav.Link onClick={permenu} data-name={webmenu[i].menu} href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
         }
       }

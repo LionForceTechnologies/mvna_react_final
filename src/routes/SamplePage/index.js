@@ -91,6 +91,8 @@ const SamplePage = (props) => {
         form.setFieldsValue({
           menu: menuid[0].menu
         })
+        setmenu(menuid[0].menu)
+        // alert(15)
         setedit(0)
       }
     }
@@ -100,6 +102,7 @@ const SamplePage = (props) => {
           submenu: submenuid[0].menu,
           mainmenu: submenuid[0].parent_menu
         })
+        setsubmenu(submenuid[0].menu)
         setmainmenu(submenuid[0].id)
         setsubmenu(submenuid[0].menu)
         setsub_edit(0)
@@ -113,7 +116,7 @@ const SamplePage = (props) => {
         {
           "menu": submenu,
           "place": "w",
-          "url": `/${submenu}`,
+          "url": `/${submenu.split(" ").join("")}`,
           "serial": 1,
           "icon": "fa-fa user",
           "parent_id": mainmenu
@@ -125,7 +128,7 @@ const SamplePage = (props) => {
         {
           "menu": submenu,
           "place": "w",
-          "url": `/${submenu}`,
+          "url": `/${submenu.split(" ").join("")}`,
           "serial": 1,
           "icon": "fa-fa user",
           "parent_id": mainmenu,
@@ -148,15 +151,15 @@ const SamplePage = (props) => {
       let new_data = {
         "menu": menu,
         "place": "w",
-        "url": `/${menu}`,
+        "url": `/${menu.split(" ").join("")}`,
         "serial": 1,
         "icon": "fa-fa user",
         "parent_id": 0
       }
       dispatch(menuadd({
         "menu": menu,
-        "place": "w",
-        "url": `/${menu}`,
+        "place": "w", 
+        "url": `/${menu.split(" ").join("")}`,
         "serial": 1,
         "icon": "fa-fa user",
         "parent_id": 0
@@ -168,7 +171,7 @@ const SamplePage = (props) => {
         datas_e: {
           "menu": menu,
           "place": "w",
-          "url": `/${menu}`,
+          "url": `/${menu.split(" ").join("")}`,
           "serial": 1,
           "icon": "fa-fa user",
           "parent_id": 0,
@@ -178,7 +181,7 @@ const SamplePage = (props) => {
       dispatch(menuupdate({
         "menu": menu,
         "place": "w",
-        "url": `/${menu}`,
+        "url": `/${menu.split(" ").join("")}`,
         "serial": menuid[0].serial,
         "icon": "fa-fa user",
         "parent_id": 0,
