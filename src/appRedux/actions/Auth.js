@@ -48,13 +48,17 @@ export const userSignUp = ({ email, password, name }) => {
 };
 
 export const userSignIn = ({ email, password }) => {
+      delete axios.defaults.headers.common['Authorization']
+      delete axios.defaults.headers.common['roleId']
+      delete axios.defaults.headers.common['userlogid']
+      delete axios.defaults.headers.common['id']
   return (dispatch) => {
     dispatch({ type: FETCH_START });
     dispatch({
       type: 'startlogin',
       payload: 'start'
     });
-    axios.post('https://dktiyxy955yvi.cloudfront.net/auth/login', { 
+    axios.post('https://dktiyxy955yvi.cloudfront.net/auth/login', {
       email: email,
       password: password,
     }
@@ -62,11 +66,14 @@ export const userSignIn = ({ email, password }) => {
       // console.log("userSignIn: ",data.data.Token); 
       console.log('success agirchi')
       console.log(data)
-      localStorage.setItem("token", JSON.stringify(data.data.Token));
+      localStorage.setItem("token", data.data.Token);
       axios.defaults.headers.common['Authorization'] = data.data.Token;
-      localStorage.setItem('roleId',JSON.stringify(data.data.userdetail.roleId))
-      localStorage.setItem('userlogid',JSON.stringify(data.data.userdetail.userlogid))
-      localStorage.setItem('id',JSON.stringify(data.data.userdetail.id))
+      axios.defaults.headers.common['roleId'] = data.data.userdetail.roleId;
+      axios.defaults.headers.common['userlogid'] = data.data.userdetail.userlogid
+      axios.defaults.headers.common['id'] = data.data.userdetail.id
+      localStorage.setItem('roleId', data.data.userdetail.roleId)
+      localStorage.setItem('userlogid', data.data.userdetail.userlogid)
+      localStorage.setItem('id', data.data.userdetail.id)
       dispatch({
         type: 'logsuccess',
         payload: 'success'
