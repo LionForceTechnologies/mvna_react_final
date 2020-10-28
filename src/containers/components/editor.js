@@ -46,6 +46,9 @@ function Editor() {
       setcheck(1)
     }
   }
+  // useEffect(()=>{
+  //   alert(15)
+  // })
   useEffect(() =>{
     if(spinner == 1){
       
@@ -89,6 +92,7 @@ function Editor() {
       //   core:'canvas-clear'
       // }
     });
+
     let dashed = e.runCommand('sw-visibility');    
     const panelManager = e.Panels;
     const panel = e.Commands;

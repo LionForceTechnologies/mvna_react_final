@@ -135,10 +135,14 @@ function Editor() {
   useEffect(()=> {
     document.getElementById('example-editor').style.height = '100%'
   })
+  // useEffect(()=>{
+  //   // alert(document.getElementsByClassName('ant-spin-nested-loading').length)
+  //   alert(16)
+  // })
   return (
     <>
-    {spinner == 'start' ? (<Spin ><div id="example-editor" ></div></Spin>) :(<div id="example-editor" ></div>)}
-    
+    {spinner == 'start' ? (<Spin className={`geditor`} ><div id="example-editor" ></div></Spin>) :(<div id="example-editor" ></div>)}
+     
 
     </>
   );

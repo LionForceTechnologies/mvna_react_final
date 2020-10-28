@@ -148,7 +148,7 @@ const App = () => {
         messages={currentAppLocale.messages}>
 
         <Switch>
-        {(location.pathname.indexOf('/user') != -1) && (location.pathname.indexOf('/user/amin') < 0) ? <Route exact path={location.pathname} component={SubApp}/> : <Route exact path={`/user`} component={SubApp}/>} 
+        {(location.pathname.indexOf('/user') != -1) && (location.pathname.indexOf('/user/admin') < 0) ? <Route exact path={location.pathname} component={SubApp}/> : <Route exact path={`/user`} component={SubApp}/>} 
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/signup' component={SignUp}/>
           {/* <RestrictedRoute  path={`${match.url}`} component={UserDashboard}/>  */}

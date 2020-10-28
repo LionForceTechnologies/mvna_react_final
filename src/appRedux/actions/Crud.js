@@ -214,41 +214,41 @@ export const seteditor = (drag) => {
 export const putpage = (data) => {
   return (dispatch) => {
     dispatch({ type: 'setspinner', payload: 'start' })
-    axios.post('https://dktiyxy955yvi.cloudfront.net/admin/final_content', data.havedata == 0 ? {
-      "menu_id": data.id,
-      "web_html": data.webHTML,
-      "web_css": data.webCss,
-      "slug": {},
-      "mvna_html": data.webHTML,
-      "mvna_css": data.gjs_css,
-      "mvna_style": data.gjs_styles,
-      "mvna_components": data.gjs_components,
-      "mvna_assets": data.gjs_assets,
-      // "status": 1,
-    } : {
-        "menu_id": data.id,
-        "web_html": data.webHTML,
-        "web_css": data.webCss,
-        "slug": {},
-        'id': data.havedata,
-        "mvna_html": data.webHTML,
-        "mvna_css": data.gjs_css,
-        "mvna_style": data.gjs_styles,
-        "mvna_components": data.gjs_components,
-        "mvna_assets": data.gjs_assets,
+    // axios.post('https://dktiyxy955yvi.cloudfront.net/admin/final_content', data.havedata == 0 ? {
+    //   "menu_id": data.id,
+    //   "web_html": data.webHTML,
+    //   "web_css": data.webCss,
+    //   "slug": {},
+    //   "mvna_html": data.webHTML,
+    //   "mvna_css": data.gjs_css,
+    //   "mvna_style": data.gjs_styles,
+    //   "mvna_components": data.gjs_components,
+    //   "mvna_assets": data.gjs_assets,
+    //   // "status": 1,
+    // } : {
+    //     "menu_id": data.id,
+    //     "web_html": data.webHTML,
+    //     "web_css": data.webCss,
+    //     "slug": {},
+    //     'id': data.havedata,
+    //     "mvna_html": data.webHTML,
+    //     "mvna_css": data.gjs_css,
+    //     "mvna_style": data.gjs_styles,
+    //     "mvna_components": data.gjs_components,
+    //     "mvna_assets": data.gjs_assets,
 
-      }, {
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    }).then((res) => {
-      axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/final_content/${data.id}/edit`).then((res) => {
-        dispatch({ type: 'getpage', payload: res.data })
-        dispatch({ type: 'setspinner', payload: 'end' })
-      })
-    }).catch(function (error) {
-      dispatch({ type: 'setspinner', payload: 'end' })
-    });
+    //   }, {
+    //   headers: {
+    //     "Access-Control-Allow-Origin": "*"
+    //   }
+    // }).then((res) => {
+    //   axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/final_content/${data.id}/edit`).then((res) => {
+    //     dispatch({ type: 'getpage', payload: res.data })
+    //     dispatch({ type: 'setspinner', payload: 'end' })
+    //   })
+    // }).catch(function (error) {
+    //   dispatch({ type: 'setspinner', payload: 'end' })
+    // });
   }
 };
 // export const putpage = (data) => {
