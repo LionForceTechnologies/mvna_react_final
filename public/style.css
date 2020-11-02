@@ -10,9 +10,20 @@ font-size: 14px !important;
 .sweetalerts .gx-btn, .btn{
   border: solid 1px #d9d9d9 !important;
 }
-.blogpage{
-  display: flex;
-  flex-direction: column;
+
+@media only screen and (min-width: 750px) {
+  .blogpage{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+}
+@media only screen and (max-width: 480px) {
+  .row.homecontainer #inwj{
+margin-top: 0px ;
+}
 }
 .show_output{
   flex: auto;
