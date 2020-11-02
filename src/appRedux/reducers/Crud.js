@@ -163,7 +163,7 @@ export default (state = INIT_STATE, action) => {
           ...state,
           rolepermissionid : action.payload
         }
-      }
+      } 
       case 'getrolepermission' : {
         return {
           ...state,
@@ -254,6 +254,12 @@ export default (state = INIT_STATE, action) => {
         return {
           ...state,
           deletedfile : action.payload
+        }
+      }
+      case 'seteditor' : {
+        return {
+          ...state,
+          seteditor : action.payload
         }
       }
       default:

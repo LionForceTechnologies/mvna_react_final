@@ -126,13 +126,13 @@ setend(1)
         console.log('Failed:', errorInfo);
     };
     const onFinish = values => {
-
+        
         if (rolepermissionid != '') {
             if (permissionsmapped.length == 0) {
                 setswarning(true)
             }
             else {
-                dispatch(putpagepermission({
+                dispatch(updatepagepermission({
                     role_id: role,
                     role_permission: permissionsmapped,
                     id : rolepermissionid.data[0].id
@@ -145,7 +145,7 @@ setend(1)
                 setswarning(true)
             }
             else {
-                dispatch(updatepagepermission({
+                dispatch(putpagepermission({
                     role_id: role,
                     role_permission: permissionsmapped
                 }))
@@ -154,7 +154,14 @@ setend(1)
         }
         // alert(permissionsmapped.length)
 
-
+        let checks = document.getElementsByTagName('input');
+        for(let i=0;i<checks.length;i++)
+        {
+            if(checks[i].getAttribute('type') == "checkbox")
+            {
+                checks[i].checked = false;
+            }
+        }
         form.resetFields();
 
     };
@@ -275,7 +282,7 @@ setend(1)
                                     {role_data}
                                 </Select>
                             </Form.Item>
-                            <Table className="gx-table-responsive" columns={columns} dataSource={data} />
+                            <Table  pagination={false} className="gx-table-responsive" columns={columns} dataSource={data} />
 
                             <Col xl={4} lg={4} md={4} sm={24} xs={24}>
                                 <Form.Item>

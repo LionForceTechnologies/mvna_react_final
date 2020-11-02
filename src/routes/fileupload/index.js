@@ -88,6 +88,7 @@ const Fileupload = (props) => {
             name : menu,
             icon : image
         }))
+        form.resetFields();
         }
         else if(roleid != ''){
           let img =  image
@@ -103,11 +104,13 @@ const Fileupload = (props) => {
             ))
           setedit(0);
           dispatch(cleareditfile(''))
-          
+          form.resetFields();
           }
-document.getElementById('fileimage').value = '';
+
+          form.resetFields();
+          document.getElementById('fileimage').value = '';
 imageUrl('')
-    form.resetFields();
+
   };
 
 

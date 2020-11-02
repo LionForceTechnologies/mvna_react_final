@@ -517,8 +517,8 @@ else{
       />           
           </Navbar.Collapse>
         </Navbar>
-        <Route exact path={`/user/Members`} component={Members} />
-        <Route exact path={locations} component={Web} />
+        <Route exact path={`/user/members`} component={Members} />
+        { locations.indexOf('user/members') < 0 ? <Route exact path={locations} component={Web} /> : ''  } 
         {((locations == '/user') ||  (locations == '/user/')) && (window.screen.width > 992)  ? (
           <div className="footer_container_home" style={f_whole_footer}>
             <div className="footer_starter_home">

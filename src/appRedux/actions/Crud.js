@@ -1,10 +1,20 @@
 import axios from 'util/Api'
 import {FETCH_ERROR,FETCH_START,FETCH_SUCCESS,INIT_URL,SIGNOUT_USER_SUCCESS,USER_DATA,USER_TOKEN_SET} from "../../constants/ActionTypes";
 // axios.defaults.headers.common['Authorization'] = 11;
-axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
-axios.defaults.headers.common['roleId'] = localStorage.getItem('roleId')
-axios.defaults.headers.common['userlogid'] = localStorage.getItem('userlogid')
-axios.defaults.headers.common['id']   = localStorage.getItem('id')         
+// alert(localStorage.getItem('token') == null)
+if(localStorage.getItem('token') == 'undefined' || localStorage.getItem('token') == null)  {
+
+  delete axios.defaults.headers.common['Authorization']
+  delete axios.defaults.headers.common['roleId'] 
+  delete axios.defaults.headers.common['userlogid']
+  delete axios.defaults.headers.common['id']   
+}else{
+  axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
+  axios.defaults.headers.common['roleId'] = localStorage.getItem('roleId')
+  axios.defaults.headers.common['userlogid'] = localStorage.getItem('userlogid')
+  axios.defaults.headers.common['id']   = localStorage.getItem('id')         
+}
+
 // axios.defaults.headers.common['Authorization'] =  localStorage.getItem('token');
 // axios.interceptors.response.eject(interceptor);
 // delete axios.defaults.headers.common["If-None-Match"];
@@ -214,41 +224,41 @@ export const seteditor = (drag) => {
 export const putpage = (data) => {
   return (dispatch) => {
     dispatch({ type: 'setspinner', payload: 'start' })
-    // axios.post('https://dktiyxy955yvi.cloudfront.net/admin/final_content', data.havedata == 0 ? {
-    //   "menu_id": data.id,
-    //   "web_html": data.webHTML,
-    //   "web_css": data.webCss,
-    //   "slug": {},
-    //   "mvna_html": data.webHTML,
-    //   "mvna_css": data.gjs_css,
-    //   "mvna_style": data.gjs_styles,
-    //   "mvna_components": data.gjs_components,
-    //   "mvna_assets": data.gjs_assets,
-    //   // "status": 1,
-    // } : {
-    //     "menu_id": data.id,
-    //     "web_html": data.webHTML,
-    //     "web_css": data.webCss,
-    //     "slug": {},
-    //     'id': data.havedata,
-    //     "mvna_html": data.webHTML,
-    //     "mvna_css": data.gjs_css,
-    //     "mvna_style": data.gjs_styles,
-    //     "mvna_components": data.gjs_components,
-    //     "mvna_assets": data.gjs_assets,
+    axios.post('https://dktiyxy955yvi.cloudfront.net/admin/final_content', data.havedata == 0 ? {
+      "menu_id": data.id,
+      "web_html": data.webHTML,
+      "web_css": data.webCss,
+      "slug": {},
+      "mvna_html": data.webHTML,
+      "mvna_css": data.gjs_css,
+      "mvna_style": data.gjs_styles,
+      "mvna_components": data.gjs_components,
+      "mvna_assets": data.gjs_assets,
+      // "status": 1,
+    } : {
+        "menu_id": data.id,
+        "web_html": data.webHTML,
+        "web_css": data.webCss,
+        "slug": {},
+        'id': data.havedata,
+        "mvna_html": data.webHTML,
+        "mvna_css": data.gjs_css,
+        "mvna_style": data.gjs_styles,
+        "mvna_components": data.gjs_components,
+        "mvna_assets": data.gjs_assets,
 
-    //   }, {
-    //   headers: {
-    //     "Access-Control-Allow-Origin": "*"
-    //   }
-    // }).then((res) => {
-    //   axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/final_content/${data.id}/edit`).then((res) => {
-    //     dispatch({ type: 'getpage', payload: res.data })
-    //     dispatch({ type: 'setspinner', payload: 'end' })
-    //   })
-    // }).catch(function (error) {
-    //   dispatch({ type: 'setspinner', payload: 'end' })
-    // });
+      }, {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }).then((res) => {
+      axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/final_content/${data.id}/edit`).then((res) => {
+        dispatch({ type: 'getpage', payload: res.data })
+        dispatch({ type: 'setspinner', payload: 'end' })
+      })
+    }).catch(function (error) {
+      dispatch({ type: 'setspinner', payload: 'end' })
+    });
   }
 };
 // export const putpage = (data) => {
@@ -318,8 +328,6 @@ export const getpage = (data) => {
         "Access-Control-Allow-Origin": "*"
       }
     }).then((res) => {
-      // alert();
-      // console.log(JSON.parse(res));
       if (res.data.length == 0) {
         dispatch({ type: 'seteditor', payload: '0' })
       }
@@ -706,7 +714,14 @@ export const putpagepermission = (data) => {
       role_permission: data.role_permission
 
     }).then((res) => {
-
+      axios.get('https://dktiyxy955yvi.cloudfront.net/admin/rolepermission?items_per_page=&current_page_no=&search=&status_connection=1').then((res) => {
+        dispatch({
+          type: 'getrolepermission',
+          payload: res.data.data
+        })
+      }).catch(function (error) {
+  
+      });
 
     }).catch(function (error) {
 
@@ -718,12 +733,10 @@ export const putpagepermission = (data) => {
 export const editrolepermission = (data) => {
   return (dispatch) => {
     axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/rolepermission/${data}/edit`).then((res) => {
-
-      console.log('jkjfkgjkljkj874545456454564')
       if (res.data.data.length == 0) {
         dispatch({
           type: 'editrolepermission',
-          payload: 'no data found'
+          payload: ''
         })
       } else {
         dispatch({
@@ -738,6 +751,20 @@ export const editrolepermission = (data) => {
 
 
     });
+
+  }
+};
+export const cleareditrolepermission = (data) => {
+  return (dispatch) => {
+    
+      
+      dispatch({
+        type: 'editrolepermission',
+        payload: ''
+      })
+
+
+    
 
   }
 };

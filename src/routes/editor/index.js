@@ -29,13 +29,14 @@ function Editor() {
   const set_editor = useSelector(({ crud }) => crud.seteditor);
   const geta_page = useSelector(({ crud }) => crud.getpage);
   const spinner = useSelector(({ crud }) => crud.spinner);
+  const location = useLocation();
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
   let query = useQuery();
   console.log('testing query');
   console.log(query.get("id"));
-
+  
   if(geta_page.length > 0){
     if(check == 0){
       localStorage.removeItem('gjs-assets')
@@ -139,6 +140,75 @@ function Editor() {
   //   // alert(document.getElementsByClassName('ant-spin-nested-loading').length)
   //   alert(16)
   // })
+  // alert(15)
+  
+useEffect(()=>{
+  if(document.getElementsByTagName('iframe')){
+    if(document.getElementsByTagName('iframe').length > 0){
+      if(location.pathname.indexOf('user/admin/Home') != -1){
+        let iframe = document.getElementsByTagName('iframe')[0];
+        let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        
+        if(localStorage.getItem('forchecking')){
+          if(innerDoc.getElementsByClassName('gjs-lory-slides').length > 0){
+            innerDoc.getElementsByClassName('prevbar')[0].style.left = 'unset'
+            innerDoc.getElementsByClassName('prevbar')[0].style.right = '0'
+            innerDoc.getElementsByClassName('prevbar')[0].style.top = 'unset'
+            innerDoc.getElementsByClassName('prevbar')[0].style.bottom = innerDoc.getElementsByClassName('prevbar')[0].offsetHeight
+            innerDoc.getElementsByClassName('nxtbar')[0].style.left = 'unset'
+            innerDoc.getElementsByClassName('nxtbar')[0].style.right = '0'
+            innerDoc.getElementsByClassName('nxtbar')[0].style.top = 'unset'
+            innerDoc.getElementsByClassName('nxtbar')[0].style.bottom = '0'
+            if(innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length > 0){
+              innerDoc.getElementsByClassName('gjs-lory-slides')[0].parentElement.style.width = '100%';
+              innerDoc.getElementsByClassName('gjs-lory-slides')[0].parentElement.parentElement.style.width = '100%';
+              innerDoc.getElementsByClassName('gjs-lory-slides')[0].style.width = '100%';              
+              for( let i=0; i < innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length;i++)
+              {
+                innerDoc.getElementsByClassName('gjs-lory-slides')[0].children[i].style.width = '100%';
+              }
+              if(innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length-1 != 0){
+                let b = innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length
+                let c = b-1;
+                innerDoc.getElementsByClassName('gjs-lory-slides')[0].children[c].style.display = 'none';
+                innerDoc.getElementsByClassName('gjs-lory-slides')[0].children[1].style.marginLeft = '-10px';
+                // localStorage.setItem('forchecking',1);
+              }
+            }
+          }
+        }
+        innerDoc.addEventListener('drop', () => {
+          localStorage.setItem('forchecking',0);
+          let iframe = document.getElementsByTagName('iframe')[0];
+          let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          if(localStorage.getItem('forchecking')){
+            if(innerDoc.getElementsByClassName('gjs-lory-slides').length > 0){
+              if(innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length > 0){
+                innerDoc.getElementsByClassName('gjs-lory-slides')[0].parentElement.style.width = '100%';
+                innerDoc.getElementsByClassName('gjs-lory-slides')[0].parentElement.parentElement.style.width = '100%';
+                innerDoc.getElementsByClassName('gjs-lory-slides')[0].style.width = '100%';
+                for( let i=0; i < innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length;i++)
+                {
+                  innerDoc.getElementsByClassName('gjs-lory-slides')[0].children[i].style.width = '100%';
+                }
+                if(innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length-1 != 0){
+                  let b = innerDoc.getElementsByClassName('gjs-lory-slides')[0].children.length
+                  let c = b-1;
+                  innerDoc.getElementsByClassName('gjs-lory-slides')[0].children[c].style.display = 'none';
+                  // localStorage.setItem('forchecking',1);
+                }
+              }
+            }
+          }
+        })
+
+      }
+
+    }
+
+  }
+})
+
   return (
     <>
     {spinner == 'start' ? (<Spin className={`geditor`} ><div id="example-editor" ></div></Spin>) :(<div id="example-editor" ></div>)}

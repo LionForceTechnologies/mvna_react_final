@@ -42,7 +42,6 @@ function Web() {
             if (document.getElementsByClassName('demo').length > 0) {
                 document.getElementsByClassName('demo')[0].style.overflow = 'auto'
             }
-
         }
         if (((locations == '/user') || (locations == '/user/')) && (window.screen.width > 992)) {
             let nav_h = document.getElementsByClassName('navbar')[0].offsetHeight;
@@ -82,6 +81,84 @@ function Web() {
 
     })
     function createMarkup(drag) { return { __html: drag }; };
+    useEffect(() => {
+        let locations = window.location.pathname;
+        if (((locations == '/user') || (locations == '/user/'))) {
+
+            if (window.screen.width > 992) {
+                if (document.getElementsByClassName('home_slider_dependent')) {
+                    if(document.getElementsByClassName('home_slider_dependent').length > 0){
+                        let calcheight = document.getElementsByClassName('home_slider_dependent')[0].offsetHeight
+                        document.getElementsByClassName('home_slider_dependent')[0].style.setProperty('height',`${calcheight+15}px`,'important')                        
+                        let parentheight = document.getElementsByClassName('homeinnercontainer')[0].offsetHeight;
+                        document.getElementsByClassName('home_slider_container')[0].style.height = `${parentheight - (calcheight + 15)}px`
+                    }
+                }
+
+
+
+            }
+            if (document.getElementsByClassName('gjs-lory-slides')) {
+
+                if(document.getElementsByClassName('demo')){
+                    if(document.getElementsByClassName('demo').length > 0){
+                        if(document.getElementsByClassName('demo')[0].children.length > 0){
+                            // alert(document.getElementsByClassName('demo')[0].children[2].tagName)
+                        }
+                    }
+                }
+
+
+
+
+
+
+
+
+
+                if (document.getElementsByClassName('gjs-lory-slides').length > 0) {
+                    document.getElementsByClassName('prevbar')[0].style.left = 'unset'
+                    document.getElementsByClassName('prevbar')[0].style.right = '0'
+                    document.getElementsByClassName('prevbar')[0].style.top = 'unset'
+                    document.getElementsByClassName('prevbar')[0].style.bottom = '50px'
+                    document.getElementsByClassName('nxtbar')[0].style.left = 'unset'
+                    document.getElementsByClassName('nxtbar')[0].style.right = '0'
+                    document.getElementsByClassName('nxtbar')[0].style.top = 'unset'
+                    document.getElementsByClassName('nxtbar')[0].style.bottom = '0'
+                    if (document.getElementsByClassName('gjs-lory-slides')[0].children.length > 0) {
+                        document.getElementsByClassName('gjs-lory-slides')[0].parentElement.style.width = '100%';
+                        document.getElementsByClassName('gjs-lory-slides')[0].parentElement.parentElement.style.width = '100%';
+                        document.getElementsByClassName('gjs-lory-slides')[0].style.width = '100%';
+                        for (let i = 0; i < document.getElementsByClassName('gjs-lory-slides')[0].children.length; i++) {
+                            document.getElementsByClassName('gjs-lory-slides')[0].children[i].style.width = '100%';
+                        }
+                        if (document.getElementsByClassName('gjs-lory-slides')[0].children.length - 1 != 0) {
+                            let b = document.getElementsByClassName('gjs-lory-slides')[0].children.length
+                            let c = b - 1;
+                            document.getElementsByClassName('gjs-lory-slides')[0].children[c].style.display = 'none';
+                            document.getElementsByClassName('gjs-lory-slides')[0].children[1].style.marginLeft = '-10px';
+                            // localStorage.setItem('forchecking',1);
+                        }
+                    }
+         
+         
+
+         
+                }
+            
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            }
+        }
+    })
     return page
 
 }

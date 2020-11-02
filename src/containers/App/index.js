@@ -113,9 +113,18 @@ const App = () => {
   };
 
   useEffect(() => {
-    if(signout == 'success'){
-      history.push('/signin');
-      dispatch(clearsignout())
+
+    if(localStorage.getItem('signout') == 'success'  || (localStorage.getItem('signout') == 'success' && (location.pathname.indexOf('/user/admin') != -1))){
+      
+      if(location.pathname.indexOf('/user/admin') != -1){
+        history.push('/signin');
+        // dispatch(clearsignout())
+        localStorage.setItem('signout','')
+      }else if(location.pathname.indexOf('/user') < 0){
+        history.push('/signin');
+        localStorage.setItem('signout','')
+      }
+
     }
     if (location.pathname === '/') {
       if (token === null) {

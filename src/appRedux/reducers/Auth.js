@@ -17,7 +17,7 @@ export default (state = INIT_STATE, action) => {
     }
 
     case SIGNOUT_USER_SUCCESS: {
-      // let a = <Redirect to="/signin" />
+      localStorage.setItem('signout','success')
       return {
         ...state,
         token: null,

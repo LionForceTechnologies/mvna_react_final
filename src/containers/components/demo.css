@@ -287,3 +287,11 @@ font-size: 14px;
 .member_logo_image{
     margin:auto;
 }
+@media only screen and (min-width: 900px) {
+    .homeinnercontainer{
+        height : 100%
+      }      
+      .home_slider_dependent{
+      height : auto !important;
+      }
+}

@@ -64,6 +64,7 @@ export const userSignIn = ({ email, password }) => {
     }
     ).then((data) => {
       // console.log("userSignIn: ",data.data.Token); 
+      localStorage.setItem('signout','')
       console.log('success agirchi')
       console.log(data)
       localStorage.setItem("token", data.data.Token);

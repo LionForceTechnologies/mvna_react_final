@@ -8,11 +8,15 @@ import {
     USER_TOKEN_SET
   } from "../../constants/ActionTypes";
   import axios from 'util/Api'  
-  // delete axios.defaults.headers.common['Authorization']
-  // webloginroleid: 2,
-  //   webloginid: 1,
-    // url : `/${localStorage.getItem('url')}` 
-    localStorage.setItem('webloginroleid',2)
+  if(localStorage.getItem('webloginid') == null || localStorage.getItem('webloginid') == 'undefined'){
+    delete axios.defaults.headers.common['webloginid']
+  }else{
+    axios.defaults.headers.common['webloginid'] = localStorage.getItem('webloginid')
+  }
+    delete axios.defaults.headers.common['Authorization']
+    delete axios.defaults.headers.common['roleId']
+    delete axios.defaults.headers.common['userlogid']
+    delete axios.defaults.headers.common['id']
   export const webSignIn = ({ email, password }) => {
     return (dispatch) => {
       dispatch({ type: FETCH_START });
@@ -21,18 +25,29 @@ import {
         payload: 'start'
       });      
       
-      axios.post('https://dktiyxy955yvi.cloudfront.net/api/auth/web_login', {
+      axios.post('https://dktiyxy955yvi.cloudfront.net/auth/web_login', {
         email: email,
         password: password,
       }
       ).then((data) => {
-        localStorage.setItem("token", JSON.stringify(data.data.Token));
+        localStorage.removeItem("token");
+        localStorage.setItem('signout','success')
+        dispatch({ type: FETCH_SUCCESS });
+        dispatch({ type: SIGNOUT_USER_SUCCESS });
+        delete axios.defaults.headers.common['Authorization']
+        delete axios.defaults.headers.common['roleId']
+        delete axios.defaults.headers.common['userlogid']
+        delete axios.defaults.headers.common['id']
+        
+
+        
         let hcredentials = {
           role_id: data.data.userdetail.role_id,
           userlog_id: data.data.userdetail.userlog_id
         }
-        axios.defaults.headers.common['webloginid'] = data.data.userdetail.webloginid 
-        localStorage.setItem('webloginroleid',data.data.userdetail.webloginroleid)
+        axios.defaults.headers.common['webloginid'] = data.data.userdetail.id 
+        localStorage.setItem('webloginid',data.data.userdetail.id)
+        localStorage.setItem('webloginroleid',data.data.userdetail.roleId)
         localStorage.setItem('hcredentials', JSON.stringify(hcredentials))
         dispatch({
           type: 'logsuccess',
@@ -45,7 +60,6 @@ import {
           payload: 'end'
         });
       }).catch(function (error) {
-        // dispatch({ type: 'loginfailed', payload: error.message });
         dispatch({
           type: 'logsuccess',
           payload: 'fail'
@@ -71,10 +85,16 @@ import {
     if(localStorage.getItem('url') == null){
       url = `/`
     }
+    delete axios.defaults.headers.common['Authorization']
+    delete axios.defaults.headers.common['roleId']
+    delete axios.defaults.headers.common['userlogid']
+    delete axios.defaults.headers.common['id']
+
     return (dispatch) => {
+
       axios.get('https://dktiyxy955yvi.cloudfront.net/api/web_menu',{
         headers : {
-          webloginroleid: localStorage.getItem('webloginroleid'),          
+          webloginroleid: 2,          
           url : url 
         }
       }).then((res) => {
@@ -85,7 +105,10 @@ import {
       }).catch(function (error) {
   
       });
-  
+      localStorage.removeItem("token");
+      localStorage.setItem('signout','success')
+      dispatch({ type: FETCH_SUCCESS });
+      dispatch({ type: SIGNOUT_USER_SUCCESS });  
     }
   };
   export const getlinkweb = (data) => {
@@ -137,10 +160,10 @@ import {
         }
       } ).then((res) => {
         if (res.data.length == 0) {
-          dispatch({ type: 'seteditor', payload: '0' })
+          // dispatch({ type: 'seteditor', payload: '0' })
         }
         else {
-          dispatch({ type: 'seteditor', payload: res.data[0].id })
+          // dispatch({ type: 'seteditor', payload: res.data[0].id })
           dispatch({ type: 'get_webpage', payload: res.data })
         }
       }).catch((error) => {
