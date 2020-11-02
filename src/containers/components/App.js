@@ -523,7 +523,7 @@ else{
           <div className="footer_container_home" style={f_whole_footer}>
             <div className="footer_starter_home">
               <img
-                src={`http://localhost:3000/images/Popup_arrow.png`}
+                src={`/images/Popup_arrow.png`}
                 alt="Third slide"
                 // style={img_style}
                 onClick={handleClick}
