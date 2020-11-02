@@ -104,6 +104,9 @@ function Web() {
                     if(document.getElementsByClassName('demo').length > 0){
                         if(document.getElementsByClassName('demo')[0].children.length > 0){
                             // alert(document.getElementsByClassName('demo')[0].children[2].tagName)
+                            let elem = document.createElement('script')
+                            elem.innerHTML = document.getElementsByClassName('demo')[0].children[2].innerHTML
+                            document.body.appendChild(elem)
                         }
                     }
                 }
