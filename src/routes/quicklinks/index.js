@@ -27,6 +27,7 @@ const Quicklinks = (props) => {
   const [deletestatus, setdeletestatus] = useState(false);
   const [nodeletestatus, setnodeletestatus] = useState(false);
   const [warningdelete, setwarningdelete] = useState(false);
+  const [editimageurl,seteditimageurl] = useState(false);
   const [parent, setparent] = useState('');
   const [sub_edit, setsub_edit] = useState(0);
   const [nth, setnth] = useState('');
@@ -65,6 +66,7 @@ const Quicklinks = (props) => {
         setmenu(roleid.data[0].name)
         // setimage(roleid.data[0].icon)
         setimageUrl(`${hostname}/${roleid.data[0].icon}`)
+        seteditimageurl(roleid.data[0].icon)
         setedit(0)
       }
     }
@@ -95,11 +97,14 @@ const Quicklinks = (props) => {
             link : link,
             icon : image
         }))
+        form.resetFields();
+        document.getElementById('quickimage').value = '';
+        imageUrl('')
         }
         else if(roleid != ''){
           let img =  image
           if(image == '' || image == null || image == undefined || image == 'undefined'){
-            img = imageUrl
+            img = editimageurl
           }
             dispatch(updatelink(
               {
@@ -109,7 +114,11 @@ const Quicklinks = (props) => {
                 'id': roleid.data[0].id
               }
             ))
-          setedit(0);
+            form.resetFields();
+            document.getElementById('quickimage').value = '';
+            imageUrl('')
+            seteditimageurl('')
+            setedit(0);
           dispatch(cleareditlink(''))
           
           }
