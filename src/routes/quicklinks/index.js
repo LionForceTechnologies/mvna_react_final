@@ -99,7 +99,8 @@ const Quicklinks = (props) => {
         }))
         form.resetFields();
         document.getElementById('quickimage').value = '';
-        imageUrl('')
+        
+        setimageUrl('')
         }
         else if(roleid != ''){
           let img =  image
@@ -116,7 +117,7 @@ const Quicklinks = (props) => {
             ))
             form.resetFields();
             document.getElementById('quickimage').value = '';
-            imageUrl('')
+            setimageUrl('')
             seteditimageurl('')
             setedit(0);
           dispatch(cleareditlink(''))

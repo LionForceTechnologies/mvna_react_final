@@ -67,8 +67,9 @@ export const userSignIn = ({ email, password }) => {
       localStorage.setItem('signout','')
       console.log('success agirchi')
       console.log(data)
-      localStorage.setItem("token", data.data.Token);
-      axios.defaults.headers.common['Authorization'] = data.data.Token;
+      let tok = "Bearer " + data.data.Token
+      localStorage.setItem("token", tok);
+      axios.defaults.headers.common['Authorization'] = "Bearer " + data.data.Token;
       axios.defaults.headers.common['roleId'] = data.data.userdetail.roleId;
       axios.defaults.headers.common['userlogid'] = data.data.userdetail.userlogid
       axios.defaults.headers.common['id'] = data.data.userdetail.id
