@@ -31,6 +31,7 @@ const Member = (props) => {
     const [form] = Form.useForm();
     const [deletesuccess, setdeletesuccess] = useState(false);
     const [deletes, setdeletes] = useState(0);
+    const [contentimg ,setcontentimg] = useState('')
     const { Option } = Select;
     useEffect(() => {
         if (stop === 0) {
@@ -58,6 +59,7 @@ const Member = (props) => {
                 // setimage(memberid.data[0].icon)
                 setcountry(memberid.data[0].country)
                 setimageUrl(`${hostname}/${memberid.data[0].icon}`)
+                setcontentimg(memberid.data[0].icon)
                 setedit(0)
             }
         }
@@ -105,7 +107,7 @@ const Member = (props) => {
         else if (memberid != '') {
             let img =  image
             if(image == '' || image == null || image == undefined || image == 'undefined'){
-              img = imageUrl
+              img = contentimg
             }
             dispatch(updatemember(
                 {
@@ -121,6 +123,7 @@ const Member = (props) => {
             ))
             setimage('')
             setimageUrl('')
+            setcontentimg('')
             setedit(0);
             dispatch(clearrole(''))
 document.getElementById('dodger').value = ''

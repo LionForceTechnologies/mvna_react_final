@@ -59,6 +59,38 @@ import {
           type: 'startlogin',
           payload: 'end'
         });
+
+        let url = `/${localStorage.getItem('url')}`;
+        if(localStorage.getItem('url') == null){
+          url = `/`
+        }
+
+        axios.get('https://dktiyxy955yvi.cloudfront.net/api/web_menu',{
+          headers : {
+            webloginroleid: localStorage.getItem('webloginroleid'),          
+            url : url 
+          }
+        }).then((res) => {
+          dispatch({
+            type: 'webmenu',
+            payload: res.data.data
+          })
+        }).catch(function (error) {
+    
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
       }).catch(function (error) {
         dispatch({
           type: 'logsuccess',
@@ -91,10 +123,13 @@ import {
     delete axios.defaults.headers.common['id']
 
     return (dispatch) => {
-
+let role_id = localStorage.getItem('webloginroleid')
+      if(localStorage.getItem('webloginroleid') == 'undefined' || localStorage.getItem('webloginroleid') == null){
+        role_id = 2
+}
       axios.get('https://dktiyxy955yvi.cloudfront.net/api/web_menu',{
         headers : {
-          webloginroleid: localStorage.getItem('webloginroleid'),          
+          webloginroleid: role_id,          
           url : url 
         }
       }).then((res) => {
