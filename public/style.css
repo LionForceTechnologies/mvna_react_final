@@ -192,3 +192,11 @@ top : 96%;
  .editors .ant-spin-nested-loading {
    height : 100%;
  }
+.gjs-cell.tables .row{
+  margin-right: unset;
+  margin-left: unset;
+}
+.row.adjustable{
+  margin-right: unset;
+  margin-left: unset;
+}

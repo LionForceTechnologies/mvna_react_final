@@ -32,6 +32,7 @@ const Rolepermission = (props) => {
     const [permissionid, setpermissionid] = useState('');
     const [swarning, setswarning] = useState(false);
     const [end, setend] = useState(0);
+    const [turnoff, setturnoff] = useState(false);
     const { Option } = Select;
     useEffect(() => {
         if (stop === 0) {
@@ -63,7 +64,7 @@ const Rolepermission = (props) => {
                 } else {
                     alert('there is no record')
                 }
-
+                setturnoff(true)
                 setedit(0)
             }
         }
@@ -105,7 +106,6 @@ setend(1)
         dispatch(editrolepermission(e.target.getAttribute('data-id')))
         setedit(1)
     }
-    // let permissionsmapped = []
 
     function access(e) {
         // if(e.target.value == 'on'){
@@ -138,6 +138,7 @@ setend(1)
                     id : rolepermissionid.data[0].id
                 }))
             }
+            setturnoff(false)
         }
         else if (rolepermissionid == '') {
 
@@ -230,9 +231,13 @@ setend(1)
     }
 
 
-
-
-
+let datas2 = [];
+if (rolepermission.length > 0) {
+    datas2 = rolepermission.map((item, i) => {
+        return item.role_id
+    });
+}
+console.log('roles',datas2)
     function deleteconfirm() {
         setcustom(false)
         dispatch(deletepermission({ id: deleteid, status: 2 }))
@@ -255,7 +260,10 @@ setend(1)
     };
     let role_data = []
     if (roles.length > 0) {
-        role_data = roles.map((item, i) => {
+        
+        role_data = roles.filter((item)=>{
+            return datas2.includes(`${item.id}`) != true
+        }).map((item, i) => {          
             return (<Option key={item.id} value={item.id}>{item.role}</Option>)
         });
     }
@@ -278,6 +286,7 @@ setend(1)
                                     value={role}
                                     onChange={onCurrencyChange}
                                     placeholder="Role"
+                                    disabled = {turnoff}
                                 >
                                     {role_data}
                                 </Select>
