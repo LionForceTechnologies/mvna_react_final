@@ -94,7 +94,7 @@ import {
 
       axios.get('https://dktiyxy955yvi.cloudfront.net/api/web_menu',{
         headers : {
-          webloginroleid: 2,          
+          webloginroleid: localStorage.getItem('webloginroleid'),          
           url : url 
         }
       }).then((res) => {
