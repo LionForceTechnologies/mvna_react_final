@@ -285,7 +285,9 @@ document.getElementById('dodger').value = ''
                     <Col xl={8} lg={8} md={8} sm={24} xs={24}>
                         <Form.Item
                             rules={[{ required: true, message: 'Lattitude Name is required' }]} name="lat">
-                            <Input value={lat} onChange={(e) => {
+                            <Input value={lat} onKeyUp={(e) => {
+                                e.target.value = e.target.value.replace(/[^0-9+-.]/g, '');
+                            }} onChange={(e) => {
                                 setlat(e.target.value)
                                 console.log(red_data)
                             }} placeholder="Lattitude" />
@@ -294,7 +296,9 @@ document.getElementById('dodger').value = ''
                     <Col xl={8} lg={8} md={8} sm={24} xs={24}>
                         <Form.Item
                             rules={[{ required: true, message: 'Longitude Name is required' }]} name="lon">
-                            <Input value={lon} onChange={(e) => {
+                            <Input value={lon} onKeyUp={(e) => {
+                                e.target.value = e.target.value.replace(/[^0-9+-.]/g, '');
+                            }} onChange={(e) => {
                                 setlon(e.target.value)
                                 console.log(red_data)
                             }} placeholder="Longitude" />

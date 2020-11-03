@@ -31,9 +31,13 @@ function Members() {
 
         }
     }
+    let pointers = []
     if(member.length > 0){
         for(let i=0;i<member.length;i++){
-
+            let lat = []
+            lat.push(member[i].lat)
+            lat.push(member[i].lon)
+            pointers.push(lat)
             data.push(
                 <Col xl={6} lg={6} md={6} sm={12} xs={12}>
                         <Card className={`member_card`}>
@@ -59,7 +63,7 @@ function Members() {
                 </div>
             </section>
             <div className={`mapwrapper `}>
-                <GoogleApiWrapper />
+                <GoogleApiWrapper alap={pointers} />
             </div>
             <div className={`filters`}>
                 <p>Filter by</p>
