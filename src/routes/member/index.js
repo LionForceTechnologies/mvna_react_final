@@ -58,6 +58,7 @@ const Member = (props) => {
                 setlinks(memberid.data[0].link)
                 // setimage(memberid.data[0].icon)
                 setcountry(memberid.data[0].country)
+                // alert(`${hostname}/${memberid.data[0].icon}`)
                 setimageUrl(`${hostname}/${memberid.data[0].icon}`)
                 setcontentimg(memberid.data[0].icon)
                 setedit(0)

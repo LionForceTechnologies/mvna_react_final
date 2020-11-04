@@ -70,6 +70,18 @@ function Web() {
         }
     }
     useEffect(() => {
+        
+            if (window.location.pathname != '/user' || window.location.pathname != '/user/') {
+                if(document.getElementsByClassName('demo')){
+                    if(document.getElementsByClassName('demo').length > 0){
+                        document.getElementsByClassName('demo')[0].style.lineHeight = '21px';
+                    }
+                }
+            }
+
+
+    })
+    useEffect(() => {
         if (pending == 0) {
             if (window.location.pathname == '/user' || window.location.pathname == '/user/') {
                 dispatch(getwebpage(query.get("")))
