@@ -50,6 +50,14 @@ function Web() {
             if (document.getElementsByClassName('show_output').length > 0) {
                 document.getElementsByClassName('show_output')[0].style.height = `${total_h}px`
             }
+            if (document.getElementsByClassName('home_slider_dependent')) {
+                if(document.getElementsByClassName('home_slider_dependent').length > 0){
+                    let calcheight = document.getElementsByClassName('home_slider_dependent')[0].offsetHeight
+                    document.getElementsByClassName('home_slider_dependent')[0].style.setProperty('height',`${calcheight+15}px`,'important')                        
+                    let parentheight = document.getElementsByClassName('homeinnercontainer')[0].offsetHeight;
+                    document.getElementsByClassName('home_slider_container')[0].style.height = `${parentheight - (calcheight + 15)}px`
+                }
+            }
 
         }
         else {
