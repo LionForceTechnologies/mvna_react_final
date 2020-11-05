@@ -50,42 +50,47 @@ const SidebarContent = () => {
               </Link>              
             </Menu.Item>
             <Menu.Item key="User Creation">
-              <Link to="/creation"><i className="icon icon-widgets"/>
+              <Link to="/creation">
+              <i className="icon icon-crypto"/>
                 <span>User Creation</span>
               </Link>              
             </Menu.Item>
             <Menu.Item key="Role permission">
-              <Link to="/rolepermission"><i className="icon icon-widgets"/>
+              <Link to="/rolepermission">
+              <i className="icon icon-crm"/>
                 <span>Role permission</span>
               </Link>              
             </Menu.Item>
             <Menu.Item key="Menu">
-              <Link to="/sample"><i className="icon icon-widgets"/>
+              <Link to="/sample">
+              <i className="icon icon-apps"/>
                 <span>Menu</span>
               </Link>              
             </Menu.Item>
             <Menu.Item key="Page Creation">
-              <Link to="/pagecreation"><i className="icon icon-widgets"/>
+              <Link to="/pagecreation">
+              <i className="icon icon-card"/>
                 <span>Page Creation</span>
               </Link>              
             </Menu.Item>
             <Menu.Item key="Member">
-              <Link to="/member"><i className="icon icon-widgets"/>
+              <Link to="/member"><i className="icon icon-email"/>
                 <span>Member</span>
               </Link>              
             </Menu.Item>
             <Menu.Item key="footer">
-              <Link to="/footer"><i className="icon icon-widgets"/>
+              <Link to="/footer">
+                <i className="icon icon-check-square-o"/>
                 <span>Footer</span>
               </Link>              
             </Menu.Item>
             <Menu.Item key="quicklinks">
-              <Link to="/quicklinks"><i className="icon icon-widgets"/>
+              <Link to="/quicklinks"><i className="icon icon-contacts"/>
                 <span>Quick Links</span>
               </Link>              
             </Menu.Item>
             <Menu.Item key="fileupload">
-              <Link to="/fileupload"><i className="icon icon-widgets"/>
+              <Link to="/fileupload"><i className="icon icon-chat-bubble -flex-column-reverse"/>
                 <span>File Upload</span>
               </Link>              
             </Menu.Item>            

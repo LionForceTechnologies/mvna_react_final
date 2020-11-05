@@ -108,6 +108,7 @@ color : black ;
   }
   .mvna_navbar .nav-header-image{
     height : 65px;
+    /* width : 140px; */
   }
   .mvna_navbar  .search_box{
     margin-bottom: 0px;

@@ -1,3 +1,3 @@
 module.exports = {
-  footerText: 'Copyright Company Name © 2018',
+  footerText: 'Copyright MED.VET.NET Association © 2020',
 }
