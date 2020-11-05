@@ -99,18 +99,21 @@ setend(1)
                 setpermissionsmapped(old => [...old, permissionid])
             }
             if (permissionsmapped.indexOf(permissionid) != -1) {
-        //    alert(permissionsmapped.indexOf(permissionid))
                 // let pmapped = permissionsmapped;
                 // permission.push(permissionid);
                 let droid  = permissionsmapped;
+                alert(droid.length)
+                let droid2 = []
                 droid.filter((item)=>{
-                    alert(permissionid)
+                    // alert(permissionid)
                     return item != permissionid 
                 }).map((item)=>{
+                    droid2.push(item)
                     return item
                 })
-                console.log(droid)
-                setpermissionsmapped(droid)
+                // alert(droid2.length)
+                // // console.log(droid)
+                setpermissionsmapped(droid2)
             }
         }
 
