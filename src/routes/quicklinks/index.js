@@ -92,6 +92,7 @@ const Quicklinks = (props) => {
       //   alert('fill all fields')
       //   return;
       // }
+       
         dispatch(putlink({
             name : menu,
             link : link,
