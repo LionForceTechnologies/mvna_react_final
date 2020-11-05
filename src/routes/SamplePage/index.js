@@ -18,6 +18,7 @@ const SamplePage = (props) => {
   const [submenu, setsubmenu] = useState('');
   const [deleteid, setdeleteid] = useState('');
   const [mainmenu, setmainmenu] = useState('');
+  const [mainmenuid , setmainmenuid] = useState('');
   const [edit, setedit] = useState(0);
   const [deletes, setdeletes] = useState(0);
   const [deletestatus, setdeletestatus] = useState(false);
@@ -102,7 +103,7 @@ const SamplePage = (props) => {
           submenu: submenuid[0].menu,
           mainmenu: submenuid[0].parent_menu
         })
-        setsubmenu(submenuid[0].menu)
+        setmainmenuid(submenuid[0].parent_id)
         setmainmenu(submenuid[0].id)
         setsubmenu(submenuid[0].menu)
         setsub_edit(0)
@@ -119,7 +120,7 @@ const SamplePage = (props) => {
           "url": `/${submenu.split(" ").join("")}`,
           "serial": 1,
           "icon": "fa-fa user",
-          "parent_id": mainmenu
+          "parent_id": mainmenuid
         }
       ))
     }
@@ -131,7 +132,7 @@ const SamplePage = (props) => {
           "url": `/${submenu.split(" ").join("")}`,
           "serial": 1,
           "icon": "fa-fa user",
-          "parent_id": mainmenu,
+          "parent_id": mainmenuid,
           'id': submenuid[0].id
         }
       ))
@@ -295,7 +296,7 @@ const SamplePage = (props) => {
   }
   // ******sweet alert**** 
   const onCurrencyChange = newCurrency => {
-    setmainmenu(newCurrency)
+    setmainmenuid(newCurrency)
   };
 
   let data = [];
