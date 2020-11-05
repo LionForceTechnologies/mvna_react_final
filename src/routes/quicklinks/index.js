@@ -145,11 +145,11 @@ imageUrl('')
       dataIndex: 'link',
       key: 'link',
     },
-    {
-      title: 'Icon',
-      dataIndex: 'icon',
-      key: 'icon',
-    },
+    // {
+    //   title: 'Icon',
+    //   dataIndex: 'icon',
+    //   key: 'icon',
+    // },
     {
       title: 'Action',
       dataIndex: 'action',

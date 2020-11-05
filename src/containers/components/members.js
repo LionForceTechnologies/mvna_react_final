@@ -45,7 +45,7 @@ function Members() {
                                 <div className={`parent_member`}> <img className={`member_logo_image`} style={{ marginBottom: '8px',width: '194px',height: '78px' }} src={`${hostname}/${member[i].icon}`}></img></div>
             <p >{member[i].name}</p>
                             </div>
-                            <div className={`member_bottom`}><p className={`click_explore`}><a href={`${member[i].link}`} target="blank">click to explore</a></p></div>
+                            <div className={`member_bottom`}><p className={`click_explore`}><a href={`${member[i].link}`} style={{color : 'black'}} target="blank">click to explore</a></p></div>
                         </Card>
                     </Col>    
             )

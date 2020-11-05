@@ -183,7 +183,7 @@ setcustom(true)
     data = red_data.map((item, i) => {
       return {
         name: item.name,
-        document: item.document,
+        document: item.docs,
         action: (<><div style={{ display: 'flex' }}><i style={{ marginRight: '7px', height: '15px' }} onClick={Edit} data-id={item.id} className="icon icon-edit" /><i data-id={item.id} onClick={Delete} style={{ height: '15px' }} className="icon icon-trash" /></div></>),
         index: item.id,
         key: item.id
