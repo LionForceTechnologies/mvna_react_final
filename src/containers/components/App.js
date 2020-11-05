@@ -465,14 +465,14 @@ else{
     </div>       
      )
      let firstfoot = [
-      (<p>Collaboration Platform</p>),
-      (<p>OHEJP</p>),
-      (<p>Publications </p>)
+      // (<p>Collaboration Platform</p>),
+      // (<p>OHEJP</p>),
+      // (<p>Publications </p>)
      ]
      let secondfoot = [
-      (<p>Collaboration Platform</p>),
-      (<p>OHEJP</p>),
-      (<p>Publications </p>)
+      // (<p>Collaboration Platform</p>),
+      // (<p>OHEJP</p>),
+      // (<p>Publications </p>)
      ]
      if((forlink.length > 0) && (forlink.length <= 3 )){
        for(let z=0;z<forlink.length;z++){
