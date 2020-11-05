@@ -219,6 +219,7 @@ setcustom(true)
       }
     });
   }
+  // alert()
   return (
     <div>
       <Form
@@ -251,7 +252,7 @@ setcustom(true)
               <input id='quickimage' type='file'  onChange={ uploadimage } />
           </Col>
           <Col xl={8} lg={8} md={8} sm={24} xs={24}>
-                        <img width={`100px`} height={`100px`} src={imageUrl} />
+            {/* {imageUrl != '' ? <img width={`100px`} height={`100px`} src={imageUrl} /> : ''}             */}
           </Col>
           <Col xl={8} lg={8} md={8} sm={24} xs={24}>
             <Form.Item>

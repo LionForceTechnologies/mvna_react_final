@@ -135,6 +135,12 @@ border-left: 0px;
     overflow: auto;
   } */
   @media  (max-width: 480px) {
+    #iq383{
+      min-height: auto !important;
+    }
+    #ixp4b{
+      min-height: auto !important;
+    }
     #it22{
       height : auto !important;
       min-height: auto !important;
