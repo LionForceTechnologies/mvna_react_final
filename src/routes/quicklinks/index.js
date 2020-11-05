@@ -92,11 +92,15 @@ const Quicklinks = (props) => {
       //   alert('fill all fields')
       //   return;
       // }
-       
+      let kk = image
+       if(image == ''){
+kk = ''
+       }
+      //  return;
         dispatch(putlink({
             name : menu,
             link : link,
-            icon : image
+            icon : kk
         }))
         form.resetFields();
         document.getElementById('quickimage').value = '';

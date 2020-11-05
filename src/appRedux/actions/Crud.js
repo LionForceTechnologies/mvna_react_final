@@ -888,10 +888,19 @@ dispatch({
 // *******quicklinks***************
 export const putlink = (data) => {
   let formData = new FormData();  
-  
-    formData.append('icon', data.icon)
-    formData.append('name', data.name)
-    formData.append('link', data.link)
+//   if(data.icon == '' ){
+//     formData ={
+//       'icon' : data.icon,
+//       'name' : data.name,
+//       'link' : data.link
+//     }
+//   }
+// else{
+
+// }
+formData.append('icon', data.icon)
+formData.append('name', data.name)
+formData.append('link', data.link)  
 
   return (dispatch) => {
     axios.post('https://dktiyxy955yvi.cloudfront.net/admin/quicklink', 

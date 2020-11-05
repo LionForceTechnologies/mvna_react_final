@@ -131,7 +131,7 @@ const App = () => {
         history.push('/user');
         
       } else if (initURL === '' || initURL === '/' || initURL === '/signin') {
-        history.push('/sample');
+        history.push('/admin');
       } else {
         history.push(initURL);
       }
