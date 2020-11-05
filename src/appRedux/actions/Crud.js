@@ -65,7 +65,7 @@ export const checksubmenu = (data) => {
         }
       }).catch(function (error) {
       if(error.message == 'Request failed with status code 422'){
-        dispatch({ type: 'checksubmenu', payload: 'false' })
+        dispatch({ type: 'checksubmenu', payload: 'true' });
       }
       });
 

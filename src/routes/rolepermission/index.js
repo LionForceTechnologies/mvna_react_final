@@ -98,6 +98,16 @@ setend(1)
                 // permission.push(permissionid);
                 setpermissionsmapped(old => [...old, permissionid])
             }
+            // if (permissionsmapped.indexOf(permissionid) != -1) {
+            //     // let pmapped = permissionsmapped;
+            //     // permission.push(permissionid);
+            //     let droid  = permissionsmapped;
+            //     droid.filter((item)=>{
+            //         return item != permissionid 
+            //     })
+            //     console.log(droid)
+            //     setpermissionsmapped(droid)
+            // }
         }
 
 
@@ -113,6 +123,10 @@ setend(1)
         // }
         // let pmapped = permissionsmapped
         if (e.target.checked == true) {
+            setpermissionid(e.target.getAttribute('data-id'))
+
+        }
+        if (e.target.checked == false) {
             setpermissionid(e.target.getAttribute('data-id'))
 
         }
