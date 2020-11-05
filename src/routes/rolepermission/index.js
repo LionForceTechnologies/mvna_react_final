@@ -54,11 +54,12 @@ const Rolepermission = (props) => {
     useEffect(() => {
         if (rolepermissionid !== '') {
             if (edit !== 0) {
-// alert(rolepermissionid.data[0].role)
+
                 if ((rolepermissionid != 'no data found')) {
                     form.setFieldsValue({
                         role: rolepermissionid.data[0].role,
                     })
+                    // console.log(rolepermissionid.data[0].role_permission)
                     setrole(rolepermissionid.data[0].role_id)
                     setpermissionsmapped(rolepermissionid.data[0].role_permission)
                 } else {
@@ -102,7 +103,6 @@ setend(1)
                 // let pmapped = permissionsmapped;
                 // permission.push(permissionid);
                 let droid  = permissionsmapped;
-                alert(droid.length)
                 let droid2 = []
                 droid.filter((item)=>{
                     // alert(permissionid)
