@@ -62,7 +62,7 @@ const SidebarContent = () => {
               </Link>              
             </Menu.Item>
             <Menu.Item key="Menu">
-              <Link to="/sample">
+              <Link to="/admin">
               <i className="icon icon-apps"/>
                 <span>Menu</span>
               </Link>              
