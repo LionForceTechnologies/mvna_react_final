@@ -92,14 +92,14 @@ const Topbar = () => {
           null
         }
         <li className="gx-language">
-          <Popover overlayClassName="gx-popover-horizantal" placement="bottomRight" content={languageMenu()}
+          {/* <Popover overlayClassName="gx-popover-horizantal" placement="bottomRight" content={languageMenu()}
                    trigger="click">
                 <span className="gx-pointer gx-flex-row gx-align-items-center">
                   <i className={`flag flag-24 flag-${locale.icon}`}/>
                   <span className="gx-pl-2 gx-language-name">{locale.name}</span>
                   <i className="icon icon-chevron-down gx-pl-2"/>
                 </span>
-          </Popover>
+          </Popover> */}
         </li>
         {width >= TAB_SIZE ? null :
           <Auxiliary>
