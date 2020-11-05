@@ -98,16 +98,20 @@ setend(1)
                 // permission.push(permissionid);
                 setpermissionsmapped(old => [...old, permissionid])
             }
-            // if (permissionsmapped.indexOf(permissionid) != -1) {
-            //     // let pmapped = permissionsmapped;
-            //     // permission.push(permissionid);
-            //     let droid  = permissionsmapped;
-            //     droid.filter((item)=>{
-            //         return item != permissionid 
-            //     })
-            //     console.log(droid)
-            //     setpermissionsmapped(droid)
-            // }
+            if (permissionsmapped.indexOf(permissionid) != -1) {
+        //    alert(permissionsmapped.indexOf(permissionid))
+                // let pmapped = permissionsmapped;
+                // permission.push(permissionid);
+                let droid  = permissionsmapped;
+                droid.filter((item)=>{
+                    alert(permissionid)
+                    return item != permissionid 
+                }).map((item)=>{
+                    return item
+                })
+                console.log(droid)
+                setpermissionsmapped(droid)
+            }
         }
 
 
