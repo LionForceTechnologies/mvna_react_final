@@ -88,10 +88,10 @@ const Quicklinks = (props) => {
   };
   const onFinish = values => {
     if(roleid == ''){
-      if(image == ''){
-        alert('fill all fields')
-        return;
-      }
+      // if(image == ''){
+      //   alert('fill all fields')
+      //   return;
+      // }
         dispatch(putlink({
             name : menu,
             link : link,

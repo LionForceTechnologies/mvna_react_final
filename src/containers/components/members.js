@@ -82,7 +82,7 @@ function Members() {
                 </Form.Item>
             </div>
             <div className={`uline`}>-</div>
-            <Row>
+            <Row className={`membersui`}>
                 {/* <Col xl={6} lg={6} md={6} sm={12} xs={12}>
                     <Card className={`member_card`}>
                         <div className={`members_wrapper`}>

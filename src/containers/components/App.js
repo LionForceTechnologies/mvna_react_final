@@ -327,16 +327,16 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
       footer_address.push(<p>{forfootercontent.data[0].addressline2}</p>)
       footer_address.push(<p>{forfootercontent.data[0].mobile}</p>)    
     }
-    else{
-      footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
-      footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
-      footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
-    }
+    // else{
+    //   footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
+    //   footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
+    //   footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
+    // }
   }
 else{
-  footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
-  footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
-  footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
+  // footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
+  // footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
+  // footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
 }
 
 
@@ -566,9 +566,10 @@ else{
               <div className={`footer_content_inner_content`}>
                 <div className="footer_content_sub footer_content_sub-1">
                   <img className="footer_title_image" src="/images/MVNA_Logo_White.png" alt="footer_image"></img>
-                  {forfootercontent != '' ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
+                  {/* {forfootercontent != '' ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
      {forfootercontent != '' ? (<><p>{forfootercontent.data[0].addressline2}</p><br></br></>) : (<><p>Cedex. FRANCE,</p><br></br></>)}
-     {forfootercontent != '' ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)}
+     {forfootercontent != '' ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)} */}
+     {footer_address}
                 </div>
                 <div className="footer_content_sub footer_content_sub-2">
                   <div className="Quick_links">
