@@ -29,7 +29,11 @@ export class MapContainer extends Component {
 <Map google={this.props.google}
     style={{width: '100%', height: '100%', position: 'relative'}}
     className={'map'}
-    zoom={2}>
+    initialCenter={{
+      lat: 48.805750,
+      lng: 2.440800
+    }}
+    zoom={5}>
 {/* {this.props.alap.map((item)=>{
   return(<Marker
     name={'Dolores park'}
