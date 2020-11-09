@@ -1,16 +1,17 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {Layout, Popover} from "antd";
 import {Link} from "react-router-dom";
 
 import CustomScrollbars from "util/CustomScrollbars";
 import languageData from "./languageData";
 import {switchLanguage, toggleCollapsedSideNav} from "../../appRedux/actions/Setting";
+import {getmenusearch,getsubmenusearch,getlinksearch,getucreationsearch,getrolesearch,getmembersearch,getfilesearch,getrolepermissionsearch} from "../../appRedux/actions/Crud";
 import SearchBox from "components/SearchBox";
 import UserInfo from "components/UserInfo";
 import AppNotification from "components/AppNotification";
 import MailNotification from "components/MailNotification";
 import Auxiliary from "util/Auxiliary";
-
+import {useLocation,useHistory} from "react-router-dom";
 
 import {NAV_STYLE_DRAWER, NAV_STYLE_FIXED, NAV_STYLE_MINI_SIDEBAR, TAB_SIZE} from "../../constants/ThemeSetting";
 import {useDispatch, useSelector} from "react-redux";
@@ -21,9 +22,15 @@ const Topbar = () => {
 
   const {locale, width, navStyle} = useSelector(({settings}) => settings);
   const { navCollapsed} = useSelector(({common}) => common);
-  const {searchText, setSearchText} = useState('');
+  const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
-
+  const location = useLocation();
+  const history = useHistory();
+  useEffect(()=>{
+    history.listen((location, action) => {
+      setSearchText('')
+    })
+  })
   const languageMenu = () => (
     <CustomScrollbars className="gx-popover-lang-scroll">
       <ul className="gx-sub-popover">
@@ -40,6 +47,32 @@ const Topbar = () => {
 
   const updateSearchChatUser = (evt) => {
     setSearchText(evt.target.value);
+    if(location.pathname.toLowerCase() == '/role') {
+     dispatch(getrolesearch(evt.target.value))
+    }
+    if(location.pathname.toLowerCase() == '/creation') {
+     dispatch(getucreationsearch(evt.target.value))
+    }
+    if(location.pathname.toLowerCase() == '/rolepermission') {
+      dispatch(getrolepermissionsearch(evt.target.value))
+    }
+    if(location.pathname.toLowerCase() == '/admin') {
+     dispatch(getsubmenusearch(evt.target.value))
+     dispatch(getmenusearch(evt.target.value))
+    }
+    if(location.pathname.toLowerCase() == '/pagecreation') {
+      dispatch(getmenusearch(evt.target.value))
+    }
+    if(location.pathname.toLowerCase() == '/member') {
+     dispatch(getmembersearch(evt.target.value))
+    }
+    if(location.pathname.toLowerCase() == '/quicklinks') {
+     dispatch(getlinksearch())
+    }
+    if(location.pathname.toLowerCase() == '/fileupload') {
+     dispatch(getfilesearch(evt.target.value))
+    }
+
   };
   return (
     <Header>

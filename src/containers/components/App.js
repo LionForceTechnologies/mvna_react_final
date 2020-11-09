@@ -213,7 +213,7 @@ import Editor from "./editor";
 import InnerEditor from './innereditor';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getwebmenu,getlinkweb,getfooterweb } from "../../appRedux/actions/Webauth";
-import { Modal, Form, Input, Spin } from 'antd';
+import { Modal, Form, Input, Spin, AutoComplete } from 'antd';
 import { webSignIn, clearlogsuccess } from "../../appRedux/actions/Webauth";
 import SweetAlert from "react-bootstrap-sweetalert";
 // import "./ui_style.css";
@@ -350,6 +350,11 @@ else{
         // alert(webmenu[i].menu == 'Home')
         if (webmenu[i].sub_menus.length > 0) {
           let submenus = [];
+          if( webmenu[i].menu == 'Association'){
+            submenus.push(<NavDropdown.Item  href={`/user/`}>Annual Action Plan</NavDropdown.Item>)
+            submenus.push(<NavDropdown.Item  href={`/user/`}>MVNA management</NavDropdown.Item>)
+            submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
+          }
           for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
             if (webmenu[i].sub_menus[j].menu.toUpperCase() == 'MEMBERS') {
               submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
@@ -476,20 +481,81 @@ else{
      ]
      if((forlink.length > 0) && (forlink.length <= 3 )){
        for(let z=0;z<forlink.length;z++){
-        firstfoot[z] = <p>{forlink[z].name}</p>
-        secondfoot[z] = <p>{forlink[z].name}</p>
+        firstfoot[z] = <p><a href={forlink[z].link} style={{fontSize : '14px',color:'white'}}>{forlink[z].name}</a></p>
+        secondfoot[z] = <p><a href={forlink[z].link} style={{fontSize : '14px',color:'white'}}>{forlink[z].name}</a></p>
        }
      }else if(forlink.length > 0){
       firstfoot = []
       secondfoot = []
       for(let j=0;j<forlink.length;j++){
         if(j <= 2){
-          firstfoot.push(<p>{forlink[j].name}</p>)
+          firstfoot.push(<p><a href={forlink[j].link} style={{fontSize : '14px',color:'white'}}>{forlink[j].name}</a></p>)
         }
         if(j > 2 && j <= 5)
-        secondfoot.push(<p>{forlink[j].name}</p>)
+        secondfoot.push(<p><a href={forlink[j].link} style={{fontSize : '14px',color:'white'}}>{forlink[j].name}</a></p>)
       }
      }
+     function renderTitle(title) {
+      return (
+        <span>
+          {title}
+          <a
+            style={{float: 'right'}}
+            href="https://www.google.com/search?q=antd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >version 1.1
+          </a>
+        </span>
+      );
+    }
+     const Option = AutoComplete.Option;
+const OptGroup = AutoComplete.OptGroup;
+     const dataSource = [{
+      title: 'g-axon',
+      children: [{
+        title: 'AntDesign',
+        count: 10000,
+      }, {
+        title: 'AntDesign UI',
+        count: 10600,
+      }],
+    }, {
+      title: 'jumbo',
+      children: [{
+        title: 'jumbo UI',
+        count: 60100,
+      }, {
+        title: 'AntDesign',
+        count: 30010,
+      }],
+    }, {
+      title: 'React',
+      children: [{
+        title: 'AntDesign 2.0',
+        count: 100000,
+      }],
+    }];
+     const options = [
+      <Option disabled key="all" className="show-all">
+      <a
+        href="https://www.google.com/search?q=antd"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        version 1.2
+      </a>
+    </Option>,
+    <Option disabled key="all" className="show-all">
+    <a
+      href="https://www.google.com/search?q=antd"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      version 1.2
+    </a>
+  </Option>
+     ]
     components = (
       <div className={`blogpage`} style={beautify}>
 
@@ -509,12 +575,23 @@ else{
                                      <Nav.Link href="/">Member Login</Nav.Link> */}
               <Nav.Link onClick={loginfun} ><p className={`underline`}>Member Login</p></Nav.Link>
             </Nav>
+            {/* <AutoComplete
+            className="certain-category-search"
+            dropdownClassName="certain-category-search-dropdown"
+            dropdownMatchSelectWidth={false}
+            dropdownStyle={{width: 300}}
+            size="large"
+            style={{width: '100%'}}
+            dataSource={options}
+            optionLabelProp="value"
+            > */}
             <Search
         placeholder="search..."
         className={`search_box`}
         onSearch={value => console.log(value)}
         style={{width: '175px'}}
       />           
+      {/* </AutoComplete> */}
           </Navbar.Collapse>
         </Navbar>
         <Route exact path={`/user/members`} component={Members} />

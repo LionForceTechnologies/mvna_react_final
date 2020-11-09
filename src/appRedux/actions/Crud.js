@@ -1186,3 +1186,100 @@ export const cleardeletefile = (data) => {
 // ********twitter*****************
 
 // ********twitter*****************
+// ************search functions************
+export const getmenusearch = (data) => {
+
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/menu?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
+      dispatch({ type: 'menuadd', payload: res.data.data });
+    }).catch(function (error) {
+
+
+    })
+  }
+};
+
+export const getsubmenusearch = (data) => {
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/submenu?items_per_page=&current_page_no=&search=${data}`).then((res) => {
+      dispatch({ type: 'submenuadd', payload: res.data.data });
+    })
+  }
+};
+
+
+export const getlinksearch = (data) => {
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/quicklink?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
+      dispatch({
+        type: 'getlink',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+  }
+};
+
+export const getucreationsearch = (data) => {
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/user?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
+      dispatch({
+        type: 'getucreation',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+  }
+};
+export const getrolesearch = (data) => {
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/role?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
+      dispatch({
+        type: 'getrole',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+  }
+};
+export const getmembersearch = (data) => {
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/member?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
+      dispatch({
+        type: 'getmember',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+  }
+};
+export const getfilesearch = (data) => {
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/fileupload?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
+      dispatch({
+        type: 'getfiles',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+  }
+};
+export const getrolepermissionsearch = (data) => {
+  return (dispatch) => {
+    axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/rolepermission?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
+      dispatch({
+        type: 'getrolepermission',
+        payload: res.data.data
+      })
+    }).catch(function (error) {
+
+    });
+
+  }
+};
+// ************search functions************
