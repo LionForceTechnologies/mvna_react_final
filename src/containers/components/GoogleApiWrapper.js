@@ -2,29 +2,41 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import React, { Component } from "react";
 export class MapContainer extends Component {
   render() {
-    let points = [
-      { lat: 42.02, lng: -77.01 },
-      { lat: 42.03, lng: -77.02 },
-      { lat: 41.03, lng: -77.04 },
-      { lat: 42.05, lng: -77.02 }
-  ]
+  //   let points = [
+  //     { lat: 42.02, lng: -77.01 },
+  //     { lat: 42.03, lng: -77.02 },
+  //     { lat: 41.03, lng: -77.04 },
+  //     { lat: 42.05, lng: -77.02 }
+  // ]
   let bounds = new this.props.google.maps.LatLngBounds();
-  for (var i = 0; i < points.length; i++) {
-    bounds.extend(points[i]);
-  }
+  // for (var i = 0; i < points.length; i++) {
+  //   bounds.extend(points[i]);
+  // }
   // console.log('pointers',this.props.alap)
   const marker=[];
+  // let bounds = new this.props.google.maps.LatLngBounds();
+    let boundingpoints = [
+      { lat: 42.05, lng: -77.02 }
+  ]
   for(let j=0;j<this.props.alap.length;j++){
     let hang = this.props.alap[j]
     let points={
       lat : this.props.alap[j][0],
       lng : this.props.alap[j][1]
     }
+    let bpoints={
+      lat : Number(this.props.alap[j][0]),
+      lng : Number(this.props.alap[j][1])
+    }
+    boundingpoints.push(bpoints)
     marker.push(  <Marker
       name={'Dolores park'}
       position={points} /> )
   }
-  console.log(marker)
+  for (let i = 0; i < boundingpoints.length; i++) {
+    bounds.extend(boundingpoints[i]);
+  }
+  console.log('markers',boundingpoints)
     return (
 <Map google={this.props.google}
     style={{width: '100%', height: '100%', position: 'relative'}}
@@ -33,7 +45,9 @@ export class MapContainer extends Component {
       lat: 48.805750,
       lng: 2.440800
     }}
-    zoom={5}>
+    bounds={bounds}
+    // zoom={'auto'}
+    >
 {/* {this.props.alap.map((item)=>{
   return(<Marker
     name={'Dolores park'}
