@@ -227,6 +227,7 @@ function SubApp(props) {
   const [f_img_height, setf_img_height] = useState(100)
   const [footer_div, setfooter_div] = useState('45px')
   const [footer_content, setfooter_content] = useState(25)
+  
   const [mlogin, setmlogin] = useState(false)
   const [footer_content_inner_contents, setfooter_content_inner_contents] = useState(10)
   const [notation, setnotation] = useState('px')
@@ -235,6 +236,7 @@ function SubApp(props) {
   const [warning, setwarning] = useState(false)
   const [success, setsuccess] = useState(false)
   const [loader, setloader] = useState(0)
+  const [keysactive, setkeysactive] = useState('')
   const webmenu = useSelector(({ webauth }) => webauth.webmenu);
   const logsuccess = useSelector(({ webauth }) => webauth.logsuccess);
   const startlogin = useSelector(({ webauth }) => webauth.startlogin);
@@ -338,7 +340,22 @@ else{
   // footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
   // footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
 }
+useEffect(()=>{
+  if(webmenu){
+    for (let i = 0; i < webmenu.length; i++) {
+      if (webmenu[i].sub_menus.length > 0) {
+        for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
 
+
+
+        }
+      
+      }else{
+
+      }
+    }
+  }
+})
 
   if(webmenu){
     for (let i = 0; i < webmenu.length; i++) {
@@ -351,23 +368,36 @@ else{
         if (webmenu[i].sub_menus.length > 0) {
           let submenus = [];
           if( webmenu[i].menu == 'Association'){
-            submenus.push(<NavDropdown.Item  href={`/user/`}>Annual Action Plan</NavDropdown.Item>)
-            submenus.push(<NavDropdown.Item  href={`/user/`}>MVNA management</NavDropdown.Item>)
-            submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
+            // submenus.push(<NavDropdown.Item  href={`/user/`}>Annual Action Plan</NavDropdown.Item>)
           }
+          let subactclass = ''
           for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
             if (webmenu[i].sub_menus[j].menu.toUpperCase() == 'MEMBERS') {
               submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
             }
-            else {
+            else {              
               submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
+              if(webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase() == 'strategicplan'){
+                submenus.push(<NavDropdown.Item  href={`/user/`}>MVNA management</NavDropdown.Item>)
+                submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
+              }
+            }
+
+            if(locations == `/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}`){
+              subactclass = 'navactive'
             }
           }
-          menus.push(<NavDropdown title={`${webmenu[i].menu}`} id="basic-nav-dropdown">
+          menus.push(<NavDropdown className={subactclass} eventKey={locations} title={`${webmenu[i].menu}`} id="basic-nav-dropdown">
             {submenus}
           </NavDropdown>)
+          
         } else { 
-          menus.push(<Nav.Link onClick={permenu} data-name={webmenu[i].menu} href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
+          let actclass = ''
+          if(locations == `/user/${webmenu[i].menu.split(" ").join("")}`){
+            actclass = 'navactive'
+          }
+          menus.push(<Nav.Link eventKey={locations} className={actclass} onClick={permenu} data-name={webmenu[i].menu} href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
+          
         }
       }
     }
@@ -564,7 +594,7 @@ const OptGroup = AutoComplete.OptGroup;
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav activeKey={`${keysactive}`} className="mr-auto">
               {menus}
               {/* <Nav.Link href="/user/about">Assosiation</Nav.Link>
                                      <Nav.Link href="/">MVNA Grant</Nav.Link>
@@ -801,3 +831,4 @@ const OptGroup = AutoComplete.OptGroup;
 }
 
 export default SubApp;
+// #f4f5f6

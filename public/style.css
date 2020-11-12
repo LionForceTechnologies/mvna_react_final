@@ -287,3 +287,11 @@ flex-basis: 1% !important;
 }
 
 }
+.navactive{
+  text-align: center;
+  background-color: #f4f5f6;
+}
+.navactive .dropdown-toggle.nav-link{
+  text-align: center;
+  background-color: #f4f5f6;
+}

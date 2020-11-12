@@ -67,7 +67,7 @@ const SidebarContent = () => {
                 <span>Menu</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="Page Creation">
+            <Menu.Item key="/pagecreation">
               <Link to="/pagecreation">
               <i className="icon icon-card"/>
                 <span>Page Creation</span>

@@ -117,7 +117,7 @@ function Editor() {
             css: e.getCss()
           }
 
-          localStorage.setItem('renderer', JSON.stringify(res));
+          // localStorage.setItem('renderer', JSON.stringify(res));
           dispatch(putpage({
             gjs_styles : localStorage.getItem('gjs-styles'),
             gjs_css : localStorage.getItem('gjs-css'),
