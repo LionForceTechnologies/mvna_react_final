@@ -1188,7 +1188,7 @@ export const cleardeletefile = (data) => {
 // ********twitter*****************
 // ************search functions************
 export const getmenusearch = (data) => {
-
+// alert(data)
   return (dispatch) => {
     axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/menu?items_per_page=&current_page_no=&search=${data}&status_connection=1`).then((res) => {
       dispatch({ type: 'menuadd', payload: res.data.data });
