@@ -123,6 +123,7 @@ const SamplePage = (props) => {
           "parent_id": mainmenuid
         }
       ))
+      dispatch(getsubmenu())
     }
     else if(submenuid != ''){
       dispatch(submenupdate(
@@ -136,6 +137,7 @@ const SamplePage = (props) => {
           'id': submenuid[0].id
         }
       ))
+      dispatch(getsubmenu())
       setsub_edit(0)
       dispatch(clearsubmenu())
     }
