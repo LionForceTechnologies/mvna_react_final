@@ -306,7 +306,9 @@ color: black;
 }
 .about_members{
   width: 100%;
-  padding: 5px;
+  padding: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
   text-align: justify;
 }
 .about_members p:nth-child(1){
@@ -314,3 +316,17 @@ color: black;
   font-weight: bold;
   color: rgba(32, 75, 143, 1);
 }
+.certain-category-search .ant-input-search{
+margin-bottom: 0px;
+}
+.certain-category-search .ant-input-search.ant-input-affix-wrapper{
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  height:31px;
+  border: 1px solid black;
+}
+.certain-category-search .ant-input-search-icon::before{
+  border-left: 0px;
+    }

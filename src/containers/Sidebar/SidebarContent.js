@@ -49,25 +49,25 @@ const SidebarContent = () => {
                 <span>Role</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="User Creation">
+            <Menu.Item key="creation">
               <Link to="/creation">
               <i className="icon icon-crypto"/>
                 <span>User Creation</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="Role permission">
+            <Menu.Item key="rolepermission">
               <Link to="/rolepermission">
               <i className="icon icon-crm"/>
                 <span>Role permission</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="Menu">
+            <Menu.Item key="admin">
               <Link to="/admin">
               <i className="icon icon-apps"/>
                 <span>Menu</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="/pagecreation">
+            <Menu.Item key="pagecreation">
               <Link to="/pagecreation">
               <i className="icon icon-card"/>
                 <span>Page Creation</span>

@@ -237,6 +237,7 @@ function SubApp(props) {
   const [success, setsuccess] = useState(false)
   const [loader, setloader] = useState(0)
   const [keysactive, setkeysactive] = useState('')
+  const [searchbox,setsearchbox] = useState(0)
   const webmenu = useSelector(({ webauth }) => webauth.webmenu);
   const logsuccess = useSelector(({ webauth }) => webauth.logsuccess);
   const startlogin = useSelector(({ webauth }) => webauth.startlogin);
@@ -319,6 +320,19 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
   function loginfun() {
     setmlogin(true)
   }
+  // ********autocomplete********
+  useEffect(()=>{
+    if(searchbox == 0){
+      if(document.getElementsByClassName('certain-category-search'))
+      {
+        if(document.getElementsByClassName('certain-category-search').length > 0){
+          document.getElementsByClassName('certain-category-search')[0].style.width = 'auto'
+          setsearchbox(1)
+        }
+      }
+    }
+  })
+  // ********autocomplete********
   let menus = [];
   let nbrand = 0;
   let ref;  
@@ -379,7 +393,7 @@ useEffect(()=>{
               submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
               if(webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase() == 'strategicplan'){
                 submenus.push(<NavDropdown.Item  href={`/user/`}>MVNA management</NavDropdown.Item>)
-                submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
+                // submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
               }
             }
 
@@ -576,7 +590,7 @@ const OptGroup = AutoComplete.OptGroup;
         version 1.2
       </a>
     </Option>,
-    <Option disabled key="all" className="show-all">
+    <Option disabled key="all2" className="show-all">
     <a
       href="https://www.google.com/search?q=antd"
       target="_blank"
@@ -619,6 +633,7 @@ const OptGroup = AutoComplete.OptGroup;
         placeholder="search..."
         className={`search_box`}
         onSearch={value => console.log(value)}
+        onKeyUp={e => console.log(e.target.value)}
         style={{width: '175px'}}
       />           
       {/* </AutoComplete> */}
