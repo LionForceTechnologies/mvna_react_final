@@ -134,6 +134,10 @@ border-left: 0px;
     resize: vertical;
     overflow: auto;
   } */
+#itqtl
+{
+  height : auto !important;
+}  
   @media  (max-width: 480px) {
     #ihd3cg{
       min-height: 130px !important;
@@ -158,6 +162,9 @@ border-left: 0px;
     .gjs-row.home_slider_container{
       height : auto !important;
     }
+    #i9euk{
+      height: auto;
+    }
   }
   @media only screen and (max-width: 992px) { 
     #it22{
@@ -180,6 +187,75 @@ border-left: 0px;
     }
     
   }
+
+
+  @media only screen and (max-width: 730px) { 
+  .gjs-lory-slides{
+    height : 130px !important;
+  }
+
+}
+@media only screen and (max-width: 880px) { 
+.row.homecontainer{
+  flex-direction: column;
+}
+}
+@media only screen and (min-width: 601px) and (max-width: 700px){ 
+.gjs-row.home_slider_dependent{
+flex-direction: column;
+}
+#iwp7m.gjs-row.home_slider_container{
+  height : 200px !important;
+
+}
+#ic03jk{
+  height : 200px !important;
+}
+#ihd3cg{
+  height : 200px !important;
+}
+}
+@media only screen and (min-width: 601px) and (max-width: 880px){ 
+  .gjs-row.home_slider_container{
+    height: 50% !important;
+  }
+  #i2mwj{
+    position: relative;
+  }
+  #igdl2{
+    position: relative;
+  }
+  #ipwly{
+    position: relative;
+  }
+  #ibpj1{
+    flex-direction: column;
+  }
+  #ijfhr{
+    flex-direction: column;
+  }
+  #i9epv{
+    flex-direction: column;
+  }
+  #iimquy{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  #imuvs6{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  #i25s4e{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  #i9euk{
+    height : 100%;
+  }
+  }
   @media only screen and (max-width: 800px) { 
     
     #inwj{
@@ -189,7 +265,6 @@ border-left: 0px;
     #it22{
       height : 100% !important;
     }
-    
   }
   @media only screen and (max-width: 600px) {
     #it22{
@@ -202,6 +277,9 @@ border-left: 0px;
     }
     .gjs-row.home_slider_container{
       height : auto !important;
+    }
+    #i9euk{
+      height: auto;
     }
   } 
  .ant-spin.ant-spin-spinning.geditor .ant-spin-dot.ant-spin-dot-spin{
