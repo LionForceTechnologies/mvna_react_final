@@ -304,12 +304,39 @@ top : 96%;
   margin-left: unset;
 }
 @media only screen and (max-width: 480px) {
-  /* .cell.homeinnercontainer{
-    margin-left : 10px;
+  .gjs-row.home_slider_dependent #iehx5{
+    max-width : 88%;
   }
-  .cell.homeinnercontainer + div{
-    margin-left:19px;
-  } */
+  .gjs-row.home_slider_dependent #i9i7c{
+    max-width: 18%;
+  }
+  .gjs-row.home_slider_dependent #i3t1b{
+    margin-top: 0px;
+  }
+  .gjs-row.home_slider_dependent #ijfhr{
+    padding-top: 0px;
+  }
+  .gjs-row.home_slider_dependent #iehkg{
+    padding-top: 0px;
+  }
+  .gjs-row.home_slider_dependent #iwcu1{
+    max-width: 19%;
+  }
+  .gjs-row.home_slider_dependent #io0sg{
+    margin-top: 0px;
+  }
+  .gjs-row.home_slider_dependent #ip8xh{
+    padding-top: 0px;
+  }
+  .gjs-row.home_slider_dependent #ifof9{
+    max-width: 18%;
+  }
+  .gjs-row.home_slider_dependent #in70r{
+    padding-top: 0px;
+  }
+  .gjs-row.home_slider_dependent #isumo{
+    margin-top : 0px;
+  }
 }
 @media only screen and (max-width: 740px) {
 #iwcu1{
@@ -365,14 +392,31 @@ flex-basis: 1% !important;
 }
 
 }
-.navactive{
+/* .navactive{
   text-align: center;
   background-color: #f4f5f6;
+} */
+@media only screen and (min-width: 900px) {
+  .navactive .dropdown-toggle.nav-link{
+    text-align: center;
+    background-color: #f4f5f6;
+  }
+  .navactive{
+    text-align: center;
+    background-color: #f4f5f6;
+  }
 }
-.navactive .dropdown-toggle.nav-link{
-  text-align: center;
-  background-color: #f4f5f6;
+@media only screen and (max-width: 800px) {
+  .mvna_navbar.navbar-light .navbar-nav .navactive .dropdown-toggle.nav-link{
+    text-align: inherit;
+    color: blue;
+  }
+  .mvna_navbar.navbar-light .navbar-nav .navactive{
+    text-align: inherit;
+    color: blue;
+  }
 }
+
 .blogpage .dropdown-item.active, .blogpage .dropdown-item:active{
 background-color: transparent;
 color: black;
@@ -408,3 +452,17 @@ margin-bottom: 0px;
 .certain-category-search .ant-input-search-icon::before{
   border-left: 0px;
     }
+.show_output .flex-desc{
+  margin-bottom: 0px;
+}    
+#ivawxy{
+  height : 150px !important;
+}
+#ingqvk{
+  height : 150px !important;
+}
+@media only screen and (max-width: 480px) {
+#iop8ug{
+  height: 198px !important;
+}
+}

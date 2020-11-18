@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { createGlobalStyle } from "styled-components";
-import { Link, useLocation, BrowserRouter as Router } from "react-router-dom";
+import { Redirect, Link, useLocation, BrowserRouter as Router,useHistory } from "react-router-dom";
 import { getwebpage, gettwitter } from "../../appRedux/actions/Webauth";
 import "./demo.css";
 function Web() {
@@ -9,8 +9,7 @@ function Web() {
     const [start, setstart] = useState(0);
     const [check, setcheck] = useState(0);
     const [pending, setpending] = useState(0);
-    const [page, setpage] = useState(<div className={`show_output`}>
-    </div>)
+    const [page, setpage] = useState(<div className={`show_output`}> </div>)
     const dispatch = useDispatch();
     function useQuery() {
         return new URLSearchParams(useLocation().search);
@@ -19,11 +18,16 @@ function Web() {
     const red_data = useSelector(({ webauth }) => webauth.seteditor);
     const geta_page = useSelector(({ webauth }) => webauth.get_webpage);
     const gettwitters = useSelector(({ webauth }) => webauth.gettwitters);
+    let history = useHistory();
     useEffect(() => {
         if (geta_page.length > 0) {
             if (start == 0) {
                 if (geta_page.length > 0) {
                     const Mystyles = createGlobalStyle`${geta_page[0].web_css}`
+                    if(geta_page[0].web_html.length == 0){
+                        history.push('/user');
+                        return;
+                    }
                     setpage(
                         <div className={`show_output`}>
                             <Mystyles />

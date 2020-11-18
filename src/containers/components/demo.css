@@ -105,7 +105,8 @@
         padding: 0;
     }
     .Quick_links_headedr_parent{
-        text-align: center;
+        /* text-align: center; */
+        margin-bottom: 10px;
     }
     .Quick_links p.Quick_links_headedr {
         font-size: 18px;
@@ -121,7 +122,10 @@
         margin-left : 25%;
     }
     .footer_content_sub p{
-        text-align: center;
+        /* text-align: center; */
+    }
+    .footer_content_sub-1 p{
+        margin-left: 10px;
     }
   }
 .footer_title_image{
