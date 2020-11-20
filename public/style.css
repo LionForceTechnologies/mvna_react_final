@@ -647,6 +647,15 @@ position: relative;
   .ant-input-search.search_box{
     margin-top : 0.70rem;
   }
+  .show_output #iq383{
+    height : 177px;
+  }
+  .show_output #ixp4b{
+    height : 177px;
+  }
+  .show_output .gjs-row.home_slider_container{
+    height : 177px !important;
+  }
 }
 .show_output #ib4guj{
   padding-top: 0px;
