@@ -61,10 +61,10 @@ margin-left: 13px;
 .mapwrapper{
   height : 271px;
 }
-/* .member_logo_image{
-  width: 100%;
-  height: 20%;
-} */
+.member_logo_image{
+  width: '194px';
+  height: '78px'
+}
 .parent_member{
   text-align: center;
   margin-bottom: 5px;
@@ -337,6 +337,98 @@ top : 96%;
   .gjs-row.home_slider_dependent #isumo{
     margin-top : 0px;
   }
+  .show_output #ioe5h{
+    width : 100%
+  }
+  .show_output #i231b{
+    margin-bottom: 0px;
+  }
+  .show_output #i1tvm{
+    height: 100%;
+  }
+  .show_output #ioe5h{
+    height: 100%;
+  }
+  .show_output #i3iuv{
+    font-size: unset;
+    padding-left: 10px;
+  }
+  .show_output #ij5tfj{
+    padding-top: 0px;
+  }
+  .show_output #i5w8f8{
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .show_output #ifruti{
+    padding-top: 0;
+  }
+  .show_output #ioyh7i{
+    padding-right: 10px;
+  }
+  .show_output #iza9cd{
+    width: 100%;
+  }
+  .show_output #ivfhp3{
+    width: 100%;
+  }
+  .show_output #i3xhhm{
+    height : 100%;
+  }
+  .show_output #ivfhp3{
+    height : 100%;
+  }
+  .show_output #il2zci{
+    padding-top : 0;
+  }
+  .show_output #ij3gi2{
+    padding-top : 0;
+  }
+  .show_output #ijylni{
+    width: 100%;
+  }
+  .show_output #iwsctn{
+    width : 100%;
+  }
+  .show_output #iuhrq1{
+    width : 100%;
+  }
+  .show_output #il6g1i{
+    height:100%;
+  }
+  .show_output #i0d1{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+  .show_output #ifkh{
+    width: 100%;
+    max-width: 100%;
+  }
+  .show_output #iz88-2,.show_output #iidn,.show_output #imlz88,.show_output #iyur66{
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 10px;    
+  }
+  .show_output #igl4ou,.show_output #iml7vq,.show_output #icuece,.show_output #i96537{
+    margin-top : 0;
+    margin-left : 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  .show_output #ixnwh,.show_output #ivk5u{
+    max-width: 100%;
+    width : 98%;
+  }
+  .show_output #i9jbkm,.show_output #iebyuo,.show_output #ixz6u,.show_output #ioqc4n,.show_output #iz74k,.show_output #iyrrfz,.show_output #izvi6g,.show_output #ia8zjh,.show_output #id7o96,.show_output #ixgk8p,.show_output #iym2b1,.show_output #i7n347,.show_output #iwyukd,.show_output #iwlxp5,.show_output #ia2oo5,.show_output #ikawv2,.show_output #i5cez2,.show_output #ijaxrl,.show_output #i7idla,.show_output #itabhl,.show_output #i1yv1g{
+    width : 100%;
+    max-width: 100%;
+  }
+  .show_output #ikeo{
+    width : 100%;
+    max-width: 100%;
+  }
 }
 @media only screen and (max-width: 740px) {
 #iwcu1{
@@ -456,7 +548,7 @@ margin-bottom: 0px;
   margin-bottom: 0px;
 }    
 #ivawxy{
-  height : 150px !important;
+  /* height : 150px !important; */
 }
 #ingqvk{
   height : 150px !important;
@@ -484,5 +576,17 @@ position: relative;
 .show_output #is1mx8{
   height : 100%;
 }
-
+#ivawxy.card.quick1{
+  height: 120px !important;
+}
+.member_logo_image{
+  width: 100px;
+  height: 78px;
+}
+}
+@media only screen and (max-width: 480px) {
+  .member_logo_image{
+    width: 100px;
+    height: 78px;
+  }
 }
