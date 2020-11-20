@@ -6,7 +6,8 @@ const INIT_STATE = {
     webmenu : [],
     seteditor : '',
     get_webpage : '',
-    gettwitters : []
+    gettwitters : [],
+    getglobelsearch : []
 };
 export default (state = INIT_STATE, action) => {
     switch (action.type) {
@@ -58,6 +59,13 @@ export default (state = INIT_STATE, action) => {
               gettwitters : action.payload
             }
           }
+          case 'getglobelsearch' : {
+            return {
+              ...state,
+              getglobelsearch : action.payload
+            }
+          }
+          
         default:
             return state;
     }

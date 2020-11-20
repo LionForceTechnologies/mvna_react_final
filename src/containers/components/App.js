@@ -212,7 +212,7 @@ import Members from "./members"
 import Editor from "./editor";
 import InnerEditor from './innereditor';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getwebmenu,getlinkweb,getfooterweb } from "../../appRedux/actions/Webauth";
+import { getwebmenu,getlinkweb,getfooterweb,globelsearch } from "../../appRedux/actions/Webauth";
 import { Modal, Form, Input, Spin, AutoComplete } from 'antd';
 import { webSignIn, clearlogsuccess } from "../../appRedux/actions/Webauth";
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -243,6 +243,7 @@ function SubApp(props) {
   const startlogin = useSelector(({ webauth }) => webauth.startlogin);
   const forlink = useSelector(({ webauth }) => webauth. getlinksweb);
   const forfootercontent = useSelector(({ webauth }) => webauth.getfooterwebdata);
+  const getglobelsearch = useSelector(({ webauth }) => webauth.getglobelsearch);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
   const Search = Input.Search;
@@ -370,7 +371,10 @@ useEffect(()=>{
     }
   }
 })
-
+function forsearch(e){
+  
+  dispatch(globelsearch(e.target.value));
+}
   if(webmenu){
     for (let i = 0; i < webmenu.length; i++) {
       if (webmenu[i].menu.toUpperCase() == 'HOME') {
@@ -553,6 +557,12 @@ useEffect(()=>{
         </span>
       );
     }
+    if(getglobelsearch.length > 0){      
+      for(let i=0;i<getglobelsearch.length;i++)
+      {
+        console.log(getglobelsearch)
+      }
+    }
      const Option = AutoComplete.Option;
 const OptGroup = AutoComplete.OptGroup;
      const dataSource = [{
@@ -633,9 +643,9 @@ const OptGroup = AutoComplete.OptGroup;
         placeholder="search..."
         className={`search_box`}
         onSearch={value => console.log(value)}
-        onKeyUp={e => console.log(e.target.value)}
+        onKeyUp={forsearch}
         style={{width: '175px'}}
-      />           
+      />            
       {/* </AutoComplete> */}
           </Navbar.Collapse>
         </Navbar>
