@@ -644,6 +644,9 @@ position: relative;
     padding-top: 0px;
     padding-left: 5px;
   }
+  .ant-input-search.search_box{
+    margin-top : 0.70rem;
+  }
 }
 .show_output #ib4guj{
   padding-top: 0px;
