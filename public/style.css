@@ -219,6 +219,15 @@ flex-direction: column;
   .gjs-row.home_slider_container{
     height: 50% !important;
   }
+  .show_output #ibpj1{
+    margin-bottom: 15px;
+  }
+  .show_output #ijfhr{
+    margin-bottom: 15px;
+  }
+  .show_output #i9epv{
+    margin-bottom: 15px;
+  }
   #i2mwj{
     position: relative;
   }
@@ -245,12 +254,12 @@ flex-direction: column;
   #imuvs6{
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 7px;
   }
   #i25s4e{
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 7px;
   }
   #i9euk{
     height : 100%;
@@ -305,7 +314,7 @@ top : 96%;
 }
 @media only screen and (max-width: 480px) {
   .gjs-row.home_slider_dependent #iehx5{
-    max-width : 88%;
+    max-width : 80%;
   }
   .gjs-row.home_slider_dependent #i9i7c{
     max-width: 18%;
@@ -429,20 +438,47 @@ top : 96%;
     width : 100%;
     max-width: 100%;
   }
+  .show_output #imuvs6{
+    margin-bottom: 17px;
+  }
+  .show_output #i25s4e{
+    margin-bottom: 17px;
+  }
+  #ivawxy{
+    height : 130px !important;
+  }
+ .show_output #ingqvk{
+    height : auto !important;
+  }
 }
-@media only screen and (max-width: 740px) {
+@media only screen and (max-width: 740px) and (min-width: 601px) {
 #iwcu1{
-flex-basis: 1% !important;
+flex-basis: 0 !important;
 
 }
 #if7jb{
-  flex-basis: 65%;
+  flex-basis: 84%;
 }
-#i9i7c{
-  flex-basis: 10%;
+.show_output #i9i7c{
+  flex-basis: 0;
 }
 #iehx5{
-  flex-basis: 78%;
+  flex-basis: 85%;
+}
+.show_output #ifof9{
+  flex-basis: 0;
+}
+#ivpnv{
+  flex-basis: 85%;
+}
+.show_output #ip8xh{
+  padding-top: 17px;
+}
+.show_output #iehkg{
+  padding-top: 17px;
+}
+.show_output #in70r{
+  padding-top: 17px;
 }
 }
 @media only screen and (max-width: 800px) {
@@ -551,11 +587,17 @@ margin-bottom: 0px;
   /* height : 150px !important; */
 }
 #ingqvk{
-  height : 150px !important;
+  height : auto !important;
+  padding-bottom: 15px;
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+.show_output #iwoc69{
+width: 80%;
+}
 }
 @media only screen and (max-width: 480px) {
 #iop8ug{
-  height: 198px !important;
+  height: auto !important;
 }
 .show_output #is1mx8{
   width : 100%;
@@ -589,4 +631,13 @@ position: relative;
     width: 100px;
     height: 78px;
   }
+  .show_output #i37gc1{
+    padding-top: 0px;  
+  }
+}
+.show_output #ib4guj{
+  padding-top: 0px;
+}
+.show_output #iyfehg{
+  padding-top: 0px;
 }
