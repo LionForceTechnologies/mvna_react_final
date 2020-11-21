@@ -35,7 +35,6 @@ const MainApp = () => {
 
   const {width, navStyle} = useSelector(({settings}) => settings);
   const match = useRouteMatch();
- 
   const getContainerClass = (navStyle) => {
     switch (navStyle) {
       case NAV_STYLE_DARK_HORIZONTAL:
@@ -101,7 +100,7 @@ const MainApp = () => {
   };
   let locations = useLocation().pathname;
   let components;
-  if(locations.indexOf('/user/admin') !== -1){
+  if(locations.indexOf('/admin/editor') !== -1){
 components = (
 
   <App match={match}/>

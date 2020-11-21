@@ -145,7 +145,7 @@ function Editor() {
 useEffect(()=>{
   if(document.getElementsByTagName('iframe')){
     if(document.getElementsByTagName('iframe').length > 0){
-      if(location.pathname.indexOf('user/admin/Home') != -1){
+      if(location.pathname.indexOf('/Home') != -1){
         let iframe = document.getElementsByTagName('iframe')[0];
         let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
         

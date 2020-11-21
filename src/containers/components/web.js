@@ -25,7 +25,8 @@ function Web() {
                 if (geta_page.length > 0) {
                     const Mystyles = createGlobalStyle`${geta_page[0].web_css}`
                     if(geta_page[0].web_html.length == 0){
-                        history.push('/user');
+
+                        history.push('/');
                         return;
                     }
                     setpage(
@@ -42,12 +43,12 @@ function Web() {
     })
     useEffect(() => {
         let locations = window.location.pathname;
-        if (((locations == '/user') || (locations == '/user/')) && (window.screen.width < 601) || ((locations == '/user') || (locations == '/user/')) && (window.screen.width < 992)) {
+        if (((locations == '/') || (locations == '/')) && (window.screen.width < 601) || ((locations == '/') || (locations == '/')) && (window.screen.width < 992)) {
             if (document.getElementsByClassName('demo').length > 0) {
                 document.getElementsByClassName('demo')[0].style.overflow = 'auto'
             }
         }
-        if (((locations == '/user') || (locations == '/user/')) && (window.screen.width > 992)) {
+        if (((locations == '/') || (locations == '/')) && (window.screen.width > 992)) {
             let nav_h = document.getElementsByClassName('navbar')[0].offsetHeight;
             let total_h = document.getElementsByClassName('blogpage')[0].offsetHeight - nav_h + 15;
             // let height_calc = total_h - nav_h - 22;
@@ -65,7 +66,7 @@ function Web() {
 
         }
         else {
-            if (((locations == '/user') || (locations == '/user/')) && (window.screen.width > 992)) {
+            if (((locations == '/') || (locations == '/')) && (window.screen.width > 992)) {
                 document.getElementsByClassName('show_output')[0].style.flex = 'auto';
             } else {
                 // document.getElementsByClassName('show_output')[0].style.flex = 'auto';
@@ -83,7 +84,7 @@ function Web() {
     }
     useEffect(() => {
         
-            if (window.location.pathname != '/user' || window.location.pathname != '/user/') {
+            if (window.location.pathname != '/' || window.location.pathname != '/') {
                 if(document.getElementsByClassName('demo')){
                     if(document.getElementsByClassName('demo').length > 0){
                         document.getElementsByClassName('demo')[0].style.lineHeight = '21px';
@@ -95,8 +96,11 @@ function Web() {
     })
     useEffect(() => {
         if (pending == 0) {
-            if (window.location.pathname == '/user' || window.location.pathname == '/user/') {
+            if (window.location.pathname == '/' || window.location.pathname == '/') {
                 dispatch(getwebpage(query.get("")))
+            }
+            if(query.get("id") == null){
+                history.push('/')
             }
             dispatch(getwebpage(query.get("id")))
             dispatch(gettwitter())
@@ -107,7 +111,7 @@ function Web() {
     function createMarkup(drag) { return { __html: drag }; };
     useEffect(() => {
         let locations = window.location.pathname;
-        if (((locations == '/user') || (locations == '/user/'))) {
+        if (((locations == '/') || (locations == '/'))) {
 
             if (window.screen.width > 992) {
                 if (document.getElementsByClassName('home_slider_dependent')) {

@@ -223,7 +223,9 @@ import SweetAlert from "react-bootstrap-sweetalert";
 //     Route,
 //     Link
 // } from "react-router-dom";
+
 function SubApp(props) {
+  
   const [f_img_height, setf_img_height] = useState(100)
   const [footer_div, setfooter_div] = useState('45px')
   const [footer_content, setfooter_content] = useState(25)
@@ -236,6 +238,7 @@ function SubApp(props) {
   const [warning, setwarning] = useState(false)
   const [success, setsuccess] = useState(false)
   const [loader, setloader] = useState(0)
+  const [needbox,setneedbox] = useState(0)
   const [keysactive, setkeysactive] = useState('')
   const [searchbox,setsearchbox] = useState(0)
   const webmenu = useSelector(({ webauth }) => webauth.webmenu);
@@ -263,6 +266,7 @@ function SubApp(props) {
     paddingTop: `${footer_content_inner_contents}px`
   }
   // **************loader functions****************
+  
   useEffect(() => {
     if (startlogin == 'start') {
       setloader(1)
@@ -379,7 +383,7 @@ function forsearch(e){
     for (let i = 0; i < webmenu.length; i++) {
       if (webmenu[i].menu.toUpperCase() == 'HOME') {
         nbrand = 1
-        ref = '/user'
+        ref = '/'
       }
       if (webmenu[i].menu.toUpperCase() != 'HOME') {
         // alert(webmenu[i].menu == 'Home')
@@ -391,17 +395,17 @@ function forsearch(e){
           let subactclass = ''
           for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
             if (webmenu[i].sub_menus[j].menu.toUpperCase() == 'MEMBERS') {
-              submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
+              submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
             }
             else {              
-              submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
+              submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
               if(webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase() == 'strategicplan'){
-                submenus.push(<NavDropdown.Item  href={`/user/`}>MVNA management</NavDropdown.Item>)
+                submenus.push(<NavDropdown.Item  href={`/`}>MVNA management</NavDropdown.Item>)
                 // submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
               }
             }
 
-            if(locations == `/user/${webmenu[i].sub_menus[j].menu.split(" ").join("")}`){
+            if(locations == `/${webmenu[i].sub_menus[j].menu.split(" ").join("")}`){
               subactclass = 'navactive'
             }
           }
@@ -411,10 +415,10 @@ function forsearch(e){
           
         } else { 
           let actclass = ''
-          if(locations == `/user/${webmenu[i].menu.split(" ").join("")}`){
+          if(locations == `/${webmenu[i].menu.split(" ").join("")}`){
             actclass = 'navactive'
           }
-          menus.push(<Nav.Link eventKey={locations} className={actclass} onClick={permenu} data-name={webmenu[i].menu} href={`/user/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
+          menus.push(<Nav.Link eventKey={locations} className={actclass} onClick={permenu} data-name={webmenu[i].menu} href={`/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
           
         }
       }
@@ -455,20 +459,13 @@ function forsearch(e){
     }
 
   }
-  if (locations.indexOf('user/admin/innerpage') !== -1) {
-    components = (<Route exact path="/user/admin/innerpage" component={InnerEditor} />)
-  }
-
-  else if (locations.indexOf('user/admin') !== -1) {
-    components = (<Route exact path={locations} component={Editor} />)
-
-  }
-
-  else if (locations.indexOf('user') !== -1) {
+  
+if (locations.indexOf('admin') < 0) {
+  
     let beautify = {
       height: '100%', position: 'relative', overflow: 'auto', overflowX: 'hidden'
     }
-    if (((locations == '/user') || (locations == '/user/')) && (window.screen.width > 992)) {
+    if (((locations == '/') || (locations == '/')) && (window.screen.width > 992)) {
       beautify = {
         height: '100%', position: 'relative', overflowX: 'hidden',overflow:'hidden'
       }
@@ -557,12 +554,7 @@ function forsearch(e){
         </span>
       );
     }
-    if(getglobelsearch.length > 0){      
-      for(let i=0;i<getglobelsearch.length;i++)
-      {
-        console.log(getglobelsearch)
-      }
-    }
+
      const Option = AutoComplete.Option;
 const OptGroup = AutoComplete.OptGroup;
      const dataSource = [{
@@ -610,7 +602,13 @@ const OptGroup = AutoComplete.OptGroup;
     </a>
   </Option>
      ]
-    components = (
+     if(getglobelsearch.length > 0){      
+      for(let i=0;i<getglobelsearch.length;i++)
+      {
+        console.log(getglobelsearch)
+      }
+    }
+     components = (
       <div className={`blogpage`} style={beautify}>
 
         <Navbar className={`mvna_navbar`} bg="light" expand="lg">
@@ -629,16 +627,16 @@ const OptGroup = AutoComplete.OptGroup;
                                      <Nav.Link href="/">Member Login</Nav.Link> */}
               <Nav.Link onClick={loginfun} ><p className={`underline`}>Member Login</p></Nav.Link>
             </Nav>
-            {/* <AutoComplete
+{needbox == 1 ?  (
+              <AutoComplete
             className="certain-category-search"
             dropdownClassName="certain-category-search-dropdown"
             dropdownMatchSelectWidth={false}
             dropdownStyle={{width: 300}}
             size="large"
             style={{width: '100%'}}
-            dataSource={options}
             optionLabelProp="value"
-            > */}
+            >
             <Search
         placeholder="search..."
         className={`search_box`}
@@ -646,12 +644,23 @@ const OptGroup = AutoComplete.OptGroup;
         onKeyUp={forsearch}
         style={{width: '175px'}}
       />            
-      {/* </AutoComplete> */}
+      </AutoComplete>
+      ) : (
+                    <Search
+        placeholder="search..."
+        className={`search_box`}
+        onSearch={value => console.log(value)}
+        onKeyUp={forsearch}
+        style={{width: '175px'}}
+      />
+                  )   }
+            
+
           </Navbar.Collapse>
         </Navbar>
-        <Route exact path={`/user/members`} component={Members} />
-        { locations.indexOf('user/members') < 0 ? <Route exact path={locations} component={Web} /> : ''  } 
-        {((locations == '/user') ||  (locations == '/user/')) && (window.screen.width > 992)  ? (
+        <Route exact path={`/members`} component={Members} />
+        { locations.indexOf('/members') < 0 ? <Route exact path={locations} component={Web} /> : ''  } 
+        {((locations == '/') ||  (locations == '/')) && (window.screen.width > 992)  ? (
           <div className="footer_container_home" style={f_whole_footer}>
             <div className="footer_starter_home">
               <img

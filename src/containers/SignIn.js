@@ -23,7 +23,7 @@ const SignIn = (props) => {
 
   useEffect(() => {
     if (token !== null) {
-      props.history.push('/');
+      props.history.push('/admin/menu');
     }
   }, [token, props.history]);
 

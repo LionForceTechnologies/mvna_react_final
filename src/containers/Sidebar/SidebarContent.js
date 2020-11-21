@@ -44,53 +44,53 @@ const SidebarContent = () => {
             theme={themeType === THEME_TYPE_LITE ? 'lite' : 'dark'}
             mode="inline">
 
-            <Menu.Item key="role">
-              <Link to="/role"><i className="icon icon-widgets"/>
+            <Menu.Item key="admin/role">
+              <Link to="/admin/role"><i className="icon icon-widgets"/>
                 <span>Role</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="creation">
-              <Link to="/creation">
+            <Menu.Item key="admin/creation">
+              <Link to="/admin/creation">
               <i className="icon icon-crypto"/>
                 <span>User Creation</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="rolepermission">
-              <Link to="/rolepermission">
+            <Menu.Item key="admin/rolepermission">
+              <Link to="/admin/rolepermission">
               <i className="icon icon-crm"/>
                 <span>Role permission</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="admin">
-              <Link to="/admin">
+            <Menu.Item key="admin/menu">
+              <Link to="/admin/menu">
               <i className="icon icon-apps"/>
                 <span>Menu</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="pagecreation">
-              <Link to="/pagecreation">
+            <Menu.Item key="admin/pagecreation">
+              <Link to="/admin/pagecreation">
               <i className="icon icon-card"/>
                 <span>Page Creation</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="Member">
-              <Link to="/member"><i className="icon icon-email"/>
+            <Menu.Item key="admin/member">
+              <Link to="/admin/member"><i className="icon icon-email"/>
                 <span>Member</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="footer">
-              <Link to="/footer">
+            <Menu.Item key="admin/footer">
+              <Link to="/admin/footer">
                 <i className="icon icon-check-square-o"/>
                 <span>Footer</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="quicklinks">
-              <Link to="/quicklinks"><i className="icon icon-contacts"/>
+            <Menu.Item key="admin/quicklinks">
+              <Link to="/admin/quicklinks"><i className="icon icon-contacts"/>
                 <span>Quick Links</span>
               </Link>              
             </Menu.Item>
-            <Menu.Item key="fileupload">
-              <Link to="/fileupload"><i className="icon icon-chat-bubble -flex-column-reverse"/>
+            <Menu.Item key="admin/fileupload">
+              <Link to="/admin/fileupload"><i className="icon icon-chat-bubble -flex-column-reverse"/>
                 <span>File Upload</span>
               </Link>              
             </Menu.Item>            

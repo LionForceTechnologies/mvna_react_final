@@ -1,4 +1,4 @@
-import React, {memo, useEffect} from "react";
+import React, {memo, useEffect,useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import URLSearchParams from 'url-search-params'
 import {Redirect, Route, Switch, useHistory, useLocation, useRouteMatch} from "react-router-dom";
@@ -52,7 +52,7 @@ const App = () => {
   const location = useLocation();
   const history = useHistory();
   const match = useRouteMatch();
-  
+  const [count,setcount] = useState(0)
 
   useEffect(() => {
     let link = document.createElement('link');
@@ -114,26 +114,35 @@ const App = () => {
 
   useEffect(() => {
 
-    if(localStorage.getItem('signout') == 'success'  || (localStorage.getItem('signout') == 'success' && (location.pathname.indexOf('/user/admin') != -1))){
+    // if(localStorage.getItem('signout') == 'success'  || (localStorage.getItem('signout') == 'success' && (location.pathname.indexOf('/user/admin') != -1))){
       
-      if(location.pathname.indexOf('/user/admin') != -1){
-        history.push('/signin');
-        // dispatch(clearsignout())
-        localStorage.setItem('signout','')
-      }else if(location.pathname.indexOf('/user') < 0){
-        history.push('/signin');
-        localStorage.setItem('signout','')
-      }
+    //   if(location.pathname.indexOf('/user/admin') != -1){
 
-    }
-    if (location.pathname === '/') {
+    //     history.push('/signin');
+    //     // dispatch(clearsignout())
+    //     localStorage.setItem('signout','')
+    //   }else if(location.pathname.indexOf('/user') < 0){
+    //     history.push('/signin');
+    //     localStorage.setItem('signout','')
+    //   }
+
+    // }
+    if (location.pathname.indexOf('/admin') != -1) {
+      
       if (token === null) {
-        history.push('/user');
+        history.push('/');
         
-      } else if (initURL === '' || initURL === '/' || initURL === '/signin') {
-        history.push('/admin');
+      } else if (initURL === '' || initURL === '/' || initURL === '/signin') {        
+        if(count == 0){
+          history.push('/admin/menu');
+          setcount(1)
+        }
       } else {
-        history.push(initURL);
+        if(count == 0){
+          history.push(initURL);
+          setcount(1)
+        }
+
       }
     }
     // else if (location.pathname === '/signin') {
@@ -157,7 +166,7 @@ const App = () => {
         messages={currentAppLocale.messages}>
 
         <Switch>
-        {(location.pathname.indexOf('/user') != -1) && (location.pathname.indexOf('/user/admin') < 0) ? <Route exact path={location.pathname} component={SubApp}/> : <Route exact path={`/user`} component={SubApp}/>} 
+        {(location.pathname.indexOf('/signin') < 0) && (location.pathname.indexOf('/admin') < 0) ? <Route exact path={location.pathname} component={SubApp}/> : ''} 
           <Route exact path='/signin' component={SignIn}/>
           <Route exact path='/signup' component={SignUp}/>
           {/* <RestrictedRoute  path={`${match.url}`} component={UserDashboard}/>  */}
