@@ -266,7 +266,10 @@ function SubApp(props) {
     paddingTop: `${footer_content_inner_contents}px`
   }
   // **************loader functions****************
-  
+
+  function forsearch(e){
+    dispatch(globelsearch(e.target.value));
+  }
   useEffect(() => {
     if (startlogin == 'start') {
       setloader(1)
@@ -375,10 +378,7 @@ useEffect(()=>{
     }
   }
 })
-function forsearch(e){
-  
-  dispatch(globelsearch(e.target.value));
-}
+
   if(webmenu){
     for (let i = 0; i < webmenu.length; i++) {
       if (webmenu[i].menu.toUpperCase() == 'HOME') {
@@ -582,31 +582,20 @@ const OptGroup = AutoComplete.OptGroup;
         count: 100000,
       }],
     }];
-     const options = [
-      <Option disabled key="all" className="show-all">
-      <a
-        href="https://www.google.com/search?q=antd"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        version 1.2
-      </a>
-    </Option>,
-    <Option disabled key="all2" className="show-all">
-    <a
-      href="https://www.google.com/search?q=antd"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      version 1.2
-    </a>
-  </Option>
-     ]
+     let options = []
      if(getglobelsearch.length > 0){      
       for(let i=0;i<getglobelsearch.length;i++)
       {
-        console.log(getglobelsearch)
+        if(getglobelsearch[i].menu == 'Home'){
+          options.push(<Option disabled key="all2" className="show-all"><a href={`/`}>{getglobelsearch[i].menu}</a></Option>)
+        }
+else{
+  options.push(<Option disabled key="all2" className="show-all"><a href={`/${getglobelsearch[i].menu.split(" ").join("")}?id=${getglobelsearch[i].menu_id}`}>{getglobelsearch[i].menu}</a></Option>)
+}
       }
+      
+    }else{
+      options = []
     }
      components = (
       <div className={`blogpage`} style={beautify}>
@@ -627,13 +616,14 @@ const OptGroup = AutoComplete.OptGroup;
                                      <Nav.Link href="/">Member Login</Nav.Link> */}
               <Nav.Link onClick={loginfun} ><p className={`underline`}>Member Login</p></Nav.Link>
             </Nav>
-{needbox == 1 ?  (
+
               <AutoComplete
             className="certain-category-search"
             dropdownClassName="certain-category-search-dropdown"
             dropdownMatchSelectWidth={false}
             dropdownStyle={{width: 300}}
             size="large"
+            dataSource={options}
             style={{width: '100%'}}
             optionLabelProp="value"
             >
@@ -645,15 +635,7 @@ const OptGroup = AutoComplete.OptGroup;
         style={{width: '175px'}}
       />            
       </AutoComplete>
-      ) : (
-                    <Search
-        placeholder="search..."
-        className={`search_box`}
-        onSearch={value => console.log(value)}
-        onKeyUp={forsearch}
-        style={{width: '175px'}}
-      />
-                  )   }
+
             
 
           </Navbar.Collapse>

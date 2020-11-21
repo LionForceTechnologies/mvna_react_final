@@ -256,7 +256,7 @@ let role_id = localStorage.getItem('webloginroleid')
   };
   export const globelsearch = (data) => {
     return (dispatch) => {
-      axios.get(`http://mvnaapp-env.eba-fp26j2fq.ap-south-1.elasticbeanstalk.com/api/search?search=${data}`).then((res) => {
+      axios.get(`https://dktiyxy955yvi.cloudfront.net/api/search?search=${data}`).then((res) => {
         dispatch({
           type: 'getglobelsearch',
           payload: res.data.data
