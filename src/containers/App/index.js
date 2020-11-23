@@ -130,7 +130,7 @@ const App = () => {
     if (location.pathname.indexOf('/admin') != -1) {
       
       if (token === null) {
-        history.push('/');
+        history.push('/signin');
         
       } else if (initURL === '' || initURL === '/' || initURL === '/signin') {        
         if(count == 0){
