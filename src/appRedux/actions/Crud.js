@@ -707,6 +707,14 @@ export const getrolepermission = (data) => {
 
   }
 };
+export const clearrolepermission = () => {
+  return (dispatch) => {
+    dispatch({
+      type: 'editrolepermission',
+      payload: ''
+    })
+  }
+}
 export const putpagepermission = (data) => {
   return (dispatch) => {
     axios.post('https://dktiyxy955yvi.cloudfront.net/admin/rolepermission', {

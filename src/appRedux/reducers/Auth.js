@@ -18,6 +18,7 @@ export default (state = INIT_STATE, action) => {
 
     case SIGNOUT_USER_SUCCESS: {
       localStorage.setItem('signout','success')
+      
       return {
         ...state,
         token: null,

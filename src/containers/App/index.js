@@ -37,7 +37,7 @@ const RestrictedRoute = ({component: Component, location, token, ...rest}) =>
 <Route
     {...rest}
     render={props =>
-      token
+      (localStorage.getItem('token') != null)
         ? <Component {...props} />
         : ''}
   />;
@@ -129,17 +129,22 @@ const App = () => {
     // }
     if (location.pathname.indexOf('/admin') != -1) {
       
-      if (token === null) {
+      if (localStorage.getItem('token') === null) {
         history.push('/signin');
         
       } else if (initURL === '' || initURL === '/' || initURL === '/signin') {        
         if(count == 0){
-          history.push('/admin/menu');
+          if (window.performance) {
+            if (performance.navigation.type != 1) {
+              history.push('/admin/menu');
+            }
+          }
           setcount(1)
         }
       } else {
         if(count == 0){
-          history.push(initURL);
+          // history.push(initURL);
+          // sfsfd
           setcount(1)
         }
 

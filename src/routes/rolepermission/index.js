@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Card, Divider, Table, Col, Row, Button, Checkbox, Form, Input, Select } from "antd";
 import axios from 'axios';
-import {cleardeleterolepermission, getpagepermission, getrole, putpagepermission, editrolepermission,getrolepermission,updatepagepermission,deletepermission } from "../../appRedux/actions/Crud";
+import {cleardeleterolepermission, getpagepermission, getrole, putpagepermission, editrolepermission,getrolepermission,updatepagepermission,deletepermission,clearrolepermission } from "../../appRedux/actions/Crud";
 import SweetAlert from "react-bootstrap-sweetalert";
 const Rolepermission = (props) => {
     const rolepermissionid = useSelector(({ crud }) => crud.rolepermissionid);
@@ -52,24 +52,27 @@ const Rolepermission = (props) => {
         }
     })
     useEffect(() => {
-        if (rolepermissionid !== '') {
-            if (edit !== 0) {
-
-                if ((rolepermissionid != 'no data found')) {
-                    form.setFieldsValue({
-                        role: rolepermissionid.data[0].role,
-                    })
-                    // console.log(rolepermissionid.data[0].role_permission)
-                    setrole(rolepermissionid.data[0].role_id)
-                    setpermissionsmapped(rolepermissionid.data[0].role_permission)
-                } else {
-                    alert('there is no record')
-                }
-                setturnoff(true)
-                setedit(0)
-            }
-        }
+    
     })
+    if (rolepermissionid !== '') {
+        
+        if (edit !== 0) {            
+            if ((rolepermissionid != 'no data found')) {
+                form.setFieldsValue({
+                    role: rolepermissionid.data[0].role,
+                })
+                // console.log(rolepermissionid.data[0].role_permission)
+                setrole(rolepermissionid.data[0].role_id)
+                setpermissionsmapped(rolepermissionid.data[0].role_permission)
+                setend(0)
+
+            } else {
+                alert('there is no record')
+            }
+            setturnoff(true)
+            setedit(0)
+        }
+    }
 useEffect(()=>{
 
     if(rolepermissionid != ''){
@@ -120,6 +123,15 @@ setend(1)
 
     }, [permissionid])
     function Edit(e) {
+        if(rolepermissionid != ""){
+            if(rolepermissionid != "no data found"){
+            //  alert(rolepermissionid.data.length)
+                if(rolepermissionid.data.length > 0){
+                    dispatch(clearrolepermission())
+
+                }
+            }
+        }
         dispatch(editrolepermission(e.target.getAttribute('data-id')))
         setedit(1)
     }

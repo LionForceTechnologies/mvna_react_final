@@ -669,3 +669,19 @@ position: relative;
 .show_output #idblvp{
   padding-top: 0px;
 }
+/* #iy5n2{
+  padding-bottom: 0 !important;
+}
+#isnxo{
+  padding-bottom: 0 !important;
+}
+#iq4ll{
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+} */
+@media only screen and (min-width: 800px) {
+  .show_output #iop8ug{
+    height : auto;
+    }
+
+}

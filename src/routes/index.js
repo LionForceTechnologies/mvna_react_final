@@ -14,7 +14,7 @@ function App ({match}){
  <div className={name}>
     <Switch>
     {locations.indexOf('/admin/editor') !== -1 ?   <Route path={`${locations}`} component={asyncComponent(() => import('./editor'))}/> : ''}
-    <Route path={`${match.url}fileupload`} component={asyncComponent(() => import('./fileupload'))}/>
+    <Route path={`${match.url}admin/fileupload`} component={asyncComponent(() => import('./fileupload'))}/>
       <Route path={`${match.url}admin/menu`} component={asyncComponent(() => import('./SamplePage'))}/>
       <Route path={`${match.url}admin/drag`} component={asyncComponent(() => import('./drag'))}/>
       <Route path={`${match.url}admin/pagecreation`} component={asyncComponent(() => import('./pagecreation'))}/>      
