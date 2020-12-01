@@ -47,29 +47,29 @@ const Topbar = () => {
 
   const updateSearchChatUser = (evt) => {
     setSearchText(evt.target.value);
-    if(location.pathname.toLowerCase() == '/role') {
+    if(location.pathname.toLowerCase() == '/admin/role') {
      dispatch(getrolesearch(evt.target.value))
     }
-    if(location.pathname.toLowerCase() == '/creation') {
+    if(location.pathname.toLowerCase() == '/admin/creation') {
      dispatch(getucreationsearch(evt.target.value))
     }
-    if(location.pathname.toLowerCase() == '/rolepermission') {
+    if(location.pathname.toLowerCase() == '/admin/rolepermission') {
       dispatch(getrolepermissionsearch(evt.target.value))
     }
-    if(location.pathname.toLowerCase() == '/admin') {
+    if(location.pathname.toLowerCase() == '/admin/menu') {
      dispatch(getsubmenusearch(evt.target.value))
      dispatch(getmenusearch(evt.target.value))
     }
-    if(location.pathname.toLowerCase() == '/pagecreation') {
+    if(location.pathname.toLowerCase() == '/admin/pagecreation') {
       dispatch(getmenusearch(evt.target.value))
     }
-    if(location.pathname.toLowerCase() == '/member') {
+    if(location.pathname.toLowerCase() == '/admin/member') {
      dispatch(getmembersearch(evt.target.value))
     }
-    if(location.pathname.toLowerCase() == '/quicklinks') {
+    if(location.pathname.toLowerCase() == '/admin/quicklinks') {
      dispatch(getlinksearch())
     }
-    if(location.pathname.toLowerCase() == '/fileupload') {
+    if(location.pathname.toLowerCase() == '/admin/fileupload') {
      dispatch(getfilesearch(evt.target.value))
     }
 
