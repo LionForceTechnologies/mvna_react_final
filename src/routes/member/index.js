@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Card, Divider, Table, Col, Row, Button, Checkbox, Form, Input, Select, Upload, message } from "antd";
 import axios from 'axios';
-import { editmember, clearrole, updaterole, roledelete, deleted, putmember, getmember, updatemember, cleardeletemember, deletemember } from "../../appRedux/actions/Crud";
+import { editmember, clearrole, updaterole,cleareditmember, roledelete, deleted, putmember, getmember, updatemember, cleardeletemember, deletemember } from "../../appRedux/actions/Crud";
 import SweetAlert from "react-bootstrap-sweetalert";
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import {hostname} from "../../hostname";
@@ -126,6 +126,7 @@ const Member = (props) => {
             setimageUrl('')
             setcontentimg('')
             setedit(0);
+            dispatch(cleareditmember())
             dispatch(clearrole(''))
 document.getElementById('dodger').value = ''
         }

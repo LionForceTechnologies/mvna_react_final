@@ -521,8 +521,20 @@ export const updatemember = (data) => {
 
   }
 };
+export const cleareditmember = (data) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'editmember',
+      payload: ''
+    })
+  }
+}
 export const editmember = (data) => {
   return (dispatch) => {
+    dispatch({
+      type: 'editmember',
+      payload: ''
+    })
     axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/member/${data}/edit`).then((res) => {
       dispatch({
         type: 'editmember',
