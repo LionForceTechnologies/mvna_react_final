@@ -400,7 +400,7 @@ useEffect(()=>{
             else {              
               submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
               if(webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase() == 'strategicplan'){
-                submenus.push(<NavDropdown.Item  href={`/`}>MVNA management</NavDropdown.Item>)
+                submenus.push(<NavDropdown.Item  href={`https://main.d1ta2fqx7n4odq.amplifyapp.com/Contact?id=7`}>MVNA management</NavDropdown.Item>)
                 // submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
               }
             }
@@ -677,7 +677,7 @@ else{
                 <div className="footer_content_sub footer_content_sub-4">
                   <div className="Quick_links">
                     <p className="Quick_links_headedr">Next Conference</p>
-                    <p>Coming Soon</p>
+                    <p><a href='https://main.d1ta2fqx7n4odq.amplifyapp.com/Event?id=22' style={{fontSize : '14px',color:'white'}}>Coming Soon</a></p>
 
                   </div>
                 </div>
@@ -715,7 +715,7 @@ else{
                     <div className="Quick_links_headedr_parent">
                       <p className="Quick_links_headedr">Next Conference</p>
                     </div>
-                    <p>Coming Soon</p>
+                    <p><a href='https://main.d1ta2fqx7n4odq.amplifyapp.com/Event?id=22' style={{fontSize : '14px',color:'white'}}>Coming Soon</a></p>
 
                   </div>
                 </div>
