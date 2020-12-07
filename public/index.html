@@ -405,7 +405,39 @@ window.addEventListener("load", function() {
 
 
 </script>
-
+<script  id="tenet">
+var items = document.querySelectorAll('#i1ue6');
+  for (var i = 0, len = items.length; i < len; i++) {
+    (function(){
+     var e = this,
+t = "https://cdnjs.cloudflare.com/ajax/libs/lory.js/2.3.4/lory.min.js",
+l = ["0", "false"],
+s = "";
+s = "true" == s ? 1 : parseInt(s, 10);
+var a = {
+ slidesToScroll: parseInt("1", 10),
+ enableMouseEvents: l.indexOf("") >= 0 ? 0 : 1,
+ infinite: !isNaN(s) && s,
+ rewind: !(l.indexOf("") >= 0),
+ slideSpeed: parseInt("300", 10),
+ rewindSpeed: parseInt("600", 10),
+ snapBackSpeed: parseInt("200", 10),
+ ease: "ease",
+ classNameFrame: "gjs-lory-frame",
+ classNameSlideContainer: "gjs-lory-slides",
+ classNamePrevCtrl: "gjs-lory-prev",
+ classNameNextCtrl: "gjs-lory-next"
+},
+r = function() {
+ window.sliderLory = lory(e, a)
+};
+if ("undefined" == typeof lory) {
+var n = document.createElement("script");
+n.src = t, n.onload = r, document.head.appendChild(n)
+} else r()
+}.bind(items[i]))();
+  }
+</script>
 </body>
 
 </html>

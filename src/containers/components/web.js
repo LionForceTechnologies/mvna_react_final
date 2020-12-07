@@ -131,12 +131,9 @@ function Web() {
                 if(document.getElementsByClassName('demo')){
                     if(document.getElementsByClassName('demo').length > 0){
                         if(document.getElementsByClassName('demo')[0].children.length > 0){
-                            // alert(document.getElementsByClassName('demo')[0].children[2].tagName)
                             let elem = document.createElement('script')
-                            // if(document.getElementsByClassName('demo')[0].children.)
-                            // elem.innerHTML = document.getElementsByClassName('demo')[0].children[1].children[0].children[0].innerHTML
-                            // document.body.appendChild(elem)
-                            // console.log(elem)
+                            elem.innerHTML = document.getElementById('tenet').innerHTML
+                            document.body.appendChild(elem)
                         }
                     }
                 }
