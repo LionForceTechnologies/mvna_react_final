@@ -323,7 +323,7 @@ document.getElementById('dodger').value = ''
                         <input id="dodger" type="file" onChange={uploadimage} accept="image/*"></input>
                     </Col>                       
                 <Col xl={8} lg={8} md={8} sm={24} xs={24}>
-                        <img width={`100px`} height={`100px`} src={imageUrl} />
+                        {/* <img width={`100px`} height={`100px`} src={imageUrl} /> */}
                     </Col>
                 </Row>
                 <Col xl={4} lg={4} md={4} sm={24} xs={24}>
