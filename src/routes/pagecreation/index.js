@@ -46,7 +46,8 @@ const PageCreation = (props) => {
             }
             return {
                 menu: item.menu,
-                action: (<><div style={{ display: 'flex' }}><Link to={`/admin/editor${item.url.split(" ").join("")}?id=${item.id}`} onClick={Edit} data-id={item.id} >Go to Editor</Link><Link to={`${rts.split(" ").join("")}?id=${item.id}`} style={{marginLeft: '15px' }}  data-id={item.id} >Go to Page</Link><i data-id={item.id} onClick={Delete} style={{ height: '15px', marginLeft: '15px' }} className="icon icon-trash" /></div></>),
+                // <i data-id={item.id} onClick={Delete} style={{ height: '15px', marginLeft: '15px' }} className="icon icon-trash" />
+                action: (<><div style={{ display: 'flex' }}><Link to={`/admin/editor${item.url.split(" ").join("")}?id=${item.id}`} onClick={Edit} data-id={item.id} >Go to Editor</Link><Link to={`${rts.split(" ").join("")}?id=${item.id}`} style={{marginLeft: '15px' }}  data-id={item.id} >Go to Page</Link></div></>),
                 index: item.id,
                 key: item.id
             }
