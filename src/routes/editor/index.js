@@ -151,6 +151,9 @@ useEffect(()=>{
         
         if(localStorage.getItem('forchecking')){
           if(innerDoc.getElementsByClassName('gjs-lory-slides').length > 0){
+            let elem = document.createElement('script')
+            elem.innerHTML = document.getElementById('tenet').innerHTML
+            innerDoc.body.appendChild(elem)
             innerDoc.getElementsByClassName('prevbar')[0].style.left = 'unset'
             innerDoc.getElementsByClassName('prevbar')[0].style.right = '0'
             innerDoc.getElementsByClassName('prevbar')[0].style.top = 'unset'
