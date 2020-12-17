@@ -211,10 +211,67 @@ useEffect(()=>{
 
   }
 })
+// if(geta_page.length == 0){
 
+// }
+useEffect(()=>{
+  let iframe = document.getElementsByTagName('iframe')[0];
+        let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        if(innerDoc.getElementById('wrapper')){
+          if(geta_page.length == 0){
+            if(innerDoc.getElementById('wrapper').children.length){
+              for(let dd = 0;dd<innerDoc.getElementById('wrapper').children.length;dd++){
+                innerDoc.getElementById('wrapper').children[dd].remove()
+              }
+            }
+            if(innerDoc.getElementsByClassName('sp-container')){
+              if(innerDoc.getElementsByClassName('sp-container').length > 0){
+                for(let cc = 0;cc < innerDoc.getElementsByClassName('sp-container').length;cc++){
+                  innerDoc.getElementsByClassName('sp-container')[cc].style.display = 'none'
+                }
+              }
+            }   
+          }
+        }
+        // if(innerDoc.children){
+        //   if(innerDoc.children.length > 0){
+        //     let checkingdivs = innerDoc.children[0].children;
+        //     for(let c=0;c<innerDoc.children[0].children.length;c++){
+        //       if(checkingdivs[c].tagName == 'BODY'){
+        //         if(geta_page.length == 0){
+        //           for(let d=0;d<checkingdivs[c].children[1].children.length;d++){
+        //             if(checkingdivs[c].children[1].children){
+        //               checkingdivs[c].children[1].children[d].remove();
+        //             }
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
+})
+
+useEffect(()=>{
+  let iframe = document.getElementsByTagName('iframe')[0];
+  let innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+  if(innerDoc.getElementsByClassName('sp-container')){
+    if(innerDoc.getElementsByClassName('sp-container').length > 0){
+      for(let cc = 0;cc < innerDoc.getElementsByClassName('sp-container').length;cc++){
+        innerDoc.getElementsByClassName('sp-container')[cc].style.display = 'none'
+      }
+    }
+  }
+  if(innerDoc.getElementsByClassName('gjs-pn-panels')){
+    if(innerDoc.getElementsByClassName('gjs-pn-panels').length){
+      innerDoc.getElementsByClassName('gjs-pn-panels')[0].style.display = 'none';
+      innerDoc.getElementsByClassName('gjs-cv-canvas')[0].style.display = 'none';
+    }
+  }
+})
+  
   return (
     <>
-    {spinner == 'start' ? (<Spin className={`geditor`} ><div id="example-editor" ></div></Spin>) :(<div id="example-editor" ></div>)}
+    {spinner == 'start' ? (<Spin className={`geditor`} ><div id="example-editor" ></div></Spin>) :(<div id="example-editor" >  </div>)}
      
 
     </>

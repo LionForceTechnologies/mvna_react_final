@@ -254,7 +254,7 @@ export const putpage = (data) => {
     }).then((res) => {
       axios.get(`https://dktiyxy955yvi.cloudfront.net/admin/final_content/${data.id}/edit`).then((res) => {
         dispatch({ type: 'getpage', payload: res.data })
-        dispatch({ type: 'setspinner', payload: 'end' })
+        dispatch({ type: 'setspinner', payload: 'end' })        
       })
     }).catch(function (error) {
       dispatch({ type: 'setspinner', payload: 'end' })
@@ -330,10 +330,12 @@ export const getpage = (data) => {
     }).then((res) => {
       if (res.data.length == 0) {
         dispatch({ type: 'seteditor', payload: '0' })
+        dispatch({ type: 'getpage', payload: [] })
       }
       else {
         dispatch({ type: 'seteditor', payload: res.data[0].id })
         dispatch({ type: 'getpage', payload: res.data })
+
       }
     }).catch((error) => {
 
