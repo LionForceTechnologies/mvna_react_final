@@ -211,7 +211,7 @@ setcustom(true)
           </Col>
 
           <Col xl={8} lg={8} md={8} sm={24} xs={24}>
-              <input id='fileimage' type='file'  onChange={ uploadimage }  accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+              <input id='fileimage' type='file'  onChange={ uploadimage }  accept=".doc,.docx,application/msword,.pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
           </Col>
           <Col xl={8} lg={8} md={8} sm={24} xs={24}>
             <Form.Item>
