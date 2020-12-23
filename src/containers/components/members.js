@@ -67,7 +67,7 @@ function Members() {
             </div>
 <div className={`about_members`}>
     <p>Med-Vet-Net Association Scientific Partners</p>
-    <p >The association currently comprises 20 scientific partners from 13 European countries, retaining the majority of its original founding members. It numbers 9 public health and 11 food/veterinary institutes and aims to continue to build on the success of its predecessor by promoting cross-disciplinary harmonisation between a more extensive network of veterinary and medical research institutions and laboratories at an EU level and beyond. This approach will help foster the One Heath – One Medicine agenda.</p>
+    <p >The association currently comprises 21 scientific partners from 14 European countries, retaining the majority of its original founding members. It numbers 9 public health and 11 food/veterinary institutes and aims to continue to build on the success of its predecessor by promoting cross-disciplinary harmonisation between a more extensive network of veterinary and medical research institutions and laboratories at an EU level and beyond. This approach will help foster the One Heath – One Medicine agenda.</p>
 </div>
             <div className={`uline`}>-</div>
             <div className={`filters`}>
