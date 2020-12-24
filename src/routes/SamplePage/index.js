@@ -389,6 +389,9 @@ const SamplePage = (props) => {
               <Select
                 value={mainmenu}
                 onChange={onCurrencyChange}
+                onFocus = {(e)=>{
+                  return false;
+                }}
                 placeholder="Main Menu"
               >
                 {menu_data}
