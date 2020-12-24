@@ -351,16 +351,13 @@ const SamplePage = (props) => {
             <p>Create Menu</p>
           </Col>
           <Col xl={5} lg={5} md={5} sm={24} xs={24}>
-            {/* <Form.Item
+            <Form.Item
               rules={[{ required: true, message: 'Mwnu is required' }]} name="menu">
-              <Input value={menu} onFocus = { (e) => {
-                e.preventDefault()
-              } } onChange={(e) => {
+              <Input value={menu} onChange={(e) => {
                 setmenu(e.target.value)
                 console.log(red_data)
               }} placeholder="Menu" />
-            </Form.Item> */}
-            <input type="text" />
+            </Form.Item>
           </Col>
           <Col xl={4} lg={4} md={4} sm={24} xs={24}>
             <Form.Item>
