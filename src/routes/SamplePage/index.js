@@ -354,8 +354,8 @@ const SamplePage = (props) => {
             <Form.Item
               rules={[{ required: true, message: 'Mwnu is required' }]} name="menu">
               <Input value={menu} onChange={(e) => {
-                setmenu(e.target.value)
-                console.log(red_data)
+                // setmenu(e.target.value)
+                // console.log(red_data)
               }} placeholder="Menu" />
             </Form.Item>
           </Col>
