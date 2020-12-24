@@ -372,7 +372,7 @@ const SamplePage = (props) => {
 
         </Card>
       </Form> */}
-      <input type="text" />
+      <input type="text" placeholder="Menu" />
       {/* <Form
         form={formsub}
         initialValues={{ remember: true }}
