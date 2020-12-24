@@ -373,7 +373,7 @@ const SamplePage = (props) => {
         </Card>
       </Form> */}
       <input type="text" />
-      <Form
+      {/* <Form
         form={formsub}
         initialValues={{ remember: true }}
         name="basic"
@@ -415,7 +415,7 @@ const SamplePage = (props) => {
         <Card title="Sub Menu Table">
           <Table className="gx-table-responsive" columns={columnssub} dataSource={table_sub_menu_data} />
         </Card>
-      </Form>
+      </Form> */}
       <div className={`sweetalerts`}>
         <SweetAlert show={custom}
           custom
