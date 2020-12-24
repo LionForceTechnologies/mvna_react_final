@@ -339,7 +339,7 @@ const SamplePage = (props) => {
 
   return (
     <div>
-      <Form
+      {/* <Form
         form={form}
         initialValues={{ remember: true }}
         name="basic"
@@ -371,7 +371,8 @@ const SamplePage = (props) => {
           <Table className="gx-table-responsive" columns={columns} dataSource={data} />
 
         </Card>
-      </Form>
+      </Form> */}
+      <input type="text" />
       <Form
         form={formsub}
         initialValues={{ remember: true }}
