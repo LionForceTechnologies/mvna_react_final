@@ -3,7 +3,7 @@ import {Route, Switch} from "react-router-dom";
 
 import asyncComponent from "util/asyncComponent";
 
-function App ({match}){
+const App =  ({match}) => {
   let locations = window.location.pathname;
   let comp = '';
   let name = "gx-main-content-wrapper";
