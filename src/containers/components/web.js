@@ -165,8 +165,10 @@ function Web() {
                         if (document.getElementsByClassName('gjs-lory-slides')[0].children.length - 1 != 0) {
                             let b = document.getElementsByClassName('gjs-lory-slides')[0].children.length
                             let c = b - 1;
-                            document.getElementsByClassName('gjs-lory-slides')[0].children[c].style.display = 'none';
+                            document.getElementsByClassName('gjs-lory-slides')[0].children[2].style.display = 'none';
                             document.getElementsByClassName('gjs-lory-slides')[0].children[1].style.marginLeft = '-10px';
+                            document.getElementById('ic03jk').style.marginLeft = '-10px'
+                            document.getElementsByClassName('gjs-lory-slides')[0].children[0].style.display = 'inline-block';
                             // localStorage.setItem('forchecking',1);
                         }
                     }
