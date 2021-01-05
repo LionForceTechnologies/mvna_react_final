@@ -43,12 +43,12 @@ function Web() {
     })
     useEffect(() => {
         let locations = window.location.pathname;
-        if (((locations == '/') || (locations == '/')) && (window.screen.width < 601) || ((locations == '/') || (locations == '/')) && (window.screen.width < 992)) {
+        if (((locations == '/') || (locations == '/')) && (window.screen.width < 601) || ((locations == '/') || (locations == '/')) && (window.screen.width < 1025)) {
             if (document.getElementsByClassName('demo').length > 0) {
                 document.getElementsByClassName('demo')[0].style.overflow = 'auto'
             }
         }
-        if (((locations == '/') || (locations == '/')) && (window.screen.width > 992)) {
+        if (((locations == '/') || (locations == '/')) && (window.screen.width > 1025)) {
             let nav_h = document.getElementsByClassName('navbar')[0].offsetHeight;
             let total_h = document.getElementsByClassName('blogpage')[0].offsetHeight - nav_h + 15;
             // let height_calc = total_h - nav_h - 22;
@@ -66,7 +66,7 @@ function Web() {
 
         }
         else {
-            if (((locations == '/') || (locations == '/')) && (window.screen.width > 992)) {
+            if (((locations == '/') || (locations == '/')) && (window.screen.width > 1025)) {
                 document.getElementsByClassName('show_output')[0].style.flex = 'auto';
             } else {
                 // document.getElementsByClassName('show_output')[0].style.flex = 'auto';
@@ -113,7 +113,7 @@ function Web() {
         let locations = window.location.pathname;
         if (((locations == '/') || (locations == '/'))) {
 
-            if (window.screen.width > 992) {
+            if (window.screen.width > 1025) {
                 if (document.getElementsByClassName('home_slider_dependent')) {
                     if(document.getElementsByClassName('home_slider_dependent').length > 0){
                         let calcheight = document.getElementsByClassName('home_slider_dependent')[0].offsetHeight

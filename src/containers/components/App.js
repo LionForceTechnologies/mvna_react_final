@@ -465,7 +465,7 @@ if (locations.indexOf('admin') < 0) {
     let beautify = {
       height: '100%', position: 'relative', overflow: 'auto', overflowX: 'hidden'
     }
-    if (((locations == '/') || (locations == '/')) && (window.screen.width > 992)) {
+    if (((locations == '/') || (locations == '/')) && (window.screen.width > 1025)) {
       beautify = {
         height: '100%', position: 'relative', overflowX: 'hidden',overflow:'hidden'
       }
@@ -642,7 +642,7 @@ else{
         </Navbar>
         <Route exact path={`/members`} component={Members} />
         { locations.indexOf('/members') < 0 ? <Route exact path={locations} component={Web} /> : ''  } 
-        {((locations == '/') ||  (locations == '/')) && (window.screen.width > 992)  ? (
+        {((locations == '/') ||  (locations == '/')) && (window.screen.width > 1025)  ? (
           <div className="footer_container_home" style={f_whole_footer}>
             <div className="footer_starter_home">
               <img

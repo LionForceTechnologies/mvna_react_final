@@ -808,7 +808,55 @@ width: 330px;
   .show_output #iehx5{
     flex-basis: auto;
   }
+  .footer_content_sub-1 p:nth-child(3){
+    line-height: 21px;
+  }
 }
 @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
-  .ipad-landscape { color: blue; } /* your css rules for ipad landscape */
+  .show_output #i2mwj { width: 273.06px; height: 258px; position: relative;}
+  .show_output #igdl2 { width: 273.06px; height: 258px; position: relative;}
+  .show_output #ipwly { width: 273.06px; height: 258px; position: relative;}
+  .show_output #ibpj1 {margin-top : 27px;}
+  .show_output #ibpj1 + a {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .show_output #ijfhr + a {
+    position: absolute;
+    right: 0;
+    bottom: 11px;
+  }
+  .show_output #i9epv{
+    margin-top: 27px;
+  }
+  .show_output #i9epv + a {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+  }
+  .show_output #iq4ll{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .show_output #i9qt6z{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .show_output #iy5n2{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .show_output #iq4ll + div{
+    padding-top: 1px;
+  }
+  .ant-input-search.ant-select-selection-search-input.ant-input-affix-wrapper{
+    width: 138px !important;
+  }
+  .mvna_navbar .navbar-brand{
+    margin-right : 0;
+  }
+  .navbar-collapse.collapse{
+    font-size: 12px;
+  }
 }
