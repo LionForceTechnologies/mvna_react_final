@@ -778,3 +778,37 @@ position: relative;
 .show_output #iq383{
   margin-left: 0px !important;
 }
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+  #it22 { flex: 1; } /* your css rules for ipad portrait */
+  #inwj {flex: 1;}
+  #idg5g{
+    flex-direction: column;
+  }
+  #i2mwj{  flex: 1;  }
+  #igdl2 {  flex: 1; }
+  #ipwly { flex: 1; }
+  .show_output #iw78o{
+    width: 416px;
+  }
+ .show_output #iwcu1 {
+    flex-basis: auto;
+  }
+  .show_output #itgcn{
+    width: 416px;
+  }
+  .show_output #ifof9{
+    flex-basis: auto;
+  }
+  .show_output #itqtl{
+width: 330px;
+  }
+  .show_output #i9i7c{
+    flex-basis: auto;
+  }
+  .show_output #iehx5{
+    flex-basis: auto;
+  }
+}
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+  .ipad-landscape { color: blue; } /* your css rules for ipad landscape */
+}
