@@ -212,7 +212,7 @@ import Members from "./members"
 import Editor from "./editor";
 import InnerEditor from './innereditor';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { getwebmenu,getlinkweb,getfooterweb,globelsearch } from "../../appRedux/actions/Webauth";
+import { getwebmenu, getlinkweb, getfooterweb, globelsearch } from "../../appRedux/actions/Webauth";
 import { Modal, Form, Input, Spin, AutoComplete } from 'antd';
 import { webSignIn, clearlogsuccess } from "../../appRedux/actions/Webauth";
 import SweetAlert from "react-bootstrap-sweetalert";
@@ -225,11 +225,11 @@ import SweetAlert from "react-bootstrap-sweetalert";
 // } from "react-router-dom";
 
 function SubApp(props) {
-  
+
   const [f_img_height, setf_img_height] = useState(100)
   const [footer_div, setfooter_div] = useState('45px')
   const [footer_content, setfooter_content] = useState(25)
-  
+
   const [mlogin, setmlogin] = useState(false)
   const [footer_content_inner_contents, setfooter_content_inner_contents] = useState(10)
   const [notation, setnotation] = useState('px')
@@ -238,19 +238,19 @@ function SubApp(props) {
   const [warning, setwarning] = useState(false)
   const [success, setsuccess] = useState(false)
   const [loader, setloader] = useState(0)
-  const [needbox,setneedbox] = useState(0)
+  const [needbox, setneedbox] = useState(0)
   const [keysactive, setkeysactive] = useState('')
-  const [searchbox,setsearchbox] = useState(0)
+  const [searchbox, setsearchbox] = useState(0)
   const webmenu = useSelector(({ webauth }) => webauth.webmenu);
   const logsuccess = useSelector(({ webauth }) => webauth.logsuccess);
   const startlogin = useSelector(({ webauth }) => webauth.startlogin);
-  const forlink = useSelector(({ webauth }) => webauth. getlinksweb);
+  const forlink = useSelector(({ webauth }) => webauth.getlinksweb);
   const forfootercontent = useSelector(({ webauth }) => webauth.getfooterwebdata);
   const getglobelsearch = useSelector(({ webauth }) => webauth.getglobelsearch);
   const dispatch = useDispatch();
   const [form] = Form.useForm();
   const Search = Input.Search;
-  const token = useSelector(({auth}) => auth.token);
+  const token = useSelector(({ auth }) => auth.token);
   let locations = window.location.pathname;
   let locations_host = window.location.hostname;
   let locations_port = window.location.port;
@@ -267,7 +267,7 @@ function SubApp(props) {
   }
   // **************loader functions****************
 
-  function forsearch(e){
+  function forsearch(e) {
     dispatch(globelsearch(e.target.value));
   }
   useEffect(() => {
@@ -298,7 +298,7 @@ function SubApp(props) {
     setsuccess(false)
   }
   function permenu(e) {
-localStorage.setItem('url',e.target.getAttribute('data-name'))
+    localStorage.setItem('url', e.target.getAttribute('data-name'))
   }
   // **************loader functions****************
   useEffect(() => {
@@ -329,11 +329,10 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
     setmlogin(true)
   }
   // ********autocomplete********
-  useEffect(()=>{
-    if(searchbox == 0){
-      if(document.getElementsByClassName('certain-category-search'))
-      {
-        if(document.getElementsByClassName('certain-category-search').length > 0){
+  useEffect(() => {
+    if (searchbox == 0) {
+      if (document.getElementsByClassName('certain-category-search')) {
+        if (document.getElementsByClassName('certain-category-search').length > 0) {
           document.getElementsByClassName('certain-category-search')[0].style.width = 'auto'
           setsearchbox(1)
         }
@@ -343,13 +342,13 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
   // ********autocomplete********
   let menus = [];
   let nbrand = 0;
-  let ref;  
+  let ref;
   let footer_address = [];
-  if(forfootercontent.data){
-    if(forfootercontent.data.length > 0){
+  if (forfootercontent.data) {
+    if (forfootercontent.data.length > 0) {
       footer_address.push(<p>{forfootercontent.data[0].addressline1}</p>)
       footer_address.push(<p>{forfootercontent.data[0].addressline2}</p>)
-      footer_address.push(<p>{forfootercontent.data[0].mobile}</p>)    
+      footer_address.push(<p>{forfootercontent.data[0].mobile}</p>)
     }
     // else{
     //   footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
@@ -357,29 +356,29 @@ localStorage.setItem('url',e.target.getAttribute('data-name'))
     //   footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
     // }
   }
-else{
-  // footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
-  // footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
-  // footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
-}
-useEffect(()=>{
-  if(webmenu){
-    for (let i = 0; i < webmenu.length; i++) {
-      if (webmenu[i].sub_menus.length > 0) {
-        for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
+  else {
+    // footer_address.push(<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)
+    // footer_address.push(<><p>Cedex. FRANCE,</p><br></br></>)
+    // footer_address.push(<p>Tel: +33 1 49 77 38 68</p>)
+  }
+  useEffect(() => {
+    if (webmenu) {
+      for (let i = 0; i < webmenu.length; i++) {
+        if (webmenu[i].sub_menus.length > 0) {
+          for (let j = 0; j < webmenu[i].sub_menus.length; j++) {
 
 
+
+          }
+
+        } else {
 
         }
-      
-      }else{
-
       }
     }
-  }
-})
+  })
 
-  if(webmenu){
+  if (webmenu) {
     for (let i = 0; i < webmenu.length; i++) {
       if (webmenu[i].menu.toUpperCase() == 'HOME') {
         nbrand = 1
@@ -389,7 +388,7 @@ useEffect(()=>{
         // alert(webmenu[i].menu == 'Home')
         if (webmenu[i].sub_menus.length > 0) {
           let submenus = [];
-          if( webmenu[i].menu == 'Association'){
+          if (webmenu[i].menu == 'Association') {
             // submenus.push(<NavDropdown.Item  href={`/user/`}>Annual Action Plan</NavDropdown.Item>)
           }
           let subactclass = ''
@@ -397,29 +396,29 @@ useEffect(()=>{
             if (webmenu[i].sub_menus[j].menu.toUpperCase() == 'MEMBERS') {
               submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/${webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase()}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
             }
-            else {              
+            else {
               submenus.push(<NavDropdown.Item onClick={permenu} data-name={webmenu[i].sub_menus[j].menu} href={`/${webmenu[i].sub_menus[j].menu.split(" ").join("")}?id=${webmenu[i].sub_menus[j].id}`}>{webmenu[i].sub_menus[j].menu}</NavDropdown.Item>)
-              if(webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase() == 'strategicplan'){
-                submenus.push(<NavDropdown.Item  href={`https://main.d1ta2fqx7n4odq.amplifyapp.com/Contact?id=7`}>MVNA management</NavDropdown.Item>)
+              if (webmenu[i].sub_menus[j].menu.split(" ").join("").toLowerCase() == 'strategicplan') {
+                submenus.push(<NavDropdown.Item href={`https://main.d1ta2fqx7n4odq.amplifyapp.com/Contact?id=7`}>MVNA management</NavDropdown.Item>)
                 // submenus.push(<NavDropdown.Item  href={`/user/`}>Quick Links to Conference</NavDropdown.Item>)
               }
             }
 
-            if(locations == `/${webmenu[i].sub_menus[j].menu.split(" ").join("")}`){
+            if (locations == `/${webmenu[i].sub_menus[j].menu.split(" ").join("")}`) {
               subactclass = 'navactive'
             }
           }
           menus.push(<NavDropdown className={subactclass} eventKey={locations} title={`${webmenu[i].menu}`} id="basic-nav-dropdown">
             {submenus}
           </NavDropdown>)
-          
-        } else { 
+
+        } else {
           let actclass = ''
-          if(locations == `/${webmenu[i].menu.split(" ").join("")}`){
+          if (locations == `/${webmenu[i].menu.split(" ").join("")}`) {
             actclass = 'navactive'
           }
           menus.push(<Nav.Link eventKey={locations} className={actclass} onClick={permenu} data-name={webmenu[i].menu} href={`/${webmenu[i].menu.split(" ").join("")}?id=${webmenu[i].id}`}>{webmenu[i].menu}</Nav.Link>)
-          
+
         }
       }
     }
@@ -459,93 +458,93 @@ useEffect(()=>{
     }
 
   }
-  
-if (locations.indexOf('admin') < 0) {
-  
+
+  if (locations.indexOf('admin') < 0) {
+
     let beautify = {
       height: '100%', position: 'relative', overflow: 'auto', overflowX: 'hidden'
     }
     if (((locations == '/') || (locations == '/')) && (window.screen.width > 1025)) {
       beautify = {
-        height: '100%', position: 'relative', overflowX: 'hidden',overflow:'hidden'
+        height: '100%', position: 'relative', overflowX: 'hidden', overflow: 'hidden'
       }
     }
-     let footer = (
+    let footer = (
       <div className={`footer_content`}>
-      <div className={`footer_content_inner_content`}>
-        <div className="footer_content_sub footer_content_sub-1">
-          <img className="footer_title_image" src="/images/MVNA_Logo_White.png" alt="footer_image"></img>
-         {/* { forfootercontent.data != undefined ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
+        <div className={`footer_content_inner_content`}>
+          <div className="footer_content_sub footer_content_sub-1">
+            <img className="footer_title_image" src="/images/MVNA_Logo_White.png" alt="footer_image"></img>
+            {/* { forfootercontent.data != undefined ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
      {forfootercontent.data != undefined ? (<><p>{forfootercontent.data[0].addressline2}</p><br></br></>) : (<><p>Cedex. FRANCE,</p><br></br></>)}
      {forfootercontent.data != undefined ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)}
       */}
-      {footer_address}
-        </div>
-        <div className="footer_content_sub footer_content_sub-2">
-          <div className="Quick_links">
-            <div className="Quick_links_headedr_parent">
-              <p className="Quick_links_headedr">Quick Links</p>
-            </div>
-            <p>Collaboration Platform</p>
-            <p>OHEJP</p>
-            <p>Publications </p>
+            {footer_address}
           </div>
-        </div>
-        <div className="footer_content_sub footer_content_sub-3">
-          <div className="Quick_links">
-            <div className="Quick_links_headedr_parent">
-              <p className="Quick_links_headedr">Quick Links</p>
+          <div className="footer_content_sub footer_content_sub-2">
+            <div className="Quick_links">
+              <div className="Quick_links_headedr_parent">
+                <p className="Quick_links_headedr">Quick Links</p>
+              </div>
+              <p>Collaboration Platform</p>
+              <p>OHEJP</p>
+              <p>Publications </p>
             </div>
-            <p>Collaboration Platform</p>
-            <p>OHEJP</p>
-            <p>Publications </p>
           </div>
-        </div>
-        <div className="footer_content_sub footer_content_sub-4">
-          <div className="Quick_links">
-            <div className="Quick_links_headedr_parent">
-              <p className="Quick_links_headedr">Next Conference</p>
+          <div className="footer_content_sub footer_content_sub-3">
+            <div className="Quick_links">
+              <div className="Quick_links_headedr_parent">
+                <p className="Quick_links_headedr">Quick Links</p>
+              </div>
+              <p>Collaboration Platform</p>
+              <p>OHEJP</p>
+              <p>Publications </p>
             </div>
-            <p>Coming Soon</p>
+          </div>
+          <div className="footer_content_sub footer_content_sub-4">
+            <div className="Quick_links">
+              <div className="Quick_links_headedr_parent">
+                <p className="Quick_links_headedr">Next Conference</p>
+              </div>
+              <p>Coming Soon</p>
 
+            </div>
           </div>
         </div>
+
       </div>
-
-    </div>       
-     )
-     let firstfoot = [
+    )
+    let firstfoot = [
       // (<p>Collaboration Platform</p>),
       // (<p>OHEJP</p>),
       // (<p>Publications </p>)
-     ]
-     let secondfoot = [
+    ]
+    let secondfoot = [
       // (<p>Collaboration Platform</p>),
       // (<p>OHEJP</p>),
       // (<p>Publications </p>)
-     ]
-     if((forlink.length > 0) && (forlink.length <= 3 )){
-       for(let z=0;z<forlink.length;z++){
-        firstfoot[z] = <p><a href={forlink[z].link} style={{fontSize : '14px',color:'white'}}>{forlink[z].name}</a></p>
-        secondfoot[z] = <p><a href={forlink[z].link} style={{fontSize : '14px',color:'white'}}>{forlink[z].name}</a></p>
-       }
-     }else if(forlink.length > 0){
+    ]
+    if ((forlink.length > 0) && (forlink.length <= 3)) {
+      for (let z = 0; z < forlink.length; z++) {
+        firstfoot[z] = <p><a href={forlink[z].link} style={{ fontSize: '14px', color: 'white' }}>{forlink[z].name}</a></p>
+        secondfoot[z] = <p><a href={forlink[z].link} style={{ fontSize: '14px', color: 'white' }}>{forlink[z].name}</a></p>
+      }
+    } else if (forlink.length > 0) {
       firstfoot = []
       secondfoot = []
-      for(let j=0;j<forlink.length;j++){
-        if(j <= 2){
-          firstfoot.push(<p><a href={forlink[j].link} style={{fontSize : '14px',color:'white'}}>{forlink[j].name}</a></p>)
+      for (let j = 0; j < forlink.length; j++) {
+        if (j <= 2) {
+          firstfoot.push(<p><a href={forlink[j].link} style={{ fontSize: '14px', color: 'white' }}>{forlink[j].name}</a></p>)
         }
-        if(j > 2 && j <= 5)
-        secondfoot.push(<p><a href={forlink[j].link} style={{fontSize : '14px',color:'white'}}>{forlink[j].name}</a></p>)
+        if (j > 2 && j <= 5)
+          secondfoot.push(<p><a href={forlink[j].link} style={{ fontSize: '14px', color: 'white' }}>{forlink[j].name}</a></p>)
       }
-     }
-     function renderTitle(title) {
+    }
+    function renderTitle(title) {
       return (
         <span>
           {title}
           <a
-            style={{float: 'right'}}
+            style={{ float: 'right' }}
             href="https://www.google.com/search?q=antd"
             target="_blank"
             rel="noopener noreferrer"
@@ -555,9 +554,9 @@ if (locations.indexOf('admin') < 0) {
       );
     }
 
-     const Option = AutoComplete.Option;
-const OptGroup = AutoComplete.OptGroup;
-     const dataSource = [{
+    const Option = AutoComplete.Option;
+    const OptGroup = AutoComplete.OptGroup;
+    const dataSource = [{
       title: 'g-axon',
       children: [{
         title: 'AntDesign',
@@ -582,22 +581,21 @@ const OptGroup = AutoComplete.OptGroup;
         count: 100000,
       }],
     }];
-     let options = []
-     if(getglobelsearch.length > 0){      
-      for(let i=0;i<getglobelsearch.length;i++)
-      {
-        if(getglobelsearch[i].menu == 'Home'){
+    let options = []
+    if (getglobelsearch.length > 0) {
+      for (let i = 0; i < getglobelsearch.length; i++) {
+        if (getglobelsearch[i].menu == 'Home') {
           options.push(<Option disabled key="all2" className="show-all"><a href={`/`}>{getglobelsearch[i].menu}</a></Option>)
         }
-else{
-  options.push(<Option disabled key="all2" className="show-all"><a href={`/${getglobelsearch[i].menu.split(" ").join("")}?id=${getglobelsearch[i].menu_id}`}>{getglobelsearch[i].menu}</a></Option>)
-}
+        else {
+          options.push(<Option disabled key="all2" className="show-all"><a href={`/${getglobelsearch[i].menu.split(" ").join("")}?id=${getglobelsearch[i].menu_id}`}>{getglobelsearch[i].menu}</a></Option>)
+        }
       }
-      
-    }else{
+
+    } else {
       options = []
     }
-     components = (
+    components = (
       <div className={`blogpage`} style={beautify}>
 
         <Navbar className={`mvna_navbar`} bg="light" expand="lg">
@@ -617,32 +615,32 @@ else{
               <Nav.Link onClick={loginfun} ><p className={`underline`}>Member Login</p></Nav.Link>
             </Nav>
 
-              <AutoComplete
-            className="certain-category-search"
-            dropdownClassName="certain-category-search-dropdown"
-            dropdownMatchSelectWidth={false}
-            dropdownStyle={{width: 300}}
-            size="large"
-            dataSource={options}
-            style={{width: '100%'}}
-            optionLabelProp="value"
+            <AutoComplete
+              className="certain-category-search"
+              dropdownClassName="certain-category-search-dropdown"
+              dropdownMatchSelectWidth={false}
+              dropdownStyle={{ width: 300 }}
+              size="large"
+              dataSource={options}
+              style={{ width: '100%' }}
+              optionLabelProp="value"
             >
-            <Search
-        placeholder="search..."
-        className={`search_box`}
-        onSearch={value => console.log(value)}
-        onKeyUp={forsearch}
-        style={{width: '175px'}}
-      />            
-      </AutoComplete>
+              <Search
+                placeholder="search..."
+                className={`search_box`}
+                onSearch={value => console.log(value)}
+                onKeyUp={forsearch}
+                style={{ width: '175px' }}
+              />
+            </AutoComplete>
 
-            
+
 
           </Navbar.Collapse>
         </Navbar>
         <Route exact path={`/members`} component={Members} />
-        { locations.indexOf('/members') < 0 ? <Route exact path={locations} component={Web} /> : ''  } 
-        {((locations == '/') ||  (locations == '/')) && (window.screen.width > 1025)  ? (
+        {locations.indexOf('/members') < 0 ? <Route exact path={locations} component={Web} /> : ''}
+        {((locations == '/') || (locations == '/')) && (window.screen.width > 1025) ? (
           <div className="footer_container_home" style={f_whole_footer}>
             <div className="footer_starter_home">
               <img
@@ -660,7 +658,7 @@ else{
                   {/* {forfootercontent != '' ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
      {forfootercontent != '' ? (<><p>{forfootercontent.data[0].addressline2}</p><br></br></>) : (<><p>Cedex. FRANCE,</p><br></br></>)}
      {forfootercontent != '' ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)} */}
-     {footer_address}
+                  {footer_address}
                 </div>
                 <div className="footer_content_sub footer_content_sub-2">
                   <div className="Quick_links">
@@ -677,11 +675,12 @@ else{
                 <div className="footer_content_sub footer_content_sub-4">
                   <div className="Quick_links">
                     <p className="Quick_links_headedr">Next Conference</p>
-                    <p><a href='https://main.d1ta2fqx7n4odq.amplifyapp.com/Event?id=22' style={{fontSize : '14px',color:'white'}}>Coming Soon</a></p>
+                    <p><a href='https://main.d1ta2fqx7n4odq.amplifyapp.com/Event?id=22' style={{ fontSize: '14px', color: 'white' }}>Coming Soon</a></p>
 
                   </div>
                 </div>
               </div>
+              <p className={`copright`}>Copyright MED.VET.NET Association © 2020</p>
             </div>
           </div>
         ) : (
@@ -692,14 +691,14 @@ else{
                   {/* {forfootercontent != '' ? (<p>{forfootercontent.data[0].addressline1}</p>) : (<p>14 rue Pierre et Marie Curie F94701 Maisons-Alfort</p>)} 
      {forfootercontent != '' ? (<><p>{forfootercontent.data[0].addressline2}</p><br></br></>) : (<><p>Cedex. FRANCE,</p><br></br></>)}
      {forfootercontent != '' ? (<p>Tel: {forfootercontent.data[0].mobile}</p>): (<p>Tel: +33 1 49 77 38 68</p>)} */}
-     {footer_address}
+                  {footer_address}
                 </div>
                 <div className="footer_content_sub footer_content_sub-2">
                   <div className="Quick_links">
                     <div className="Quick_links_headedr_parent">
                       <p className="Quick_links_headedr">Quick Links</p>
                     </div>
-                  {firstfoot}
+                    {firstfoot}
                   </div>
                 </div>
                 <div className="footer_content_sub footer_content_sub-3">
@@ -715,17 +714,17 @@ else{
                     <div className="Quick_links_headedr_parent">
                       <p className="Quick_links_headedr">Next Conference</p>
                     </div>
-                    <p><a href='https://main.d1ta2fqx7n4odq.amplifyapp.com/Event?id=22' style={{fontSize : '14px',color:'white'}}>Coming Soon</a></p>
+                    <p><a href='https://main.d1ta2fqx7n4odq.amplifyapp.com/Event?id=22' style={{ fontSize: '14px', color: 'white' }}>Coming Soon</a></p>
 
                   </div>
                 </div>
               </div>
-
+<p className={`copright`}>Copyright MED.VET.NET Association © 2020</p>
             </div>
 
           )}
 
-
+ 
       </div>
     )
 
