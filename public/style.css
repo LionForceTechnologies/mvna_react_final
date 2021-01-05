@@ -816,7 +816,7 @@ width: 330px;
   .show_output #i2mwj { width: 273.06px; height: 258px; position: relative;}
   .show_output #igdl2 { width: 273.06px; height: 258px; position: relative;}
   .show_output #ipwly { width: 273.06px; height: 258px; position: relative;}
-  .show_output #ibpj1 {margin-top : 27px;}
+  .show_output #ibpj1 {margin-top : 37px;}
   .show_output #ibpj1 + a {
     position: absolute;
     right: 0;
@@ -828,7 +828,7 @@ width: 330px;
     bottom: 11px;
   }
   .show_output #i9epv{
-    margin-top: 27px;
+    margin-top: 37px;
   }
   .show_output #i9epv + a {
     position: absolute;
@@ -858,5 +858,14 @@ width: 330px;
   }
   .navbar-collapse.collapse{
     font-size: 12px;
+  }
+  .show_output #i3t1b{
+    margin-top : 0px;
+  }
+  .show_output #isumo{
+    margin-top : 0px;
+  }
+  .show_output #ijfhr {
+margin-top : 15px;
   }
 }
