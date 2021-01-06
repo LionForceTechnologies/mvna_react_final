@@ -680,7 +680,7 @@ function SubApp(props) {
                   </div>
                 </div>
               </div>
-              <p className={`copright`}>Copyright MED.VET.NET Association © 2020</p>
+              <p className={`copright`}>© 2021 Med.Vet.Net Association. All rights reserved.</p>
             </div>
           </div>
         ) : (
@@ -719,7 +719,7 @@ function SubApp(props) {
                   </div>
                 </div>
               </div>
-<p className={`copright`}>Copyright MED.VET.NET Association © 2020</p>
+<p className={`copright`}>© 2021 Med.Vet.Net Association. All rights reserved.</p>
             </div>
 
           )}
