@@ -700,9 +700,20 @@ position: relative;
     padding-top: 0;
   }
   .show_output #iatl0a{
-    height: 65px;
-    width: 63px;
+    /* height: 65px;
+    width: 63px; */
     margin-left: 24px;
+  }
+  .show_output #ijfhr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .show_output #i9orf{
+    flex : 1;
+  }
+  .show_output #ic1wvv{
+    flex : 1;
   }
   .show_output #ixp4b{
     margin-left: 0px !important;
