@@ -53,12 +53,11 @@ const SignIn = (props) => {
               className="gx-signin-form gx-form-row0">
 
               <Form.Item
-                initialValue="demo@example.com"
+                initialValue="admin@mvna.org"
                 rules={[{ required: true, message: 'The input is not valid E-mail!' }]} name="email">
                 <Input autoComplete="new-password" placeholder="Email"/>
               </Form.Item>
               <Form.Item
-                initialValue="demo#123"
                 rules= {[{required: true, message: 'Please input your Password!'}]}  name="password">
                 <Input autoComplete="new-password" type="password" placeholder="Password"/>
               </Form.Item>
